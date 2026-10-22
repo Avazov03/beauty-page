@@ -466,9 +466,15 @@ html.is-home .rt-testimonial-v3 {
 }
 
 /*
- * Dining gallery (home-5): sticky 300vh chapter for IX2 Live Kitchen focus.
- * Isolate so it cannot paint over Experience after the track ends.
+ * Dining gallery (home-5 / Parvarish tajribasi): sticky 300vh chapter.
+ * Space from Maxsus paketlar above (was glued) — same idea as Experience.
  */
+html.is-home .rt-business {
+  position: relative;
+  z-index: 3;
+  background-color: var(--_colors---white, #fff);
+}
+
 html.is-home .rt-gallery {
   height: 300vh;
   position: relative;
@@ -476,6 +482,8 @@ html.is-home .rt-gallery {
   isolation: isolate;
   overflow: clip;
   background-color: var(--_colors---soft-porcelain-white, #f8f4f6);
+  padding-top: var(--_gaps---section-gap-v1, 5rem);
+  box-sizing: border-box;
 }
 
 html.is-home .rt-gallery-sticky {
@@ -727,4 +735,19 @@ main [style*="opacity:0"]:not([data-w-id]):not(.rt-about-v1 *):not(
   font-size: 1.35rem;
   color: #fff;
   letter-spacing: -0.03em;
+}
+
+/*
+ * Photos only fill EXISTING Webflow boxes — do NOT change layout sizes.
+ * (Forced px/vw/aspect overrides were breaking original dimensions.)
+ */
+html.is-home .rt-feature-image img,
+html.is-home .rt-business-left-wrapper img,
+html.is-home .rt-business-right-image-wrapper img,
+html.is-home .rt-gallery-image-wrapper img,
+html.is-home .rt-gallery-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }

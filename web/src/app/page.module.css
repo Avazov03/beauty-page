@@ -10,7 +10,7 @@
       color-mix(in srgb, var(--color-dark-blue) 72%, transparent),
       color-mix(in srgb, var(--color-deep-brownish-gray) 35%, transparent)
     ),
-    url("https://cdn.prod.website-files.com/6927ddcc377dce6e20188e35/696db7b5f957e045712c8d8b_Home%201.webp")
+    url("/brand/stock/soft-portrait.jpg")
       center / cover no-repeat;
 }
 

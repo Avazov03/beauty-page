@@ -276,7 +276,7 @@ export function InlineHeaderNav() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://cdn.prod.website-files.com/6927ddcc377dce6e20188e35/6953b6cbe9d3fb1df0e77f56_5a6f785dfa85045b71d807cfaff4a76a_spa-banner-image.webp"
+                src="/brand/stock/ritual-massage.jpg"
                 alt=""
                 width={640}
                 height={480}

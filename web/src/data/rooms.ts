@@ -1,7 +1,4 @@
-const CDN =
-  "https://cdn.prod.website-files.com/6927ddcc377dce6e20188e35";
-const CDN_ROOM =
-  "https://cdn.prod.website-files.com/693106e31a556f4c90b2ff6a";
+import { STOCK } from "@/data/stock";
 
 export type RoomSpecs = {
   rating: number;
@@ -50,18 +47,18 @@ const sharedSpecs = {
 } satisfies Omit<RoomSpecs, "pricePerNight">;
 
 const galleryPool = [
-  `${CDN_ROOM}/6952639c8cc1cb88dbe36953_image%20430-Picsart-AiImageEnhancer%201%20(3).webp`,
-  `${CDN_ROOM}/695261432e5b21fe7b2227b7_12613%201.webp`,
-  `${CDN_ROOM}/694e302c655a37d8f6deeff6_29281%201%20(1).webp`,
-  `${CDN_ROOM}/6952615bb14601676a64da0d_2150497283%20(1)%201.webp`,
-  `${CDN_ROOM}/6952616fea419c30509c786e_image%20487-Picsart-AiImageEnhancer%201.webp`,
-  `${CDN_ROOM}/695261b20eb6cf95422d5630_image%20432-Picsart-AiImageEnhancer%201%20(2).webp`,
-  `${CDN_ROOM}/694e2aa9443a7905a36481d2_room-page-image-one.webp`,
-  `${CDN_ROOM}/694e2c2eb560e283ed1befb4_room-page-small-image-one.webp`,
-  `${CDN_ROOM}/694e2a85b704b152be171495_room-page-image-three.webp`,
-  `${CDN}/69561ff968fa7d3e262132c9_image%20426-Picsart-AiImageEnhancer%201%20(1).webp`,
-  `${CDN}/69561ff7648e96670fe6964d_image%20433-Picsart-AiImageEnhancer%201%20(3).webp`,
-  `${CDN}/69561ff7970dc664aef5fcdc_1771%201.webp`,
+  STOCK.facialCleanse,
+  STOCK.facialMask,
+  STOCK.facialDevice,
+  STOCK.creamHands,
+  STOCK.peelGlow,
+  STOCK.antiageSoft,
+  STOCK.premiumCare,
+  STOCK.acneCare,
+  STOCK.cabinetSoft,
+  STOCK.resultGlow,
+  STOCK.skincareShelf,
+  STOCK.homeCare,
 ];
 
 function galleryFrom(offset: number): string[] {
@@ -90,7 +87,7 @@ export const roomsListing = [
       "Steril muhit",
     ],
     price: "180 000 so‘m",
-    image: `${CDN}/694e597d59f693d74fc55932_image%20434-Picsart-AiImageEnhancer%201.webp`,
+    image: STOCK.facialCleanse,
   },
   {
     slug: "executive-suite",
@@ -105,7 +102,7 @@ export const roomsListing = [
       "Shaxsiy reja",
     ],
     price: "280 000 so‘m",
-    image: `${CDN}/694e59b978f8bc2c0529036a_image%20435-Picsart-AiImageEnhancer%201.webp`,
+    image: STOCK.premiumCare,
   },
   {
     slug: "sea-view-room",
@@ -120,7 +117,7 @@ export const roomsListing = [
       "Natijaga yo‘naltirilgan",
     ],
     price: "350 000 so‘m",
-    image: `${CDN}/694e59b966e523eacd429043_image%20436-Picsart-AiImageEnhancer%201.webp`,
+    image: STOCK.antiageSoft,
   },
   {
     slug: "consultation",
@@ -135,7 +132,7 @@ export const roomsListing = [
       "Mahsulot tavsiyasi",
     ],
     price: "100 000 so‘m",
-    image: `${CDN}/694a22051baed5b350dc6d7d_image%20430-Picsart-AiImageEnhancer%201.webp`,
+    image: STOCK.consultation,
   },
   {
     slug: "chemical-peel",
@@ -150,7 +147,7 @@ export const roomsListing = [
       "SPF eslatmasi",
     ],
     price: "220 000 so‘m",
-    image: `${CDN}/69316279603aa77764416443_image%2015-Picsart-AiImageEnhancer%201.webp`,
+    image: STOCK.peelGlow,
   },
   {
     slug: "face-massage",
@@ -165,7 +162,7 @@ export const roomsListing = [
       "Uyda davom",
     ],
     price: "160 000 so‘m",
-    image: `${CDN}/694a220502bfae7bbbd483da_image%2014-Picsart-AiImageEnhancer%201.webp`,
+    image: STOCK.ritualMassage,
   },
   {
     slug: "pigmentation-care",
@@ -180,7 +177,7 @@ export const roomsListing = [
       "Uy protokoli",
     ],
     price: "260 000 so‘m",
-    image: `${CDN}/694a22058acf0ce292e687df_image%20432-Picsart-AiImageEnhancer%201.webp`,
+    image: STOCK.glowPortrait,
   },
   {
     slug: "acne-protocol",
@@ -195,7 +192,7 @@ export const roomsListing = [
       "Kurs mumkin",
     ],
     price: "240 000 so‘m",
-    image: `${CDN}/69313766db72be49e3b25c9d_image%208-Picsart-AiImageEnhancer%201.webp`,
+    image: STOCK.acneCare,
   },
 ] as const;
 
@@ -206,7 +203,15 @@ export const roomDetails: RoomDetail[] = roomsListing.map((room, index) => ({
   highlights: [...room.highlights],
   price: room.price,
   image: room.image,
-  images: galleryFrom(index * 2),
+  images:
+    room.slug === "face-massage"
+      ? [
+          STOCK.ritualMassage,
+          STOCK.massageFace,
+          STOCK.spaRelax,
+          ...galleryFrom(index * 2).slice(3),
+        ]
+      : galleryFrom(index * 2),
   overview: sharedOverview,
   specs: { ...sharedSpecs, pricePerNight: room.price },
   amenities: sharedQulayliklar,

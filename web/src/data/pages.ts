@@ -1,5 +1,4 @@
-const CDN =
-  "https://cdn.prod.website-files.com/6927ddcc377dce6e20188e35";
+import { STOCK } from "@/data/stock";
 
 export type PageIntro = {
   eyebrow?: string;
@@ -18,7 +17,7 @@ export const pageIntros = {
       "Sizning teringiz — mening e’tiborim; har bir muolajani ishonch va natija uchun o‘ylab tanlayman",
     intro:
       "Men — Malika Karimova, kosmetolog. Yuz va teri parvarishida shaxsiy yondashuv, tushunarli tushuntirish va xavfsiz protokol bilan ishlayman.",
-    image: `${CDN}/69452c5ad14c210fde417f7d_6e8b8f07617e02360fd36671319429eb_about-banner-image.webp`,
+    image: STOCK.softPortrait,
     metaDescription:
       "Malika Karimova — kosmetolog, yuz va teri parvarishi mutaxassisi.",
   },
@@ -27,7 +26,7 @@ export const pageIntros = {
     subtitle: "Teringiz uchun aniq yechimlar",
     intro:
       "Yuzni tozalashdan anti-age muolajalarigacha — xizmatlarimni ko‘ring: jarayon tushuntiriladi, narx aniq, yondashuv shaxsiy.",
-    image: `${CDN}/694e312f0951a14b785ffd15_e568dbb1f01f309400cbfb4d237ffe6a_room-page-banner-image.webp`,
+    image: STOCK.facialCleanse,
     metaDescription:
       "Malika Karimova xizmatlari — yuz parvarishi, konsultatsiya va premium muolajalar.",
   },
@@ -36,7 +35,7 @@ export const pageIntros = {
     title: "Kabinetimda nima kutadi",
     intro:
       "Steril muhit, zamonaviy jihozlar va tinch kabinet — seanslarim qulay va xavfsiz o‘tadi.",
-    image: `${CDN}/69527b3a5274ffb6de3d0349_image%20447-Picsart-AiImageEnhancer%201%20(1).webp`,
+    image: STOCK.cabinetSoft,
     metaDescription:
       "Malika Karimova kabineti — zamonaviy jihozlar va e’tiborli xizmat.",
   },
@@ -44,7 +43,7 @@ export const pageIntros = {
     title: "Maxsus paketlarim",
     intro:
       "To‘liq parvarish kurslari, juftlik seanslari va mavsumiy paketlar — maqsadingizga mos dasturni birgalikda tanlaymiz.",
-    image: `${CDN}/6954dfb0643940014e8d7c27_image%20453-Picsart-AiImageEnhancer%201%20(1).webp`,
+    image: STOCK.premiumCare,
     metaDescription:
       "Malika Karimova paketlar — kurslar, juftlik seanslari va maxsus dasturlar.",
   },
@@ -54,7 +53,7 @@ export const pageIntros = {
       "Muvozanat va osoyishtalikni tiklaydigan sog‘lomlashtirish muolajalari",
     intro:
       "Kabinetimda tinchlantiruvchi muolajalar, osoyishta muhit va shaxsiy g‘amxo‘rlik bilan dam oling.",
-    image: `${CDN}/6953b6cbe9d3fb1df0e77f56_5a6f785dfa85045b71d807cfaff4a76a_spa-banner-image.webp`,
+    image: STOCK.ritualMassage,
     metaDescription:
       "Malika Karimova — tinchlantiruvchi muolajalar va osuda muhit.",
   },
@@ -63,7 +62,7 @@ export const pageIntros = {
     title: "Uy parvarishi bo‘yicha maslahatlarim",
     intro:
       "Muolajadan keyin teringizni qo‘llab-quvvatlash: mahsulotlar, SPF va kundalik odatlar — shaxsiy tavsiyalarim.",
-    image: `${CDN}/6954e9698b2e3670bc6d4911_image%20490-Picsart-AiImageEnhancer%20(1)%201%20(1).webp`,
+    image: STOCK.homeCare,
     metaDescription:
       "Malika Karimova — uy parvarishi maslahatlari va mutaxassis tavsiyalari.",
   },
@@ -71,7 +70,7 @@ export const pageIntros = {
     title: "Yangiliklar va maslahatlarim",
     intro:
       "Teri parvarishi, yangi muolajalar va foydali maslahatlar — mening jurnalimda.",
-    image: `${CDN}/695645e0708c845e290a1f9e_image%20508-Picsart-AiImageEnhancer%201%20(1).webp`,
+    image: STOCK.blog1,
     metaDescription:
       "Malika Karimova blog — teri parvarishi va go‘zallik haqida foydali maqolalar.",
   },
@@ -81,7 +80,7 @@ export const pageIntros = {
     subtitle: "Qabulga yozilish yoki savol",
     intro:
       "Savolingiz bormi? Qabulga yozilish, konsultatsiya yoki maxsus so‘rov — tezkor javob beraman.",
-    image: `${CDN}/6954b29b8505845a7463cc60_image%20506-Picsart-AiImageEnhancer%201%20(1).webp`,
+    image: STOCK.consultation,
     metaDescription:
       "Malika Karimova bilan bog‘laning — qabul va xizmatlar bo‘yicha.",
   },
