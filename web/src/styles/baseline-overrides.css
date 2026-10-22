@@ -852,3 +852,77 @@ html.is-home .rt-gallery-image-box img {
     aspect-ratio: 630 / 653;
   }
 }
+
+/*
+ * Room-detail tab hero CLS:
+ * .w-tab-content { overflow:hidden } inside flex column-wrap sizes itself to
+ * the image's *intrinsic* height (e.g. 561), while width:100% paints taller
+ * (clipped). Portrait stock then changes that intrinsic height → jump.
+ * Original hotel files were all 1920×870 so intrinsic matched the frame.
+ * Lock the tab content to that frame; fill images with cover.
+ */
+.rt-room-details-banner {
+  flex-wrap: nowrap;
+}
+
+.rt-room-details-banner > .w-tab-content {
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 1920 / 870;
+  overflow: hidden;
+}
+
+.rt-room-details-banner > .w-tab-content > .w-tab-pane.w--tab-active {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rt-room-details-hero.rt-position-relative {
+  position: absolute !important;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.rt-room-details-hero .rt-inner-image-wrapper {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.rt-room-details-hero .rt-hero-image {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+.rt-room-details-hero .rt-about-us-text-wrapper {
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+/*
+ * Room-detail gallery-v5 marquee — Webflow only sets max-width on
+ * .rt-gallery-image; height followed each stock file's intrinsic ratio
+ * (241 vs 481 vs 542 at the same width). Lock a 3/2 card; cover-fill.
+ */
+.rt-gallery-v5 .rt-gallery-image {
+  overflow: hidden;
+}
+
+.rt-gallery-v5 .rt-gallery-image img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
