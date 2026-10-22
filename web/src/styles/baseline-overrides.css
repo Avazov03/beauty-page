@@ -688,22 +688,24 @@ main [style*="opacity:0"]:not([data-w-id]):not(.rt-about-v1 *):not(
 /*
  * Blog / room CMS: IX2 while-in-view often never fires after client nav /
  * shared template pageId — content stays invisible (opacity:0).
+ * IMPORTANT: [style*="opacity: 0"] also matches opacity:0.6 — never apply
+ * to wipe overlays or images stay covered / animations die.
  */
-.rt-blog-post-details [style*="opacity:0"],
-.rt-blog-post-details [style*="opacity: 0"],
-.rt-related-post [style*="opacity:0"],
-.rt-related-post [style*="opacity: 0"],
-.rt-blog-v1-card[style*="opacity:0"],
-.rt-blog-v1-card[style*="opacity: 0"],
-.rt-room-overview-v2 [style*="opacity:0"],
-.rt-room-overview-v2 [style*="opacity: 0"],
-.rt-room-overview-v3 [style*="opacity:0"],
-.rt-room-overview-v3 [style*="opacity: 0"],
-.rt-amenities-card-wrapper[style*="opacity:0"],
-.rt-hotel-details-wrapper[style*="opacity:0"],
-.rt-room-overview-card-top-wrapper[style*="opacity:0"],
-.rt-room-overview-card-bottom-wrapper[style*="opacity:0"],
-.rt-room-overview-card-bottom-content[style*="opacity:0"] {
+.rt-blog-post-details [style*="opacity:0"]:not([class*="overlay"]),
+.rt-blog-post-details [style*="opacity: 0"]:not([class*="overlay"]),
+.rt-related-post [style*="opacity:0"]:not([class*="overlay"]),
+.rt-related-post [style*="opacity: 0"]:not([class*="overlay"]),
+.rt-blog-v1-card[style*="opacity:0"]:not([class*="overlay"]),
+.rt-blog-v1-card[style*="opacity: 0"]:not([class*="overlay"]),
+.rt-room-overview-v2 [style*="opacity:0"]:not([class*="overlay"]),
+.rt-room-overview-v2 [style*="opacity: 0"]:not([class*="overlay"]),
+.rt-room-overview-v3 [style*="opacity:0"]:not([class*="overlay"]),
+.rt-room-overview-v3 [style*="opacity: 0"]:not([class*="overlay"]),
+.rt-amenities-card-wrapper[style*="opacity:0"]:not([class*="overlay"]),
+.rt-hotel-details-wrapper[style*="opacity:0"]:not([class*="overlay"]),
+.rt-room-overview-card-top-wrapper[style*="opacity:0"]:not([class*="overlay"]),
+.rt-room-overview-card-bottom-wrapper[style*="opacity:0"]:not([class*="overlay"]),
+.rt-room-overview-card-bottom-content[style*="opacity:0"]:not([class*="overlay"]) {
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
@@ -714,7 +716,7 @@ main [style*="opacity:0"]:not([data-w-id]):not(.rt-about-v1 *):not(
   padding-top: var(--_gaps---section-gap-v2, 8.1875rem) !important;
 }
 
-/* Wipe overlays: if IX2 stalls mid-animation, clear them off the hero image */
+/* Blog hero only: wipe can stall after SPA nav. Room overview keeps IX2 wipe. */
 .rt-blog-post-hero .rt-image-overlay-1,
 .rt-blog-post-hero .rt-image-overlay-2 {
   opacity: 0 !important;
