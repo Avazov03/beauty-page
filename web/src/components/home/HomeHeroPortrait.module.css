@@ -2,20 +2,18 @@
   position: relative;
   min-height: 100svh;
   display: grid;
-  align-items: end;
+  align-items: stretch;
   background: var(--color-pearl, #f8f4f6);
   color: var(--color-plum, #72516f);
   overflow: clip;
-  padding: 7.5rem var(--gutter, 1rem) 2.5rem;
+  padding: 6.25rem var(--gutter, 1rem) 0;
 }
 
 .bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Iridescence window pointerlari bilan ishlaydi — tugma hoverini o‘g‘irlamasin */
   pointer-events: none;
-  /* Soft mauve stand-in while WebGL boots */
   background:
     radial-gradient(
       ellipse 72% 58% at 70% 36%,
@@ -47,22 +45,88 @@
   }
 }
 
+/* Centered brand plane */
+.stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: end center;
+  min-height: 58svh;
+  pointer-events: none;
+}
+
+.nameBehind {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 98vw;
+  font-family: var(--font-heading);
+  font-size: clamp(3.75rem, 17vw, 6.25rem);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.nameBehind span {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Visible brand colors — not washed-out mauve */
+.nameFirst {
+  color: var(--color-plum, #72516f);
+  opacity: 0.88;
+  text-shadow: 0 1px 0 rgba(248, 244, 246, 0.35);
+}
+
+.nameLast {
+  color: var(--color-dark-blue, #3d2f3c);
+  opacity: 1;
+  text-shadow: 0 1px 0 rgba(248, 244, 246, 0.4);
+}
+
+.figure {
+  position: relative;
+  z-index: 2;
+  width: min(78vw, 340px);
+  line-height: 0;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 18px 40px rgba(61, 47, 60, 0.18));
+}
+
+/* Copy below figure on mobile */
 .inner {
   position: relative;
   z-index: 3;
   max-width: 28rem;
-  padding-bottom: 2rem;
+  padding: 1.25rem 0 2.25rem;
 }
 
 .eyebrow {
   margin: 0 0 0.75rem;
   font-family: var(--font-body);
   font-size: var(--text-sub);
-  font-weight: 500;
+  font-weight: 560;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-plum, #72516f);
-  opacity: 0.72;
+  opacity: 0.78;
 }
 
 .headline {
@@ -86,8 +150,9 @@
 
 .ctaRow {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
 }
 
 .ctaPrimary,
@@ -129,122 +194,98 @@
 }
 
 .ctaGhost {
-  background: var(--color-mauve, #d3b9c9);
+  background: transparent;
   color: var(--color-plum, #72516f);
+  box-shadow: inset 0 0 0 1.5px rgba(114, 81, 111, 0.35);
 }
 
 .ctaGhost:hover {
-  background: var(--color-plum, #72516f);
-  color: #fff;
+  background: var(--color-mauve, #d3b9c9);
+  box-shadow: inset 0 0 0 1.5px transparent;
   transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(61, 47, 60, 0.18);
 }
 
 .ctaGhost:active {
   transform: translateY(0);
-  box-shadow: none;
-}
-
-.stage {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: end center;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.nameBehind {
-  position: absolute;
-  left: 50%;
-  bottom: 8%;
-  transform: translateX(-50%);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: max-content;
-  max-width: 96vw;
-  font-family: var(--font-heading);
-  font-size: clamp(3.5rem, 14vw, 9.5rem);
-  font-weight: 400;
-  line-height: 0.88;
-  letter-spacing: -0.06em;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--color-mauve, #d3b9c9);
-  user-select: none;
-}
-
-.nameBehind span {
-  display: block;
-  white-space: nowrap;
-}
-
-.figure {
-  position: relative;
-  z-index: 2;
-  width: min(42vw, 420px);
-  max-width: 85vw;
-  line-height: 0;
-}
-
-.photo {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: bottom center;
-  filter: drop-shadow(0 18px 40px rgba(61, 47, 60, 0.18));
 }
 
 @media (min-width: 900px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    align-items: center;
-    padding: 6.5rem clamp(1.5rem, 4vw, 4rem) 2rem;
+    padding: 0;
+    min-height: 100svh;
   }
 
-  .inner {
-    padding-bottom: 4rem;
-    max-width: 32rem;
-  }
-
+  /* Full-bleed centered stage */
   .stage {
-    left: 42%;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    min-height: 0;
     place-items: end center;
+    padding-bottom: 0;
   }
 
   .nameBehind {
-    bottom: 10%;
+    bottom: 9%;
+    font-size: clamp(5.5rem, 13.5vw, 10.75rem);
+    letter-spacing: -0.06em;
+  }
+
+  .nameFirst {
+    opacity: 0.86;
+  }
+
+  .nameLast {
+    opacity: 1;
   }
 
   .figure {
-    width: min(38vw, 440px);
+    width: min(36vw, 460px);
+  }
+
+  /*
+   * Mara slot: nestled against the figure’s left shoulder —
+   * slight overlap into the portrait (copy above the cutout).
+   */
+  .inner {
+    position: absolute;
+    left: max(
+      1.25rem,
+      calc(50% - min(36vw, 460px) / 2 - min(20rem, 27vw) + 2.75rem)
+    );
+    top: 36%;
+    transform: translateY(-30%);
+    z-index: 3;
+    width: min(20rem, 27vw);
+    max-width: none;
+    padding: 0;
+  }
+
+  .headline {
+    font-size: clamp(1.85rem, 2.6vw, 2.55rem);
+  }
+
+  .ctaRow {
+    gap: 0.75rem;
   }
 }
 
-@media (max-width: 899px) {
-  .hero {
-    padding-top: 6.25rem;
-    padding-bottom: 0;
-    align-items: start;
-  }
-
+@media (min-width: 1200px) {
   .inner {
-    order: 1;
-    z-index: 3;
-    padding-bottom: 1rem;
-  }
-
-  .stage {
-    position: relative;
-    inset: auto;
-    min-height: 58svh;
-    margin-top: 0.5rem;
+    left: max(
+      2rem,
+      calc(50% - min(34vw, 480px) / 2 - min(21rem, 26vw) + 3.25rem)
+    );
+    width: min(21rem, 26vw);
+    top: 34%;
+    transform: translateY(-28%);
   }
 
   .nameBehind {
-    bottom: 4%;
-    font-size: clamp(3rem, 16vw, 5.5rem);
+    font-size: clamp(7rem, 14vw, 11.5rem);
+  }
+
+  .figure {
+    width: min(34vw, 480px);
   }
 }

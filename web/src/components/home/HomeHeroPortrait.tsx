@@ -9,10 +9,34 @@ export function HomeHeroPortrait() {
   const last = rest.join(" ");
 
   return (
-    <section className={`home-hero-portrait ${styles.hero}`} aria-label="Bosh sahifa">
+    <section
+      className={`home-hero-portrait ${styles.hero}`}
+      aria-label="Bosh sahifa"
+    >
       <div className={styles.bg} aria-hidden>
         <HeroIridescenceBg />
       </div>
+
+      {/* Center composition: big name behind + portrait */}
+      <div className={styles.stage}>
+        <div className={styles.nameBehind} aria-hidden>
+          <span className={styles.nameFirst}>{first}</span>
+          {last ? <span className={styles.nameLast}>{last}</span> : null}
+        </div>
+        <div className={styles.figure}>
+          <Image
+            src="/brand/malika-hero.png"
+            alt={brandName}
+            width={545}
+            height={1000}
+            priority
+            className={styles.photo}
+            sizes="(max-width: 899px) 78vw, min(36vw, 460px)"
+          />
+        </div>
+      </div>
+
+      {/* Left copy — Mara-style slot */}
       <div className={styles.inner}>
         <p className={styles.eyebrow}>{specialist.title}</p>
         <h1 className={styles.headline}>{specialist.headline}</h1>
@@ -27,24 +51,6 @@ export function HomeHeroPortrait() {
           <Link href="/rooms" className={styles.ctaGhost}>
             Muolajalarni ko‘rish
           </Link>
-        </div>
-      </div>
-
-      <div className={styles.stage} aria-hidden={false}>
-        <div className={styles.nameBehind} aria-hidden>
-          <span>{first}</span>
-          {last ? <span>{last}</span> : null}
-        </div>
-        <div className={styles.figure}>
-          <Image
-            src="/brand/malika-hero.png"
-            alt={brandName}
-            width={545}
-            height={1000}
-            priority
-            className={styles.photo}
-            sizes="(max-width: 768px) 85vw, min(42vw, 420px)"
-          />
         </div>
       </div>
     </section>
