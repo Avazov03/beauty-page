@@ -10,7 +10,7 @@ Bu repoda `design-taste-frontend`, `impeccable`, `emil-design-eng` va bog‘liq 
 ## Manba haqiqati (o‘qib ishlat)
 
 1. `web/src/styles/tokens.css` — rang, shrift, radius, motion tokenlari
-2. `web/public/brand-trial.css` — joriy brend yashillari / porcelain
+2. `web/public/brand-trial.css` — Pearl & Plum (`#F8F4F6` / `#72516F` / `#D3B9C9`)
 3. Mavjud Webflow classlar (`rt-*`) va `web/src/styles/baseline-overrides.css`
 4. Brend: yakka mutaxassis (demo: Malika Karimova) — shaxsiy kabinet, “men” ovozi; klinika/jamoa tilidan qoch
 
@@ -18,8 +18,8 @@ Bu repoda `design-taste-frontend`, `impeccable`, `emil-design-eng` va bog‘liq 
 
 1. **Moslash, buzma.** Yangi sahifa/komponent — mavjud tipografiya (Instrument Sans / Serif), spacing, radius va palitraga mos.
 2. **Yangi brend rangi / shrift invent qilma** tokens + brand-trial ni yangilamasdan.
-3. **AI-slop taqiqlangan:** purple-on-white gradient, generic Inter/Roboto stack, ortiqcha glow, rounded-full pill cluster, broadsheet newspaper layout, random “Awwwards” yo‘nalishi.
-4. **taste-skill** gallery direction tanlasa ham — faqat **shu DNA ichida** (yumshoq porcelain, grafit/deep blue matn, yashil aksent, premium clinic/beauty). Mos kelmasa direction ni rad et.
+3. **AI-slop taqiqlangan:** purple-on-white gradient, generic Inter/Roboto stack, ortiqcha glow, broadsheet newspaper layout, random “Awwwards” yo‘nalishi. (Pearl & Plum mauve aksent — brend; random violet gradient emas.)
+4. **taste-skill** gallery direction tanlasa ham — faqat **shu DNA ichida** (yumshoq pearl, plum matn, mauve aksent, premium clinic/beauty). Mos kelmasa direction ni rad et.
 5. **impeccable /audit** — avval hisobot; avtomatik “boshqa dizayn”ga o‘tkazma. Fix faqat mavjud til ichida.
 6. **Emil / animate** — kam, maqsadli motion; Webflow IX2 ishlayotgan joyda parallel Framer/GSAP stack tiqma (foydalanuvchi so‘ramaguncha). `--ease-hotel` / tokens motion dan foydalan.
 7. **Baseline HTML** (`web/src/baseline/html/*`) — keraksiz qayta yozma; override CSS yoki yangi React sahifa afzal.

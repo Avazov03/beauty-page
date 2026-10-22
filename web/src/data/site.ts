@@ -48,11 +48,10 @@ export const social = {
   facebook: "https://t.me/Avazov_fit",
 };
 
+/** Eski Classic Apartment SVG o‘rniga matnli wordmark (CSS `.ca-brand-mark`). */
 export const logos = {
-  /** Qorong‘i fon / ochiq logo */
-  light: "/brand/classic-apartment-wordmark-light.svg",
-  /** Oq fon / yashil logo */
-  dark: "/brand/classic-apartment-wordmark.svg",
+  light: "",
+  dark: "",
 };
 
 export const footerTagline =

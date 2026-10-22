@@ -1,0 +1,46 @@
+/* Text wordmark — replaces Classic Apartment SVG */
+
+.ca-brand-link {
+  display: inline-flex !important;
+  align-items: center;
+  text-decoration: none !important;
+  flex-shrink: 0;
+}
+
+.ca-brand-mark {
+  font-family: var(--font-heading, "Instrument Serif", Georgia, serif);
+  font-size: clamp(1.05rem, 1.15vw, 1.28rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--color-plum, #72516f);
+  white-space: nowrap;
+}
+
+/* No more dual light/dark SVG logos */
+.rt-nav-logo img.rt-nav-logo-v1,
+.rt-nav-logo img.rt-nav-logo-v2 {
+  display: none !important;
+}
+
+.rt-nav-logo.ca-brand-link,
+.rt-nav-logo:has(.ca-brand-mark) {
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+html.is-inner.is-hero-top .ca-brand-mark,
+html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid) .ca-brand-mark,
+html.is-inner:has(.rt-inner-hero):not(.is-nav-solid) .ca-brand-mark {
+  color: #ffffff;
+}
+
+html.is-home .ca-brand-mark,
+html.is-inner.is-nav-solid .ca-brand-mark,
+html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
+  .ca-brand-mark {
+  color: var(--color-plum, #72516f);
+}

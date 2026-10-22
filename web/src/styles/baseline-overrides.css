@@ -8,17 +8,17 @@
 html,
 body,
 :root {
-  --color-brand: #168d70;
-  --_colors---soft-porcelain-white: #f3f7f5;
-  --color-soft-porcelain: #f3f7f5;
-  --_colors---deep-mocha-brown: #168d70;
-  --color-deep-mocha-brown: #168d70;
-  --_colors---warm-sand-beige: #d0ebe3;
-  --color-warm-sand-beige: #d0ebe3;
+  --color-brand: #72516f;
+  --_colors---soft-porcelain-white: #f8f4f6;
+  --color-soft-porcelain: #f8f4f6;
+  --_colors---deep-mocha-brown: #72516f;
+  --color-deep-mocha-brown: #72516f;
+  --_colors---warm-sand-beige: #d3b9c9;
+  --color-warm-sand-beige: #d3b9c9;
 }
 
 .rt-text-overlay-v3 {
-  background-color: #f3f7f5d9;
+  background-color: #f8f4f6d9;
 }
 
 /* Play chiziq — overflow:hidden ISHLATILMAYDI (tugmani yashiradi) */
@@ -58,21 +58,21 @@ a.w-webflow-badge {
   line-height: 1.35 !important;
 }
 
-/* Biz haqimizda — brand yashil */
+/* Biz haqimizda — brand plum */
 .rt-about-v1 .rt-big-text-one.rt-text-beige {
-  color: #168d70 !important;
+  color: #72516f !important;
 }
 
-/* Stats qaymoq gradient → brand yashil */
+/* Stats → Pearl & Plum */
 .rt-service-v1-fill-box {
-  background-color: #9ad0c0 !important;
+  background-color: #d3b9c9 !important;
 }
 
 .rt-service-v1-fill-box-two {
   background-image: linear-gradient(
     90deg,
-    #a8d9cb 32%,
-    #168d70cc
+    #e8d7e1 32%,
+    #72516fcc
   ) !important;
 }
 
@@ -159,19 +159,9 @@ html.is-inner .rt-gallery-bottom-marquee:not([style*="transform"]) {
   z-index: 1000;
 }
 
-/*
- * Sticky hero only lives inside this stage (hero + About). Once the stage
- * scrolls away, the beach video leaves — it must NOT stick under the rest
- * of the homepage (that caused the multi-section pile-up).
- */
-html.is-home .home-hero-about-stage {
+/* Portrait hero — no sticky video stage */
+html.is-home .home-hero-portrait {
   position: relative;
-  isolation: isolate;
-}
-
-html.is-home .rt-hero-v1 {
-  position: sticky;
-  top: 0;
   z-index: 0;
 }
 
@@ -180,18 +170,11 @@ html.is-home .rt-about-v1 {
   z-index: 1;
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
-  background-color: var(--_colors---soft-porcelain-white, #f3f7f5);
+  background-color: var(--_colors---soft-porcelain-white, #f8f4f6);
 }
 
-/* “ABOUT THE HOTEL” sticks a hair under the fixed chrome — nudge 6px down */
 html.is-home .rt-about-v1-sticky {
   top: calc(12vh + 6px);
-}
-
-/* Rest of home paints above any leftover stacking from the stage */
-html.is-home .home-hero-about-stage + * {
-  position: relative;
-  z-index: 2;
 }
 
 .baseline-root {
@@ -211,7 +194,7 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero)) main {
 /* Ichki sahifa (hero yo‘q): oq fon — logo yashili */
 html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   .rt-navbar-v1-bar-line {
-  background-color: var(--color-brand, #168d70) !important;
+  background-color: var(--color-brand, #72516f) !important;
 }
 
 html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
@@ -223,7 +206,7 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
 html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   .rt-navbar-v1-button-wrapper
   .rt-text-white {
-  color: var(--color-brand, #168d70) !important;
+  color: var(--color-brand, #72516f) !important;
 }
 
 /*
@@ -252,7 +235,7 @@ html.is-inner .rt-navbar-shadow-v1 {
   pointer-events: none !important;
 }
 
-/* Home: default green logo; hero glassda oq (v1 light) */
+/* Home: pearl hero — always dark (plum) logo + text */
 html.is-home .rt-nav-logo-v1,
 html.is-home .rt-nav-logo-v2 {
   transition: opacity 0.55s ease;
@@ -266,91 +249,29 @@ html.is-home .rt-nav-logo-v2 {
   opacity: 1 !important;
 }
 
-html.is-home.is-hero-top .rt-nav-logo-v1 {
-  opacity: 1 !important;
-}
-
-html.is-home.is-hero-top .rt-nav-logo-v2 {
-  opacity: 0 !important;
-}
-
-html.is-home.is-nav-solid .rt-nav-logo-v1 {
-  opacity: 0 !important;
-}
-
-html.is-home.is-nav-solid .rt-nav-logo-v2 {
-  opacity: 1 !important;
-}
-
-/* Hero ustida: oq (kontrast). Oq headerda: logo yashili. */
 html.is-home.is-hero-top .rt-navbar-v1-bar-line,
-html.is-home.is-hero-top .rt-navbar-v1-menu-bar-wrap .rt-navbar-v1-bar-line {
-  background-color: #ffffff !important;
+html.is-home.is-hero-top .rt-navbar-v1-menu-bar-wrap .rt-navbar-v1-bar-line,
+html.is-home.is-nav-solid .rt-navbar-v1-bar-line,
+html.is-home.is-nav-solid .rt-navbar-v1-menu-bar-wrap .rt-navbar-v1-bar-line {
+  background-color: var(--color-brand, #72516f) !important;
 }
 
 html.is-home.is-hero-top .rt-navbar-v1-menu-wrapper .rt-button-text,
 html.is-home.is-hero-top .rt-navbar-v1-menu-wrapper .rt-hover-color-change,
 html.is-home.is-hero-top .rt-navbar-v1-button-wrapper .rt-text-white,
-html.is-home.is-hero-top .rt-navbar-v1 a.rt-text-white {
-  color: #ffffff !important;
-}
-
-html.is-home.is-nav-solid .rt-navbar-v1-bar-line,
-html.is-home.is-nav-solid .rt-navbar-v1-menu-bar-wrap .rt-navbar-v1-bar-line {
-  background-color: var(--color-brand, #168d70) !important;
-}
-
+html.is-home.is-hero-top .rt-navbar-v1 a.rt-text-white,
 html.is-home.is-nav-solid .rt-navbar-v1-menu-wrapper .rt-button-text,
 html.is-home.is-nav-solid .rt-navbar-v1-menu-wrapper .rt-hover-color-change,
 html.is-home.is-nav-solid .rt-navbar-v1-button-wrapper .rt-text-white,
 html.is-home.is-nav-solid .rt-navbar-v1 a.rt-text-white {
-  color: var(--color-brand, #168d70) !important;
+  color: var(--color-brand, #72516f) !important;
 }
 
-/*
- * Oyna kabi tiniq shisha: orqa fon aniq ko‘rinadi, blur/hira yo‘q.
- */
-html.is-home.is-hero-top .rt-navbar-v1,
-html.is-home.is-hero-top .rt-navbar-v1[style] {
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-
-html.is-home.is-hero-top .rt-nav-inner-block {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-html.is-home.is-hero-top .rt-navbar-shadow-v1 {
+/* Home chrome: floating pill (see chrome-pill.css) — hide full-bleed shadow */
+html.is-home .rt-navbar-shadow-v1 {
   opacity: 0 !important;
   visibility: hidden !important;
-  background: transparent !important;
-  box-shadow: none !important;
   pointer-events: none !important;
-}
-
-/* About chiqgach: ~1s da asl oq */
-html.is-home.is-nav-solid .rt-navbar-v1,
-html.is-home.is-nav-solid .rt-navbar-v1[style] {
-  background-color: #ffffff !important;
-  -webkit-backdrop-filter: saturate(100%) blur(0px) !important;
-  backdrop-filter: saturate(100%) blur(0px) !important;
-  border-bottom-color: transparent;
-  box-shadow: none;
-}
-
-html.is-home.is-nav-solid .rt-nav-inner-block {
-  background-color: transparent !important;
-}
-
-html.is-home.is-nav-solid .rt-navbar-shadow-v1 {
-  opacity: 1 !important;
-  visibility: visible !important;
-  background-color: #ffffff !important;
-  box-shadow: 0 2px 15px #0003;
 }
 
 /*
@@ -426,14 +347,14 @@ html.is-inner:has(.rt-inner-hero):not(.is-nav-solid)
 
 html.is-inner.is-nav-solid .rt-navbar-v1-bar-line,
 html.is-inner.is-nav-solid .rt-navbar-v1-menu-bar-wrap .rt-navbar-v1-bar-line {
-  background-color: var(--color-brand, #168d70) !important;
+  background-color: var(--color-brand, #72516f) !important;
 }
 
 html.is-inner.is-nav-solid .rt-navbar-v1-menu-wrapper .rt-button-text,
 html.is-inner.is-nav-solid .rt-navbar-v1-menu-wrapper .rt-hover-color-change,
 html.is-inner.is-nav-solid .rt-navbar-v1-button-wrapper .rt-text-white,
 html.is-inner.is-nav-solid .rt-navbar-v1 a.rt-text-white {
-  color: var(--color-brand, #168d70) !important;
+  color: var(--color-brand, #72516f) !important;
 }
 
 /* Inner hero: oyna shaffofligi — blur yo‘q */
@@ -559,7 +480,7 @@ html.is-home .rt-gallery {
   z-index: 2;
   isolation: isolate;
   overflow: clip;
-  background-color: var(--_colors---soft-porcelain-white, #f3f7f5);
+  background-color: var(--_colors---soft-porcelain-white, #f8f4f6);
 }
 
 html.is-home .rt-gallery-sticky {
@@ -790,53 +711,25 @@ main [style*="opacity:0"]:not([data-w-id]):not(.rt-about-v1 *):not(
   transform: translateY(-50%);
 }
 
-/*
- * Asl Elbergo header: logo layout ≈39×178, nav ≈79px (20+39+20).
- * Logo vizual kattaligi — transform; layout qutisi asl 39px (header o‘smaydi).
- */
+/* Brand wordmark — no Classic Apartment SVG scale */
 .rt-nav-logo {
-  width: 11.125rem !important; /* 178px — asl logo eni */
-  max-width: 11.125rem !important;
-  height: 2.4375rem !important; /* 39px — asl logo balandligi */
-  max-height: 2.4375rem !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
   overflow: visible !important;
   flex-shrink: 0;
   position: relative;
 }
 
-.rt-nav-logo img,
-.rt-nav-logo-v1,
-.rt-nav-logo-v2 {
-  width: 100% !important;
-  height: 100% !important;
-  max-height: 2.4375rem !important;
-  display: block;
-  object-fit: contain;
-  object-position: left center;
-  /* vizual ~1.7× asl (≈66px) — header layout 39px qoladi */
-  transform: scale(1.7);
-  transform-origin: left center;
-}
-
 .rt-footer-logo-gap img {
-  width: 11.125rem;
-  height: auto;
-  max-height: 2.4375rem;
-  transform: scale(1.35);
-  transform-origin: left center;
+  display: none;
 }
 
-@media screen and (max-width: 767px) {
-  .rt-nav-logo {
-    width: 9.2rem !important;
-    height: 2.25rem !important;
-    max-height: 2.25rem !important;
-  }
-
-  .rt-nav-logo img,
-  .rt-nav-logo-v1,
-  .rt-nav-logo-v2 {
-    max-height: 2.25rem !important;
-    transform: scale(1.45);
-  }
+.rt-footer-logo-gap::after {
+  content: "Malika Karimova";
+  font-family: var(--font-heading, "Instrument Serif", Georgia, serif);
+  font-size: 1.35rem;
+  color: #fff;
+  letter-spacing: -0.03em;
 }

@@ -1,0 +1,225 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  background: var(--color-pearl, #f8f4f6);
+  color: var(--color-plum, #72516f);
+  overflow: clip;
+  padding: 7.5rem var(--gutter, 1rem) 2.5rem;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* Iridescence window pointerlari bilan ishlaydi — tugma hoverini o‘g‘irlamasin */
+  pointer-events: none;
+}
+
+.bg > * {
+  width: 100%;
+  height: 100%;
+}
+
+.inner {
+  position: relative;
+  z-index: 3;
+  max-width: 28rem;
+  padding-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sub);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-plum, #72516f);
+  opacity: 0.72;
+}
+
+.headline {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--color-dark-blue, #3d2f3c);
+}
+
+.lede {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-dim-gray, #5c4a5a);
+  max-width: 24rem;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ctaPrimary,
+.ctaGhost {
+  position: relative;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: var(--radius-pill, 999px);
+  font-family: var(--font-body);
+  font-size: var(--text-sub);
+  font-weight: 560;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-med, 400ms) var(--ease-hotel, ease),
+    color var(--dur-med, 400ms) var(--ease-hotel, ease),
+    transform var(--dur-fast, 200ms) var(--ease-hotel, ease),
+    box-shadow var(--dur-fast, 200ms) ease;
+}
+
+.ctaPrimary {
+  background: var(--color-plum, #72516f);
+  color: #fff;
+}
+
+.ctaPrimary:hover {
+  background: #5e4160;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(61, 47, 60, 0.22);
+}
+
+.ctaPrimary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.ctaGhost {
+  background: var(--color-mauve, #d3b9c9);
+  color: var(--color-plum, #72516f);
+}
+
+.ctaGhost:hover {
+  background: var(--color-plum, #72516f);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(61, 47, 60, 0.18);
+}
+
+.ctaGhost:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: end center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nameBehind {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 96vw;
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 14vw, 9.5rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-mauve, #d3b9c9);
+  user-select: none;
+}
+
+.nameBehind span {
+  display: block;
+  white-space: nowrap;
+}
+
+.figure {
+  position: relative;
+  z-index: 2;
+  width: min(42vw, 420px);
+  max-width: 85vw;
+  line-height: 0;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 18px 40px rgba(61, 47, 60, 0.18));
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: center;
+    padding: 6.5rem clamp(1.5rem, 4vw, 4rem) 2rem;
+  }
+
+  .inner {
+    padding-bottom: 4rem;
+    max-width: 32rem;
+  }
+
+  .stage {
+    left: 42%;
+    place-items: end center;
+  }
+
+  .nameBehind {
+    bottom: 10%;
+  }
+
+  .figure {
+    width: min(38vw, 440px);
+  }
+}
+
+@media (max-width: 899px) {
+  .hero {
+    padding-top: 6.25rem;
+    padding-bottom: 0;
+    align-items: start;
+  }
+
+  .inner {
+    order: 1;
+    z-index: 3;
+    padding-bottom: 1rem;
+  }
+
+  .stage {
+    position: relative;
+    inset: auto;
+    min-height: 58svh;
+    margin-top: 0.5rem;
+  }
+
+  .nameBehind {
+    bottom: 4%;
+    font-size: clamp(3rem, 16vw, 5.5rem);
+  }
+}

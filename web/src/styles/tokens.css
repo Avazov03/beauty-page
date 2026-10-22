@@ -1,21 +1,25 @@
 /**
  * Personal beauty specialist template — design DNA tokens
- * Soft porcelain, brand green, Instrument fonts. Calm, one-person brand.
- * Do not invent new brand colors without updating this file.
+ * Pearl & Plum: soft pearl ground, muted plum brand, mauve accent.
+ * Instrument fonts. Calm, one-person brand.
  */
 :root {
-  /* Colors */
+  /* Colors — Pearl & Plum */
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-brand: #168d70; /* Classic Apartment logo */
-  --color-dark-blue: #00253f;
-  --color-deep-brownish-gray: #352d25;
-  --color-deep-mocha-brown: #168d70; /* trial footer; asl #5c4d40 */
-  --color-dim-gray: #4c4c4c;
-  --color-dusty-beige: #a28d7a;
-  --color-muted-sandstone: #c7b8a3;
-  --color-warm-sand-beige: #d0ebe3; /* trial buttons; asl #e8dcc8 */
-  --color-soft-porcelain: #f3f7f5; /* trial mist; asl #faf7f2 */
+  --color-pearl: #f8f4f6;
+  --color-plum: #72516f;
+  --color-mauve: #d3b9c9;
+
+  --color-brand: #72516f;
+  --color-dark-blue: #3d2f3c;
+  --color-deep-brownish-gray: #3d2f3c;
+  --color-deep-mocha-brown: #72516f;
+  --color-dim-gray: #5c4a5a;
+  --color-dusty-beige: #a8929e;
+  --color-muted-sandstone: #d3b9c9;
+  --color-warm-sand-beige: #d3b9c9;
+  --color-soft-porcelain: #f8f4f6;
 
   /* Typography */
   --font-body: var(--font-instrument-sans), "Instrument Sans", system-ui, sans-serif;
@@ -43,6 +47,7 @@
   --radius-sm: 0.625rem;
   --radius-md: 0.9375rem;
   --radius-lg: 1.25rem;
+  --radius-pill: 999px;
 
   /* Motion */
   --ease-hotel: cubic-bezier(0.22, 1, 0.36, 1);

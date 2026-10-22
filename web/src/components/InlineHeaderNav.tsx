@@ -172,7 +172,7 @@ export function InlineHeaderNav() {
         className={`ca-nav-link${isActive("/") ? " is-active" : ""}`}
         onClick={resetMenus}
       >
-        Asosiy
+        Bosh sahifa
       </Link>
       <Link
         href="/about"
@@ -269,19 +269,29 @@ export function InlineHeaderNav() {
                 ))}
               </div>
             </div>
-            <div className="ca-nav-mega-promo">
-              <p className="ca-nav-mega-promo-kicker">Maxsus</p>
-              <p className="ca-nav-mega-promo-text">
-                Konsultatsiya yoki muolaja — yozilishni bir marta bosishda boshlang.
-              </p>
-              <Link
-                href="/contact"
-                className="ca-nav-mega-cta"
-                onClick={resetMenus}
-              >
-                Qabulga yozilish →
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              className="ca-nav-mega-media"
+              onClick={resetMenus}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://cdn.prod.website-files.com/6927ddcc377dce6e20188e35/6953b6cbe9d3fb1df0e77f56_5a6f785dfa85045b71d807cfaff4a76a_spa-banner-image.webp"
+                alt=""
+                width={640}
+                height={480}
+              />
+              <span className="ca-nav-mega-media-shade" aria-hidden />
+              <span className="ca-nav-mega-media-copy">
+                <span className="ca-nav-mega-media-kicker">Maxsus</span>
+                <span className="ca-nav-mega-media-title">
+                  Konsultatsiya yoki muolaja — bir bosishda yoziling
+                </span>
+                <span className="ca-nav-mega-media-cta">
+                  Qabulga yozilish →
+                </span>
+              </span>
+            </Link>
           </div>
         </DropdownPanel>
       </div>

@@ -46,14 +46,16 @@ export function RouteChrome() {
       const chromeBottom =
         chrome?.getBoundingClientRect().bottom ?? HERO_TOP_PX;
 
-      // Home: transparent nav while hero fills the viewport under chrome.
+      // Home: pill chrome over portrait hero, solid after it scrolls past.
       if (root.classList.contains("is-home")) {
-        const about = document.querySelector(".rt-about-v1");
-        const hero = document.querySelector(".rt-hero-v1");
+        const hero = document.querySelector(
+          ".home-hero-portrait, .rt-hero-v1",
+        );
         if (!hero) {
           root.classList.remove("is-hero-top", "is-nav-solid");
           return;
         }
+        const about = document.querySelector(".rt-about-v1");
         const overHero = about
           ? about.getBoundingClientRect().top > chromeBottom + 8
           : hero.getBoundingClientRect().bottom > chromeBottom + 4;

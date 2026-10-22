@@ -1,50 +1,55 @@
 /*
- * TRIAL brand palette — loaded AFTER elbergo.shared.css.
- * Yoqmasa: layout.tsx dagi brand-trial.css linkini olib tashlang.
+ * Brand palette — Pearl & Plum (loaded AFTER elbergo.shared.css).
+ * Pearl #F8F4F6 · Plum #72516F · Mauve #D3B9C9
  */
 html,
 body,
 :root {
-  --color-brand: #168d70 !important;
+  --color-brand: #72516f !important;
+  --color-pearl: #f8f4f6 !important;
+  --color-plum: #72516f !important;
+  --color-mauve: #d3b9c9 !important;
 
-  --_colors---soft-porcelain-white: #f3f7f5 !important;
-  --color-soft-porcelain: #f3f7f5 !important;
+  --_colors---soft-porcelain-white: #f8f4f6 !important;
+  --color-soft-porcelain: #f8f4f6 !important;
 
-  --_colors---deep-mocha-brown: #168d70 !important;
-  --color-deep-mocha-brown: #168d70 !important;
+  --_colors---deep-mocha-brown: #72516f !important;
+  --color-deep-mocha-brown: #72516f !important;
 
-  --_colors---warm-sand-beige: #d0ebe3 !important;
-  --color-warm-sand-beige: #d0ebe3 !important;
+  --_colors---warm-sand-beige: #d3b9c9 !important;
+  --color-warm-sand-beige: #d3b9c9 !important;
 
-  /* Stats fill chap tomon — qaymoq o‘rniga ochiq yashil */
-  --_colors---muted-sandstone: #9ad0c0 !important;
-  --color-muted-sandstone: #9ad0c0 !important;
+  --_colors---muted-sandstone: #d3b9c9 !important;
+  --color-muted-sandstone: #d3b9c9 !important;
 
-  /* About matn alohida override — dusty asl qolishi mumkin */
-  --_colors---deep-brownish-gray: #352d25 !important;
-  --color-deep-brownish-gray: #352d25 !important;
-  --_colors---dusty-beige: #a28d7a !important;
-  --color-dusty-beige: #a28d7a !important;
+  --_colors---deep-brownish-gray: #3d2f3c !important;
+  --color-deep-brownish-gray: #3d2f3c !important;
+  --_colors---dusty-beige: #a8929e !important;
+  --color-dusty-beige: #a8929e !important;
+}
+
+body {
+  background-color: #f8f4f6;
 }
 
 .rt-footer {
-  background-color: #168d70 !important;
+  background-color: #72516f !important;
 }
 
 .rt-top-bar-wrap {
-  background-color: #d0ebe3 !important;
+  background-color: #d3b9c9 !important;
 }
 
 .rt-button {
-  background-color: #d0ebe3 !important;
+  background-color: #d3b9c9 !important;
 }
 
 .rt-button-overlay.rt-dark-overlay {
-  background-color: #168d70 !important;
+  background-color: #72516f !important;
 }
 
 .rt-text-overlay-v3 {
-  background-color: #f3f7f5d9 !important;
+  background-color: #f8f4f6d9 !important;
 }
 
 .w-webflow-badge,
@@ -54,32 +59,18 @@ a.w-webflow-badge {
   pointer-events: none !important;
 }
 
-.rt-hero-v1-play-button-line {
-  position: absolute !important;
-  top: 35% !important;
-  right: auto !important;
-  bottom: auto !important;
-  left: 5rem !important;
-  width: 0.0625rem !important;
-  height: 10.375rem !important;
-  background-color: rgba(255, 255, 255, 0.5) !important;
-}
-
-/* Biz haqimizda — brand yashil */
 .rt-about-v1 .rt-big-text-one.rt-text-beige {
-  color: #168d70 !important;
+  color: #72516f !important;
 }
 
-/* Stats qaymoq gradient → yashil */
 .rt-service-v1-fill-box {
-  background-color: #9ad0c0 !important;
+  background-color: #d3b9c9 !important;
 }
 
 .rt-service-v1-fill-box-two {
-  background-image: linear-gradient(90deg, #a8d9cb 32%, #168d70cc) !important;
+  background-image: linear-gradient(90deg, #e8d7e1 32%, #72516fcc) !important;
 }
 
-/* Footer — elementlar erkinroq */
 .rt-footer-col-v1,
 .rt-footer-col-v3,
 .rt-footer-section-gap {
@@ -101,7 +92,6 @@ a.w-webflow-badge {
   line-height: 1.35 !important;
 }
 
-/* Mega menu — scroll’da IX2 top:-Npx ni bekor qilish */
 .rt-mega-menu-wrapper.rt-is-open,
 html.rt-menu-open .rt-mega-menu-wrapper {
   display: block !important;

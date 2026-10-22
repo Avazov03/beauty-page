@@ -19,20 +19,21 @@ Reusable premium mini-site for one cosmetologist / skin expert (demo persona: Ma
 
 | Token / cue | Value |
 |---|---|
-| Brand accent | `#168d70` |
-| Soft ground | `#f3f7f5` (porcelain mist) |
-| Soft CTA fill | `#d0ebe3` |
-| Body / heading text | deep blue / brown-gray (`#00253f`, `#352d25`) |
+| Brand (Muted Plum) | `#72516F` |
+| Soft ground (Pearl) | `#F8F4F6` |
+| Soft CTA / accent (Mauve) | `#D3B9C9` |
+| Body / heading text | plum-gray (`#3d2f3c`, `#5c4a5a`) |
 | Fonts | Instrument Sans + Instrument Serif |
 | Motion | `--ease-hotel`, short durations; restraint over spectacle |
-| Radius | tokens `--radius-sm/md/lg` |
+| Radius | tokens `--radius-sm/md/lg` + pill chrome |
+| Home hero | Portrait cutout + name behind on pearl — **no video** |
 
 Sources: `web/src/styles/tokens.css`, `web/public/brand-trial.css`.
 
 ## How to use other skills here
 
 1. **Improve within DNA** — hierarchy, spacing, mobile, trust, CTA clarity.
-2. **Do not** swap in purple gradients, Inter/Roboto defaults, loud glassmorphism, or unrelated gallery “directions”.
+2. **Do not** swap in purple-on-white gradients, Inter/Roboto defaults, loud glassmorphism, or unrelated gallery “directions”. Pearl & Plum is intentional muted mauve — not neon purple slop.
 3. **Do not** rip out working Webflow/IX2 sections to chase a new aesthetic unless the user asked for a full redesign.
 4. Prefer CSS overrides + React sections over rewriting `baseline/html` dumps.
 5. Cosmetology pages: calm clinical beauty, real work imagery, clear services/prices path — not hotel resort vibe or crypto/SaaS chrome.
