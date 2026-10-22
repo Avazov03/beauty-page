@@ -738,9 +738,18 @@ main [style*="opacity:0"]:not([data-w-id]):not(.rt-about-v1 *):not(
 }
 
 /*
- * Photos only fill EXISTING Webflow boxes — do NOT change layout sizes.
- * (Forced px/vw/aspect overrides were breaking original dimensions.)
+ * Photos fill EXISTING Webflow boxes — do NOT invent new layout sizes.
+ * Feature sticky cards: keep every slide at the portrait frame (630×653)
+ * so landscape stock cannot collapse the box to ~630×413.
  */
+html.is-home .rt-feature-image {
+  width: 39.375rem;
+  max-width: 39.375rem;
+  height: 40.8125rem;
+  flex: 0 0 auto;
+  align-self: center;
+}
+
 html.is-home .rt-feature-image img,
 html.is-home .rt-business-left-wrapper img,
 html.is-home .rt-business-right-image-wrapper img,
@@ -750,4 +759,13 @@ html.is-home .rt-gallery-image-box img {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+@media screen and (max-width: 991px) {
+  html.is-home .rt-feature-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 630 / 653;
+  }
 }
