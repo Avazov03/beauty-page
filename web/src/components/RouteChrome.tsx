@@ -40,8 +40,14 @@ export function RouteChrome() {
    */
   useEffect(() => {
     const root = document.documentElement;
+    const SCROLL_EXPAND_PX = 24;
 
-    const syncHeroTop = () => {
+    const syncChrome = () => {
+      root.classList.toggle(
+        "is-nav-scrolled",
+        window.scrollY > SCROLL_EXPAND_PX,
+      );
+
       const chrome = document.querySelector(".rt-top-main-box");
       const chromeBottom =
         chrome?.getBoundingClientRect().bottom ?? HERO_TOP_PX;
@@ -81,13 +87,13 @@ export function RouteChrome() {
       root.classList.toggle("is-nav-solid", !overHero);
     };
 
-    syncHeroTop();
-    window.addEventListener("scroll", syncHeroTop, { passive: true });
-    window.addEventListener("resize", syncHeroTop);
+    syncChrome();
+    window.addEventListener("scroll", syncChrome, { passive: true });
+    window.addEventListener("resize", syncChrome);
     return () => {
-      window.removeEventListener("scroll", syncHeroTop);
-      window.removeEventListener("resize", syncHeroTop);
-      root.classList.remove("is-hero-top", "is-nav-solid");
+      window.removeEventListener("scroll", syncChrome);
+      window.removeEventListener("resize", syncChrome);
+      root.classList.remove("is-hero-top", "is-nav-solid", "is-nav-scrolled");
     };
   }, [pathname]);
 

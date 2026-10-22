@@ -213,15 +213,7 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
  * Home glass: faqat .rt-navbar-v1 da fon — .rt-nav-inner-block transparent.
  * Ikkalasida glass bo‘lsa o‘rtada “qaymoq chiziq” (double stack) chiqadi.
  */
-html.is-home .rt-navbar-v1,
-html.is-inner .rt-navbar-v1 {
-  transition:
-    background-color 1s ease,
-    backdrop-filter 1s ease,
-    -webkit-backdrop-filter 1s ease,
-    border-color 1s ease,
-    box-shadow 1s ease;
-}
+/* Width + chrome motion lives in chrome-pill.css (--ease-hotel) */
 
 html.is-home .rt-nav-inner-block,
 html.is-inner .rt-nav-inner-block {
@@ -808,17 +800,7 @@ main [style*="opacity:0"]:not([data-w-id]):not(.rt-about-v1 *):not(
   position: relative;
 }
 
-.rt-footer-logo-gap img {
-  display: none;
-}
-
-.rt-footer-logo-gap::after {
-  content: "Malika Karimova";
-  font-family: var(--font-heading, "Instrument Serif", Georgia, serif);
-  font-size: 1.35rem;
-  color: #fff;
-  letter-spacing: -0.03em;
-}
+/* Footer logo image/sizing lives in brand-mark.css */
 
 /*
  * Photos fill EXISTING Webflow boxes — do NOT invent new layout sizes.

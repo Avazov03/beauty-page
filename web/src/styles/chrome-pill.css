@@ -27,8 +27,9 @@ html.is-inner:has(.rt-inner-hero) .rt-navbar-v1,
 html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   .rt-navbar-v1 {
   position: relative !important;
-  width: min(64rem, calc(100% - 1.25rem)) !important;
-  max-width: calc(100% - 1.25rem) !important;
+  /* Compact at top of page */
+  width: min(64rem, calc(100% - 2.75rem)) !important;
+  max-width: calc(100% - 2.75rem) !important;
   margin: 0.75rem auto 0 !important;
   padding: 0.4rem 0.5rem 0.4rem 1.1rem !important;
   border-radius: 999px !important;
@@ -39,11 +40,46 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     0 1px 0 rgba(255, 255, 255, 0.65) inset !important;
   -webkit-backdrop-filter: blur(10px) saturate(1.05) !important;
   backdrop-filter: blur(10px) saturate(1.05) !important;
+  transition:
+    width 0.45s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)),
+    max-width 0.45s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)),
+    background-color 0.45s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)),
+    border-color 0.45s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)),
+    box-shadow 0.45s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)),
+    backdrop-filter 0.45s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)),
+    -webkit-backdrop-filter 0.45s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)) !important;
+}
+
+/*
+ * Scroll: stretch a little toward the edges (all pages).
+ * Mirror every base selector + is-nav-scrolled so specificity always wins.
+ */
+html.is-nav-scrolled .rt-navbar-v1,
+html.is-nav-scrolled .rt-navbar-v1[style],
+html.is-inner.is-nav-scrolled .rt-navbar-v1,
+html.is-inner.is-nav-scrolled .rt-navbar-v1[style],
+html.is-inner.is-nav-scrolled.is-hero-top .rt-navbar-v1,
+html.is-inner.is-nav-scrolled.is-nav-solid .rt-navbar-v1,
+html.is-inner.is-nav-scrolled:has(.rt-room-details-hero) .rt-navbar-v1,
+html.is-inner.is-nav-scrolled:has(.rt-inner-hero) .rt-navbar-v1,
+html.is-inner.is-nav-scrolled:not(:has(.rt-room-details-hero)):not(
+    :has(.rt-inner-hero)
+  )
+  .rt-navbar-v1 {
+  width: min(72rem, calc(100% - 1rem)) !important;
+  max-width: calc(100% - 1rem) !important;
 }
 
 html.is-nav-solid .rt-navbar-v1,
 html.is-nav-solid .rt-navbar-v1[style] {
   background-color: #f8f4f6 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-navbar-v1,
+  .rt-navbar-v1[style] {
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .rt-nav-inner-block,

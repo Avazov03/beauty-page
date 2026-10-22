@@ -48,10 +48,10 @@ export const social = {
   facebook: "https://t.me/Avazov_fit",
 };
 
-/** Eski Classic Apartment SVG o‘rniga matnli wordmark (CSS `.ca-brand-mark`). */
+/** Malika Karimova wordmark (Pearl & Plum). */
 export const logos = {
-  light: "",
-  dark: "",
+  light: "/brand/malika-karimova-logo-light.svg",
+  dark: "/brand/malika-karimova-logo.svg",
 };
 
 export const footerTagline =

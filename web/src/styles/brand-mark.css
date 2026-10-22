@@ -1,4 +1,4 @@
-/* Text wordmark — replaces Classic Apartment SVG */
+/* Brand wordmark — Malika Karimova SVG (Pearl & Plum) */
 
 .ca-brand-link {
   display: inline-flex !important;
@@ -7,6 +7,16 @@
   flex-shrink: 0;
 }
 
+.ca-brand-logo {
+  display: block;
+  width: auto;
+  height: clamp(1.5rem, 1.85vw, 2rem);
+  max-width: min(11.75rem, 42vw);
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Legacy text mark (keep for any leftover markup) */
 .ca-brand-mark {
   font-family: var(--font-heading, "Instrument Serif", Georgia, serif);
   font-size: clamp(1.05rem, 1.15vw, 1.28rem);
@@ -17,14 +27,17 @@
   white-space: nowrap;
 }
 
-/* No more dual light/dark SVG logos */
+/* No more dual light/dark Classic Apartment SVG logos */
 .rt-nav-logo img.rt-nav-logo-v1,
-.rt-nav-logo img.rt-nav-logo-v2 {
+.rt-nav-logo img.rt-nav-logo-v2,
+img.rt-brand-v1,
+img.rt-brand-v2 {
   display: none !important;
 }
 
 .rt-nav-logo.ca-brand-link,
-.rt-nav-logo:has(.ca-brand-mark) {
+.rt-nav-logo:has(.ca-brand-mark),
+.rt-nav-logo:has(.ca-brand-logo) {
   width: auto !important;
   max-width: none !important;
   height: auto !important;
@@ -32,7 +45,7 @@
   overflow: visible !important;
 }
 
-/* Pill always plum — ignore old white-on-hero logo colors */
+/* Pill chrome is pearl — always plum logo */
 html.is-inner.is-hero-top .ca-brand-mark,
 html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid) .ca-brand-mark,
 html.is-inner:has(.rt-inner-hero):not(.is-nav-solid) .ca-brand-mark,
@@ -41,4 +54,19 @@ html.is-inner.is-nav-solid .ca-brand-mark,
 html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   .ca-brand-mark {
   color: var(--color-plum, #72516f);
+}
+
+/* Footer wordmark — light SVG on plum footer */
+.rt-footer-logo-gap img {
+  display: block !important;
+  width: auto;
+  height: 1.65rem;
+  max-width: 12rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.rt-footer-logo-gap::after {
+  display: none !important;
+  content: none !important;
 }
