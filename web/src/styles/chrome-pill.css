@@ -76,10 +76,31 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   display: none !important;
 }
 
-/* Webflow dual-label — bitta matn */
-.rt-navbar-v1-button-wrapper .rt-text-two,
+/*
+ * Header CTA — keep Webflow IX2 wipe (text-one/two + overlay).
+ * Only brand shape/colors; do not invent a separate hover.
+ */
+.rt-navbar-v1-button-wrapper .rt-button {
+  border-radius: 999px !important;
+  background-color: var(--color-mauve, #d3b9c9) !important;
+  box-shadow: none !important;
+  padding: 0.55rem 1.25rem !important;
+}
+
+/* Rest: plum on mauve. Hover slide (text-two): white on plum overlay. */
+.rt-navbar-v1-button-wrapper .rt-button .rt-text-one {
+  color: var(--color-plum, #72516f) !important;
+}
+
+.rt-navbar-v1-button-wrapper .rt-button .rt-text-two {
+  display: block !important;
+  color: #fff !important;
+}
+
 .rt-navbar-v1-button-wrapper .rt-button-overlay {
-  display: none !important;
+  display: block !important;
+  background-color: var(--color-plum, #72516f) !important;
+  border-radius: 999px !important;
 }
 
 /* Har doim plum matn (glass oq matn bekor) */
@@ -105,36 +126,4 @@ html.is-inner:has(.rt-inner-hero):not(.is-nav-solid)
   .rt-navbar-v1-button-wrapper
   .rt-text-white {
   color: var(--color-brand, #72516f) !important;
-}
-
-@media (min-width: 1100px) {
-  .rt-navbar-v1-button-wrapper .rt-button,
-  html.is-inner.is-hero-top .rt-navbar-v1-button-wrapper .rt-button,
-  html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid)
-    .rt-navbar-v1-button-wrapper
-    .rt-button,
-  html.is-inner:has(.rt-inner-hero):not(.is-nav-solid)
-    .rt-navbar-v1-button-wrapper
-    .rt-button,
-  html.is-inner.is-nav-solid .rt-navbar-v1-button-wrapper .rt-button {
-    border-radius: 999px !important;
-    background-color: var(--color-mauve, #d3b9c9) !important;
-    box-shadow: none !important;
-    padding: 0.6rem 1.25rem !important;
-  }
-
-  .rt-navbar-v1-button-wrapper .rt-button:hover,
-  html.is-inner.is-hero-top .rt-navbar-v1-button-wrapper .rt-button:hover {
-    background-color: var(--color-plum, #72516f) !important;
-    transform: translateY(-1px);
-  }
-
-  .rt-navbar-v1-button-wrapper .rt-button:hover .rt-button-text {
-    color: #fff !important;
-  }
-
-  .rt-navbar-v1-button-wrapper .rt-button-text,
-  .rt-navbar-v1-button-wrapper a.rt-text-white {
-    color: var(--color-plum, #72516f) !important;
-  }
 }

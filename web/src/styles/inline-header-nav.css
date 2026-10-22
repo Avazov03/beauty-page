@@ -335,17 +335,8 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     display: none !important;
   }
 
-  /* Bron — Instrument + yumshoq pill */
-  .rt-navbar-v1-button-wrapper .rt-button {
-    border-radius: 0.35rem !important;
-    padding: 0.55rem 1.35rem !important;
-    transition:
-      background-color var(--dur-med, 400ms) var(--ease-hotel, ease),
-      box-shadow var(--dur-fast, 200ms) ease,
-      transform var(--dur-fast, 200ms) ease;
-  }
-
-  .rt-navbar-v1-button-wrapper .rt-button-text {
+  .rt-navbar-v1-button-wrapper .rt-button-text,
+  .rt-navbar-v1-button-wrapper .rt-text-one {
     font-family: var(--font-body, "Instrument Sans", system-ui, sans-serif) !important;
     font-size: 0.8125rem !important;
     font-weight: 600 !important;
@@ -358,13 +349,6 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     font-size: var(--text-body, 0.9375rem) !important;
     font-weight: 500 !important;
     letter-spacing: var(--tracking-body, -0.01875rem);
-  }
-
-  /* Global mauve CTA — matches home pill */
-  .rt-navbar-v1-button-wrapper .rt-button {
-    background-color: var(--color-mauve, #d3b9c9) !important;
-    box-shadow: none;
-    border-radius: 999px !important;
   }
 }
 
