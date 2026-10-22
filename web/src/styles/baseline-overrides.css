@@ -683,12 +683,52 @@ main [style*="opacity:0"]:not([data-w-id]):not(.rt-about-v1 *):not(
   padding-top: var(--_gaps---section-gap-v2, 8.1875rem) !important;
 }
 
-/* Blog hero only: wipe can stall after SPA nav. Room overview keeps IX2 wipe. */
+/*
+ * Wipe overlays stall after SPA nav / cutout hero — images stay half-masked
+ * (diagonal pink slab). Force completed wipe on blog hero + rooms overview.
+ */
 .rt-blog-post-hero .rt-image-overlay-1,
-.rt-blog-post-hero .rt-image-overlay-2 {
+.rt-blog-post-hero .rt-image-overlay-2,
+.rt-room-overview .rt-image-overlay-1,
+.rt-room-overview .rt-image-overlay-2 {
   opacity: 0 !important;
   pointer-events: none !important;
   visibility: hidden !important;
+  transform: none !important;
+}
+
+/*
+ * Rooms list cards: keep original landscape frames.
+ * Portrait stock was stretching left wrappers to ~900px and breaking the row.
+ */
+.rt-room-overview-card-left-wrapper,
+.rt-room-overview-card-three-left-wrapper {
+  position: relative;
+  aspect-ratio: 615 / 401;
+  height: auto !important;
+  max-height: none;
+  overflow: hidden;
+}
+
+.rt-room-overview-card-right-right-content,
+.rt-room-overview-card-right-image-wrapper {
+  position: relative;
+  aspect-ratio: 328 / 219;
+  height: auto !important;
+  overflow: hidden;
+}
+
+.rt-room-overview-card-left-wrapper img,
+.rt-room-overview-card-right-right-content img,
+.rt-room-overview-card-right-image-wrapper img,
+.rt-room-overview-card-three-left-wrapper img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* Author card sticky: fixed chrome ostida qolsin (logo ustiga chiqmasin) */
