@@ -61,9 +61,10 @@ export function ContactForm() {
         <label htmlFor="topic">Mavzu</label>
         <select id="topic" name="topic" defaultValue="reservation">
           <option value="reservation">Qabulga yozilish</option>
-          <option value="event">Tadbir / banket</option>
-          <option value="dining">Ovqatlanish</option>
-          <option value="spa">SPA</option>
+          <option value="consultation">Konsultatsiya</option>
+          <option value="cleansing">Yuzni chuqur tozalash</option>
+          <option value="anti-age">Anti-age / peeling</option>
+          <option value="package">Paket / kurs</option>
           <option value="other">Boshqa</option>
         </select>
       </div>

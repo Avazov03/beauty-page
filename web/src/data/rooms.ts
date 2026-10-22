@@ -49,7 +49,33 @@ const sharedSpecs = {
   checkOut: "19:00",
 } satisfies Omit<RoomSpecs, "pricePerNight">;
 
-/** Cards on the /rooms listing page (xizmatlar) */
+const galleryPool = [
+  `${CDN_ROOM}/6952639c8cc1cb88dbe36953_image%20430-Picsart-AiImageEnhancer%201%20(3).webp`,
+  `${CDN_ROOM}/695261432e5b21fe7b2227b7_12613%201.webp`,
+  `${CDN_ROOM}/694e302c655a37d8f6deeff6_29281%201%20(1).webp`,
+  `${CDN_ROOM}/6952615bb14601676a64da0d_2150497283%20(1)%201.webp`,
+  `${CDN_ROOM}/6952616fea419c30509c786e_image%20487-Picsart-AiImageEnhancer%201.webp`,
+  `${CDN_ROOM}/695261b20eb6cf95422d5630_image%20432-Picsart-AiImageEnhancer%201%20(2).webp`,
+  `${CDN_ROOM}/694e2aa9443a7905a36481d2_room-page-image-one.webp`,
+  `${CDN_ROOM}/694e2c2eb560e283ed1befb4_room-page-small-image-one.webp`,
+  `${CDN_ROOM}/694e2a85b704b152be171495_room-page-image-three.webp`,
+  `${CDN}/69561ff968fa7d3e262132c9_image%20426-Picsart-AiImageEnhancer%201%20(1).webp`,
+  `${CDN}/69561ff7648e96670fe6964d_image%20433-Picsart-AiImageEnhancer%201%20(3).webp`,
+  `${CDN}/69561ff7970dc664aef5fcdc_1771%201.webp`,
+];
+
+function galleryFrom(offset: number): string[] {
+  const out: string[] = [];
+  for (let i = 0; i < 9; i++) {
+    out.push(galleryPool[(offset + i) % galleryPool.length]);
+  }
+  return out;
+}
+
+/**
+ * Demo menyu — yakka kosmetolog uchun tipik yo‘nalishlar.
+ * Home statistikadagi “12+” ga yaqin, lekin sotiladigan shablon uchun aniq ro‘yxat.
+ */
 export const roomsListing = [
   {
     slug: "standard-room",
@@ -96,85 +122,95 @@ export const roomsListing = [
     price: "350 000 so‘m",
     image: `${CDN}/694e59b966e523eacd429043_image%20436-Picsart-AiImageEnhancer%201.webp`,
   },
+  {
+    slug: "consultation",
+    name: "Kosmetolog konsultatsiyasi",
+    blurb:
+      "Teri holatini baholash, maqsadni aniqlash va shaxsiy parvarish rejasini tuzish — birinchi tashrif uchun",
+    highlights: [
+      "Diagnostika",
+      "Savol-javob",
+      "30–40 daqiqa",
+      "Shaxsiy reja",
+      "Mahsulot tavsiyasi",
+    ],
+    price: "100 000 so‘m",
+    image: `${CDN}/694a22051baed5b350dc6d7d_image%20430-Picsart-AiImageEnhancer%201.webp`,
+  },
+  {
+    slug: "chemical-peel",
+    name: "Kimyoviy peeling",
+    blurb:
+      "Rang notekisligi, xiralik va yuzaki nuqsonlarni yumshatish uchun nazoratli peeling protokoli",
+    highlights: [
+      "Teri tipiga mos",
+      "Testlash",
+      "40–50 daqiqa",
+      "Tiklanish maslahati",
+      "SPF eslatmasi",
+    ],
+    price: "220 000 so‘m",
+    image: `${CDN}/69316279603aa77764416443_image%2015-Picsart-AiImageEnhancer%201.webp`,
+  },
+  {
+    slug: "face-massage",
+    name: "Imzoli yuz massaji",
+    blurb:
+      "Zo‘riqishni kamaytirish, limfa oqimini qo‘llab-quvvatlash va yuzga dam berish — yumshoq ritual",
+    highlights: [
+      "Chuqur dam olish",
+      "Limfa yondashuvi",
+      "45–60 daqiqa",
+      "Yog‘/serum tanlovi",
+      "Uyda davom",
+    ],
+    price: "160 000 so‘m",
+    image: `${CDN}/694a220502bfae7bbbd483da_image%2014-Picsart-AiImageEnhancer%201.webp`,
+  },
+  {
+    slug: "pigmentation-care",
+    name: "Pigmentatsiyaga qarshi kurs",
+    blurb:
+      "Dog‘lar, quyosh izlari va notekis rang tonini yumshatishga qaratilgan bosqichma-bosqich yondashuv",
+    highlights: [
+      "Diagnostika",
+      "Kurs rejasi",
+      "50–70 daqiqa",
+      "Himoya tavsiyasi",
+      "Uy protokoli",
+    ],
+    price: "260 000 so‘m",
+    image: `${CDN}/694a22058acf0ce292e687df_image%20432-Picsart-AiImageEnhancer%201.webp`,
+  },
+  {
+    slug: "acne-protocol",
+    name: "Muammoli teri protokoli",
+    blurb:
+      "Yallig‘lanish, poralar va akne izlariga e’tibor — yumshoq tozalash va tinchlantirish bilan",
+    highlights: [
+      "Muammoli zona",
+      "Steril ishlov",
+      "50–70 daqiqa",
+      "Uyda nazorat",
+      "Kurs mumkin",
+    ],
+    price: "240 000 so‘m",
+    image: `${CDN}/69313766db72be49e3b25c9d_image%208-Picsart-AiImageEnhancer%201.webp`,
+  },
 ] as const;
 
-export const roomDetails: RoomDetail[] = [
-  {
-    slug: "standard-room",
-    name: "Yuzni chuqur tozalash",
-    blurb: roomsListing[0].blurb,
-    highlights: [...roomsListing[0].highlights],
-    price: roomsListing[0].price,
-    image: `${CDN_ROOM}/6952639c8cc1cb88dbe36953_image%20430-Picsart-AiImageEnhancer%201%20(3).webp`,
-    images: [
-      `${CDN_ROOM}/6952639c8cc1cb88dbe36953_image%20430-Picsart-AiImageEnhancer%201%20(3).webp`,
-      `${CDN_ROOM}/695261432e5b21fe7b2227b7_12613%201.webp`,
-      `${CDN_ROOM}/694e302c655a37d8f6deeff6_29281%201%20(1).webp`,
-      `${CDN_ROOM}/6952615bb14601676a64da0d_2150497283%20(1)%201.webp`,
-      `${CDN_ROOM}/6952616fea419c30509c786e_image%20487-Picsart-AiImageEnhancer%201.webp`,
-      `${CDN_ROOM}/695261b20eb6cf95422d5630_image%20432-Picsart-AiImageEnhancer%201%20(2).webp`,
-      `${CDN_ROOM}/694e2aa9443a7905a36481d2_room-page-image-one.webp`,
-      `${CDN_ROOM}/694e2c2eb560e283ed1befb4_room-page-small-image-one.webp`,
-      `${CDN_ROOM}/694e2a85b704b152be171495_room-page-image-three.webp`,
-      `${CDN}/69561ff968fa7d3e262132c9_image%20426-Picsart-AiImageEnhancer%201%20(1).webp`,
-      `${CDN}/69561ff7648e96670fe6964d_image%20433-Picsart-AiImageEnhancer%201%20(3).webp`,
-      `${CDN}/69561ff7970dc664aef5fcdc_1771%201.webp`,
-    ],
-    overview: sharedOverview,
-    specs: { ...sharedSpecs, pricePerNight: roomsListing[0].price },
-    amenities: sharedQulayliklar,
-  },
-  {
-    slug: "sea-view-room",
-    name: "Anti-age kompleks",
-    blurb: roomsListing[2].blurb,
-    highlights: [...roomsListing[2].highlights],
-    price: roomsListing[2].price,
-    image: `${CDN_ROOM}/69526349fe6b037995df5068_image%20433-Picsart-AiImageEnhancer%201%20(1).webp`,
-    images: [
-      `${CDN_ROOM}/69526349fe6b037995df5068_image%20433-Picsart-AiImageEnhancer%201%20(1).webp`,
-      `${CDN_ROOM}/695261432e5b21fe7b2227b7_12613%201.webp`,
-      `${CDN_ROOM}/694e302c655a37d8f6deeff6_29281%201%20(1).webp`,
-      `${CDN_ROOM}/695261554842f7fea6eab2e8_151611%201.webp`,
-      `${CDN_ROOM}/6952615bb14601676a64da0d_2150497283%20(1)%201.webp`,
-      `${CDN_ROOM}/694e304611d7e88a7185cc11_image%20430-Picsart-AiImageEnhancer%201%20(2).webp`,
-      `${CDN_ROOM}/6952616fea419c30509c786e_image%20487-Picsart-AiImageEnhancer%201.webp`,
-      `${CDN_ROOM}/694e2aa9443a7905a36481d2_room-page-image-one.webp`,
-      `${CDN_ROOM}/694e2c2eb560e283ed1befb4_room-page-small-image-one.webp`,
-      `${CDN_ROOM}/694e2a85b704b152be171495_room-page-image-three.webp`,
-      `${CDN}/69561ff968fa7d3e262132c9_image%20426-Picsart-AiImageEnhancer%201%20(1).webp`,
-      `${CDN}/69561ff7648e96670fe6964d_image%20433-Picsart-AiImageEnhancer%201%20(3).webp`,
-    ],
-    overview: sharedOverview,
-    specs: { ...sharedSpecs, pricePerNight: roomsListing[2].price },
-    amenities: sharedQulayliklar,
-  },
-  {
-    slug: "executive-suite",
-    name: "Premium teri parvarishi",
-    blurb: roomsListing[1].blurb,
-    highlights: [...roomsListing[1].highlights],
-    price: roomsListing[1].price,
-    image: `${CDN_ROOM}/6952637661ca8c9f992aea81_image%20432-Picsart-AiImageEnhancer%202.webp`,
-    images: [
-      `${CDN_ROOM}/6952637661ca8c9f992aea81_image%20432-Picsart-AiImageEnhancer%202.webp`,
-      `${CDN_ROOM}/695261432e5b21fe7b2227b7_12613%201.webp`,
-      `${CDN_ROOM}/694e302c655a37d8f6deeff6_29281%201%20(1).webp`,
-      `${CDN_ROOM}/695261554842f7fea6eab2e8_151611%201.webp`,
-      `${CDN_ROOM}/6952615bb14601676a64da0d_2150497283%20(1)%201.webp`,
-      `${CDN_ROOM}/695261b20eb6cf95422d5630_image%20432-Picsart-AiImageEnhancer%201%20(2).webp`,
-      `${CDN}/69452c5ad14c210fde417f7d_image%20424-Picsart-AiImageEnhancer%201%20(1).webp`,
-      `${CDN_ROOM}/694e2aa9443a7905a36481d2_room-page-image-one.webp`,
-      `${CDN_ROOM}/694e2c2eb560e283ed1befb4_room-page-small-image-one.webp`,
-      `${CDN_ROOM}/694e2a85b704b152be171495_room-page-image-three.webp`,
-      `${CDN}/69561ff968fa7d3e262132c9_image%20426-Picsart-AiImageEnhancer%201%20(1).webp`,
-      `${CDN}/69561ff7648e96670fe6964d_image%20433-Picsart-AiImageEnhancer%201%20(3).webp`,
-    ],
-    overview: sharedOverview,
-    specs: { ...sharedSpecs, pricePerNight: roomsListing[1].price },
-    amenities: sharedQulayliklar,
-  },
-];
+export const roomDetails: RoomDetail[] = roomsListing.map((room, index) => ({
+  slug: room.slug,
+  name: room.name,
+  blurb: room.blurb,
+  highlights: [...room.highlights],
+  price: room.price,
+  image: room.image,
+  images: galleryFrom(index * 2),
+  overview: sharedOverview,
+  specs: { ...sharedSpecs, pricePerNight: room.price },
+  amenities: sharedQulayliklar,
+}));
 
 export function getRoomBySlug(slug: string): RoomDetail | undefined {
   return roomDetails.find((room) => room.slug === slug);

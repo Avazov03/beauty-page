@@ -148,13 +148,15 @@
 .ca-nav-panel-list {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
   padding: 0 0.55rem;
+  max-height: min(70vh, 28rem);
+  overflow-y: auto;
 }
 
 .ca-nav-drop-link {
   display: block;
-  padding: 1.05rem 1.35rem;
+  padding: 0.78rem 1.2rem;
   font-family: var(--font-body, "Instrument Sans", system-ui, sans-serif);
   font-size: var(--text-body, 0.9375rem);
   font-weight: 400;

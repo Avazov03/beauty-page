@@ -7,7 +7,7 @@ import styles from "./Header.module.css";
 
 const extraLinks = [
   { href: "/amenities", label: "Qulayliklar" },
-  { href: "/spa", label: "SPA" },
+  { href: "/spa", label: "Rituallar" },
   { href: "/restaurant", label: "Uy parvarishi" },
   { href: "/contact", label: "Aloqa" },
 ];

@@ -28,6 +28,7 @@ export const homeAbout = {
   ],
 } as const;
 
+/** Bosh sahifa kartalari — roomsListing bilan bir xil yo‘nalishlar */
 export const featuredRooms = [
   {
     name: "Yuzni chuqur tozalash",
@@ -38,6 +39,7 @@ export const featuredRooms = [
     features: "Diagnostika, tozalash, maska",
     perfectFor: "Muntazam parvarish izlovchilar",
     image: `${CDN}/69316279603aa77764416443_image%2015-Picsart-AiImageEnhancer%201.webp`,
+    href: "/rooms/standard-room",
   },
   {
     name: "Premium teri parvarishi",
@@ -48,6 +50,7 @@ export const featuredRooms = [
     features: "Lifting, serum, himoya",
     perfectFor: "Maxsus tadbir oldidan",
     image: `${CDN}/694a220502bfae7bbbd483da_image%2014-Picsart-AiImageEnhancer%201.webp`,
+    href: "/rooms/executive-suite",
   },
   {
     name: "Anti-age kompleks",
@@ -55,9 +58,32 @@ export const featuredRooms = [
       "Elastiklik va yuz ovalini qo‘llab-quvvatlovchi kompleks muolaja",
     size: "75–90 daqiqa",
     view: "Kurs tavsiya etiladi",
-    features: "Massaj, peching, maska",
+    features: "Massaj, peeling, maska",
     perfectFor: "Qarish belgilariga e’tibor",
     image: `${CDN}/694a22058acf0ce292e687df_image%20432-Picsart-AiImageEnhancer%201.webp`,
+    href: "/rooms/sea-view-room",
+  },
+  {
+    name: "Kimyoviy peeling",
+    blurb:
+      "Rang notekisligi va xiralikni yumshatish uchun nazoratli peeling protokoli",
+    size: "40–50 daqiqa",
+    view: "Teri tipiga mos",
+    features: "Testlash, peeling, himoya",
+    perfectFor: "Yangilanish izlovchilar",
+    image: `${CDN}/694a22051baed5b350dc6d7d_image%20430-Picsart-AiImageEnhancer%201.webp`,
+    href: "/rooms/chemical-peel",
+  },
+  {
+    name: "Imzoli yuz massaji",
+    blurb:
+      "Zo‘riqishni kamaytirish va yuzga dam berish — yumshoq limfa ritualli",
+    size: "45–60 daqiqa",
+    view: "Dam olish",
+    features: "Massaj, serum, maska",
+    perfectFor: "Stress va charchoq",
+    image: `${CDN}/69313766db72be49e3b25c9d_image%208-Picsart-AiImageEnhancer%201.webp`,
+    href: "/rooms/face-massage",
   },
   {
     name: "Kosmetolog konsultatsiyasi",
@@ -67,7 +93,8 @@ export const featuredRooms = [
     view: "Shaxsiy reja",
     features: "Diagnostika, tavsiya, savol-javob",
     perfectFor: "Birinchi tashrif",
-    image: `${CDN}/694a22051baed5b350dc6d7d_image%20430-Picsart-AiImageEnhancer%201.webp`,
+    image: `${CDN}/6931319859f3f47cbae93570_image%209-Picsart-AiImageEnhancer%201.webp`,
+    href: "/rooms/consultation",
   },
 ];
 

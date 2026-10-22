@@ -8,7 +8,7 @@ export function FeaturedRooms() {
     <section className={styles.section} aria-labelledby="rooms-heading">
       <div className="container">
         <div className={styles.head}>
-          <h2 id="rooms-heading">Tanlangan xonalar</h2>
+          <h2 id="rooms-heading">Tanlangan muolajalar</h2>
         </div>
 
         <div className={styles.grid}>
@@ -28,15 +28,15 @@ export function FeaturedRooms() {
                 <p className={styles.blurb}>{room.blurb}</p>
                 <div className={styles.meta}>
                   <div>
-                    <strong>Maydon:</strong>
+                    <strong>Davomiylik:</strong>
                     {room.size}
                   </div>
                   <div>
-                    <strong>Manzara:</strong>
+                    <strong>Yo‘nalish:</strong>
                     {room.view}
                   </div>
                   <div>
-                    <strong>Jihozlar:</strong>
+                    <strong>Nimalar kiradi:</strong>
                     {room.features}
                   </div>
                   <div>
@@ -44,8 +44,11 @@ export function FeaturedRooms() {
                     {room.perfectFor}
                   </div>
                 </div>
-                <Link className={styles.link} href="/rooms">
-                  Qulaylikni his eting
+                <Link
+                  className={styles.link}
+                  href={"href" in room && room.href ? room.href : "/rooms"}
+                >
+                  Batafsil ko‘rish
                 </Link>
               </div>
             </article>

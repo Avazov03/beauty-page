@@ -4,12 +4,22 @@ import { BaselineHtml } from "@/components/BaselineHtml";
 import { html as standard } from "@/baseline/html/room-standard-room";
 import { html as seaView } from "@/baseline/html/room-sea-view-room";
 import { html as executive } from "@/baseline/html/room-executive-suite";
+import { html as consultation } from "@/baseline/html/room-consultation";
+import { html as chemicalPeel } from "@/baseline/html/room-chemical-peel";
+import { html as faceMassage } from "@/baseline/html/room-face-massage";
+import { html as pigmentationCare } from "@/baseline/html/room-pigmentation-care";
+import { html as acneProtocol } from "@/baseline/html/room-acne-protocol";
 import { getRoomBySlug, roomDetails } from "@/data/rooms";
 
 const htmlBySlug: Record<string, string> = {
   "standard-room": standard,
   "sea-view-room": seaView,
   "executive-suite": executive,
+  consultation,
+  "chemical-peel": chemicalPeel,
+  "face-massage": faceMassage,
+  "pigmentation-care": pigmentationCare,
+  "acne-protocol": acneProtocol,
 };
 
 type Props = { params: Promise<{ slug: string }> };

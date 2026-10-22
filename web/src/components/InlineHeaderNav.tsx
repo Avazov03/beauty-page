@@ -21,7 +21,7 @@ const LEAVE_MS = 180;
 const services = [
   { href: "/amenities", label: "Qulayliklar" },
   { href: "/banquet", label: "Paketlar" },
-  { href: "/spa", label: "SPA" },
+  { href: "/spa", label: "Rituallar" },
   { href: "/restaurant", label: "Uy parvarishi" },
 ] as const;
 
@@ -161,7 +161,7 @@ export function InlineHeaderNav() {
 
   if (!mount) return null;
 
-  const roomsPreview = roomsListing.slice(0, 3);
+  const roomsPreview = roomsListing;
   const blogPreview = blogPosts.slice(0, 2);
   const servicesActive = services.some((s) => isActive(s.href));
 

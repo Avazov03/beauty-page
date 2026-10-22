@@ -144,16 +144,16 @@ export const spaTreatments = [
     body: "Zo‘riqishni kamaytirish va chuqur dam olishga qaratilgan yumshoq yuz rituallari.",
   },
   {
-    title: "Yuz rituallari",
+    title: "Premium teri parvarishi",
     body: "Yangilanish, namlanish va porlash uchun mutaxassis yuz muolajalari.",
   },
   {
-    title: "Juftlik parvarishi",
-    body: "Birgalikda tinchlanish va g‘amxo‘rlik uchun yaratilgan seanslar.",
+    title: "Kosmetolog konsultatsiyasi",
+    body: "Teri holatini baholash va shaxsiy parvarish rejasini birgalikda tuzish.",
   },
   {
-    title: "Tana terapiyalari",
-    body: "Charchagan teri va mushaklarni jonlantiradigan skrab va o‘ramalar.",
+    title: "Kimyoviy peeling",
+    body: "Rang notekisligi va xiralikni yumshatish uchun nazoratli peeling.",
   },
 ];
 
