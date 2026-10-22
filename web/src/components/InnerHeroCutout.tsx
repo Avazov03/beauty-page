@@ -1,66 +1,63 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
-import { createRoot, type Root } from "react-dom/client";
+import { useLayoutEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { cutoutForPath } from "@/data/heroCutouts";
 import { HeroIridescenceBg } from "@/components/home/HeroIridescenceBg";
 
 /**
- * Swaps full-bleed photo heroes on 8 listing pages for cutout + Pearl BG.
- * Keeps the iridescence host when possible so reload/nav doesn’t flash empty.
+ * Cutout + iridescence for 8 listing heroes.
+ * Uses a portal (not createRoot) so WebGL survives BaselineHtml remounts
+ * and doesn’t leave a blank/white canvas after refresh.
  */
 export function InnerHeroCutout() {
   const pathname = usePathname();
-  const rootRef = useRef<Root | null>(null);
-  const hostRef = useRef<HTMLElement | null>(null);
+  const config = cutoutForPath(pathname);
+  const [host, setHost] = useState<HTMLElement | null>(null);
 
-  useEffect(() => {
-    const config = cutoutForPath(pathname);
+  useLayoutEffect(() => {
+    const next = cutoutForPath(pathname);
     const hero = document.querySelector(".rt-inner-hero") as HTMLElement | null;
 
-    const stripHero = (el: Element) => {
+    document.querySelectorAll(".rt-inner-hero.is-cutout-hero").forEach((el) => {
+      if (el === hero) return;
       el.classList.remove("is-cutout-hero");
       el.removeAttribute("data-cutout-side");
       el.removeAttribute("data-cutout-scale");
       el.removeAttribute("data-cutout-flip");
-    };
-
-    /* Detach roots only when leaving cutout pages or host node is gone */
-    const teardownRoot = () => {
-      if (rootRef.current) {
-        rootRef.current.unmount();
-        rootRef.current = null;
-      }
-      hostRef.current = null;
-    };
-
-    document.querySelectorAll(".rt-inner-hero.is-cutout-hero").forEach((el) => {
-      if (el !== hero) {
-        stripHero(el);
-        el.querySelector(".ca-inner-hero-bg")?.remove();
-      }
+      el.removeAttribute("data-cutout-boot");
+      el.removeAttribute("data-iridescence-ready");
+      el.querySelector(".ca-inner-hero-bg")?.remove();
     });
 
-    if (!config || !hero) {
+    if (!next || !hero) {
+      setHost(null);
       document.querySelectorAll(".rt-inner-hero.is-cutout-hero").forEach((el) => {
-        stripHero(el);
+        el.classList.remove("is-cutout-hero");
+        el.removeAttribute("data-cutout-side");
+        el.removeAttribute("data-cutout-scale");
+        el.removeAttribute("data-cutout-flip");
+        el.removeAttribute("data-cutout-boot");
+        el.removeAttribute("data-iridescence-ready");
         el.querySelector(".ca-inner-hero-bg")?.remove();
       });
-      teardownRoot();
       return;
     }
 
     hero.classList.add("is-cutout-hero");
-    hero.dataset.cutoutSide = config.side;
-    hero.dataset.cutoutScale = config.scale ?? "tall";
-    hero.dataset.cutoutFlip = config.flip ? "true" : "false";
+    hero.removeAttribute("data-iridescence-ready");
+    hero.dataset.cutoutSide = next.side;
+    hero.dataset.cutoutScale = next.scale ?? "tall";
+    hero.dataset.cutoutFlip = next.flip ? "true" : "false";
 
     const img = hero.querySelector(
       "img.rt-hero-image",
     ) as HTMLImageElement | null;
     if (img) {
-      img.src = config.src;
+      if (!img.getAttribute("src")?.includes(next.src)) {
+        img.src = next.src;
+      }
       img.removeAttribute("srcset");
       img.removeAttribute("sizes");
       img.alt = img.alt || "Hero";
@@ -82,31 +79,21 @@ export function InnerHeroCutout() {
       hero.insertBefore(bg, hero.firstChild);
     }
 
-    if (hostRef.current !== bg) {
-      teardownRoot();
-      hostRef.current = bg;
-      rootRef.current = createRoot(bg);
-    }
+    setHost(bg);
 
-    rootRef.current?.render(<HeroIridescenceBg />);
+    /* WebGL fail/slow — don't leave cutout invisible forever */
+    const readyFallback = window.setTimeout(() => {
+      if (!hero.hasAttribute("data-iridescence-ready")) {
+        hero.setAttribute("data-iridescence-ready", "1");
+      }
+    }, 900);
+
+    return () => {
+      window.clearTimeout(readyFallback);
+    };
   }, [pathname]);
 
-  useEffect(() => {
-    return () => {
-      if (rootRef.current) {
-        rootRef.current.unmount();
-        rootRef.current = null;
-      }
-      hostRef.current = null;
-      document.querySelectorAll(".rt-inner-hero.is-cutout-hero").forEach((el) => {
-        el.classList.remove("is-cutout-hero");
-        el.removeAttribute("data-cutout-side");
-        el.removeAttribute("data-cutout-scale");
-        el.removeAttribute("data-cutout-flip");
-        el.querySelector(".ca-inner-hero-bg")?.remove();
-      });
-    };
-  }, []);
+  if (!host || !config) return null;
 
-  return null;
+  return createPortal(<HeroIridescenceBg key={pathname} />, host);
 }

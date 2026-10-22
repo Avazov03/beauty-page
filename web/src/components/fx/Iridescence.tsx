@@ -209,8 +209,17 @@ const Iridescence = ({
   useEffect(() => {
     const root = rootRef.current;
     const canvas = canvasRef.current;
-    const gl = canvas?.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false });
+    const gl = canvas?.getContext('webgl2', {
+      alpha: true,
+      premultipliedAlpha: true,
+      antialias: false,
+      /* Keeps last frame visible if RAF hiccups during remount/refresh */
+      preserveDrawingBuffer: true,
+    });
     if (!root || !canvas || !gl) return undefined;
+
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 
     const vertex = compile(gl, gl.VERTEX_SHADER, VERTEX);
     const fragment = compile(gl, gl.FRAGMENT_SHADER, FRAGMENT);
@@ -376,6 +385,15 @@ const Iridescence = ({
       }
     };
 
+    let heroMarked = false;
+    const markHeroReady = () => {
+      if (heroMarked) return;
+      const hero = root.closest(".rt-inner-hero");
+      if (!hero) return;
+      hero.setAttribute("data-iridescence-ready", "1");
+      heroMarked = true;
+    };
+
     const render = () => {
       const s = settingsRef.current;
       resolveColor(s);
@@ -415,6 +433,7 @@ const Iridescence = ({
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
+      markHeroReady();
     };
 
     const frame = (now: number) => {
@@ -438,8 +457,13 @@ const Iridescence = ({
         Math.abs(target[0] - state.mouse[0]) > 0.0005 ||
         Math.abs(target[1] - state.mouse[1]) > 0.0005 ||
         Math.abs((pointer.inside ? 1 : 0) - state.presence) > 0.002;
-      if (moving || settling || state.fieldActive || state.swirls.length) raf = requestAnimationFrame(frame);
-      else last = 0;
+      /* Always keep the loop alive while speed > 0 — stopping left blank
+         canvases after createRoot/portal remounts on inner heroes. */
+      if (moving || settling || state.fieldActive || state.swirls.length || s.speed > 0) {
+        raf = requestAnimationFrame(frame);
+      } else {
+        last = 0;
+      }
     };
 
     const wake = () => {

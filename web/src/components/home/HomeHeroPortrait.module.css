@@ -15,19 +15,19 @@
   z-index: 0;
   /* Iridescence window pointerlari bilan ishlaydi — tugma hoverini o‘g‘irlamasin */
   pointer-events: none;
-  /* Soft wash while WebGL boots — avoids empty flash on refresh */
+  /* Soft mauve stand-in while WebGL boots */
   background:
     radial-gradient(
-      ellipse 75% 55% at 68% 40%,
-      rgba(211, 185, 201, 0.5) 0%,
-      transparent 58%
+      ellipse 72% 58% at 70% 36%,
+      rgba(211, 185, 201, 0.38) 0%,
+      transparent 62%
     ),
     radial-gradient(
-      ellipse 65% 50% at 20% 70%,
-      rgba(168, 198, 198, 0.28) 0%,
-      transparent 55%
+      ellipse 55% 48% at 18% 78%,
+      rgba(155, 185, 190, 0.22) 0%,
+      transparent 58%
     ),
-    linear-gradient(145deg, #f8f4f6 0%, #efe6ec 42%, #e8dde6 100%);
+    linear-gradient(152deg, #f8f4f6 0%, #f0e6ec 48%, #e8d9e3 100%);
 }
 
 .bg > * {
@@ -37,8 +37,8 @@
 
 .bg canvas {
   opacity: 0;
-  animation: ca-home-iridescence-fade 0.85s
-    var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)) 0.08s forwards;
+  animation: ca-home-iridescence-fade 0.35s
+    var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
 }
 
 @keyframes ca-home-iridescence-fade {

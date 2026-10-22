@@ -1,12 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import Iridescence from "@/components/fx/Iridescence";
 
-const Iridescence = dynamic(() => import("@/components/fx/Iridescence"), {
-  ssr: false,
-});
-
-/** Pearl & Plum–tinted iridescence for the home hero (preview). */
+/** Pearl & Plum–tinted iridescence — eager import (no dynamic chunk delay). */
 export function HeroIridescenceBg() {
   return (
     <Iridescence
