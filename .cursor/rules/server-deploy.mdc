@@ -13,7 +13,8 @@ Production server (AWS / beauty-page):
 | Private IPv4 | `172.26.11.220` |
 | App path (server) | `/var/www/beauty-page` |
 | Stack | **PM2** (`beauty-page`, port `3102`) + nginx — bu serverda Docker yo‘q; boshqa Next app’lar ham PM2 |
-| Public URL (vaqtincha) | `http://beauty-3-65-92-39.sslip.io` yoki `http://3.65.92.39:3102` |
+| Domain | **`https://cos.zonic.fit`** (A → `3.65.92.39`) |
+| Public URL | `https://cos.zonic.fit` |
 | SSH | `ssh -i %USERPROFILE%\.ssh\beauty-page-server.pem ubuntu@3.65.92.39` |
 | SSH key | Lokal: `%USERPROFILE%\.ssh\beauty-page-server.pem` — **repoga hech qachon commit qilinmasin** |
 
@@ -31,7 +32,7 @@ Commit/push qilaymi? Serverga deploy qilaymi?
    - Kerak bo‘lsa avval commit + push (`main`)
    - SSH: `ubuntu@3.65.92.39` + lokal pem key
    - Serverda: `cd /var/www/beauty-page && git pull` → `cd web && npm ci && npm run build` → `pm2 restart beauty-page` (yoki `pm2 start ../ecosystem.config.cjs`)
-   - Health check: `http://3.65.92.39:3102` / nginx sslip URL
+   - Health check: `https://cos.zonic.fit`
 
 3. Deploy muvaffaqiyatli bo‘lgach chatda:
 
