@@ -26,3 +26,6 @@ web/.next/
 web/out/
 web/.env*.local
 web/npm-debug.log*
+
+# Agent skill working files (taste inspect / draw output)
+.taste-skill/

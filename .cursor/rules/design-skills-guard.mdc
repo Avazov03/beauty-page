@@ -1,0 +1,36 @@
+---
+description: Design skills (taste / impeccable / Emil) loyiha DNA ga bo‘ysunadi — begona UI tiqilmaydi
+alwaysApply: true
+---
+
+# Design skills — loyiha guard
+
+Bu repoda `design-taste-frontend`, `impeccable`, `emil-design-eng` va bog‘liq motion skill’lar o‘rnatilgan. Ular **yordamchi**; loyiha dizaynini almashtirish uchun emas.
+
+## Manba haqiqati (o‘qib ishlat)
+
+1. `web/src/styles/tokens.css` — rang, shrift, radius, motion tokenlari
+2. `web/public/brand-trial.css` — joriy brend yashillari / porcelain
+3. Mavjud Webflow classlar (`rt-*`) va `web/src/styles/baseline-overrides.css`
+4. Brend: Classic Apartment → beauty / kosmetolog shablon yo‘nalishi
+
+## Majburiy qoidalar
+
+1. **Moslash, buzma.** Yangi sahifa/komponent — mavjud tipografiya (Instrument Sans / Serif), spacing, radius va palitraga mos.
+2. **Yangi brend rangi / shrift invent qilma** tokens + brand-trial ni yangilamasdan.
+3. **AI-slop taqiqlangan:** purple-on-white gradient, generic Inter/Roboto stack, ortiqcha glow, rounded-full pill cluster, broadsheet newspaper layout, random “Awwwards” yo‘nalishi.
+4. **taste-skill** gallery direction tanlasa ham — faqat **shu DNA ichida** (yumshoq porcelain, grafit/deep blue matn, yashil aksent, premium clinic/beauty). Mos kelmasa direction ni rad et.
+5. **impeccable /audit** — avval hisobot; avtomatik “boshqa dizayn”ga o‘tkazma. Fix faqat mavjud til ichida.
+6. **Emil / animate** — kam, maqsadli motion; Webflow IX2 ishlayotgan joyda parallel Framer/GSAP stack tiqma (foydalanuvchi so‘ramaguncha). `--ease-hotel` / tokens motion dan foydalan.
+7. **Baseline HTML** (`web/src/baseline/html/*`) — keraksiz qayta yozma; override CSS yoki yangi React sahifa afzal.
+8. Skill `pick-ui-library` / random npm UI kit o‘rnatish — **taqiqlangan** (bu repoda o‘rnatilmagan).
+
+## Qachon skill ishlatilsin
+
+| Skill | Qachon |
+|---|---|
+| taste / impeccable | Yangi beauty sahifa, redesign, polish, `/audit` |
+| Emil animate / review | Foydalanuvchi motion so‘raganda yoki yangi React UI |
+| mobile-native / break-ui | Mobil tekshiruv, edge-case |
+
+Skill bilan konflikt bo‘lsa — **shu guard va tokens g‘olib**.

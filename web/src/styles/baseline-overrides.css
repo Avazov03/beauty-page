@@ -539,6 +539,11 @@ html:not(.w-mod-ix) .rt-image-overlay-2 {
   min-height: 0 !important;
 }
 
+/* Home: breathing room above Baxtli mijozlarimiz (after dining) */
+html.is-home .rt-testimonial-v3 {
+  padding-top: 50px;
+}
+
 /*
  * Dining gallery (home-5): sticky 300vh chapter for IX2 Live Kitchen focus.
  * Isolate so it cannot paint over Experience after the track ends.
