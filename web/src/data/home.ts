@@ -196,21 +196,21 @@ export const homeGallery = [
 
 export const homeTestimonials = [
   {
-    name: "Emerson Geidt",
+    name: "Nilufar Karimova",
     role: "Mijoz · Toshkent",
     quote:
       "Konsultatsiyadan seans oxirigacha hamma narsa tushunarli va e’tiborli edi. Teri holatim yaxshilandi, uy parvarishi ham aniq berildi.",
     image: `${CDN}/6943a0c62611ec5f7d72661e_Mask%20group%20-%202025-12-18T120403.371.webp`,
   },
   {
-    name: "Oliver Bennett",
+    name: "Madina Aliyeva",
     role: "Mijoz · Farg‘ona",
     quote:
       "Professional, tinch muhit va chinakam natija. Qaytib kelishim tabiiy — ishonch paydo bo‘ldi.",
     image: `${CDN}/6943a0c6cfc7fa4f759608c3_Mask%20group%20-%202025-12-18T120540.982.webp`,
   },
   {
-    name: "Dilnoza R.",
+    name: "Dilnoza Rahimova",
     role: "Mijoz · Toshkent",
     quote:
       "Malika bilan har bir detalga e’tibor seziladi — tushuntirish aniq, muhit tinch, natija ko‘rinadi.",
