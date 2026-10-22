@@ -4,7 +4,7 @@ import { html } from "@/baseline/html/about";
 import { pageIntros } from "@/data/pages";
 
 export const metadata: Metadata = {
-  title: "Biz haqimizda",
+  title: "Men haqimda",
   description: pageIntros.about.metaDescription,
 };
 

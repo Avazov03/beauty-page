@@ -20,9 +20,9 @@ const LEAVE_MS = 180;
 
 const services = [
   { href: "/amenities", label: "Qulayliklar" },
-  { href: "/banquet", label: "Banket" },
+  { href: "/banquet", label: "Paketlar" },
   { href: "/spa", label: "SPA" },
-  { href: "/restaurant", label: "Restoran" },
+  { href: "/restaurant", label: "Uy parvarishi" },
 ] as const;
 
 function Chevron() {
@@ -179,7 +179,7 @@ export function InlineHeaderNav() {
         className={`ca-nav-link${isActive("/about") ? " is-active" : ""}`}
         onClick={resetMenus}
       >
-        Biz haqimizda
+        Men haqimda
       </Link>
 
       <div
@@ -198,7 +198,7 @@ export function InlineHeaderNav() {
           aria-controls={`${baseId}-rooms`}
           onClick={() => onTriggerClick("rooms")}
         >
-          Xonalar
+          Muolajalar
           <Chevron />
         </button>
         <DropdownPanel>
@@ -211,7 +211,7 @@ export function InlineHeaderNav() {
               role="menuitem"
               onClick={resetMenus}
             >
-              Barcha xonalar
+              Barcha muolajalar
             </Link>
             {roomsPreview.map((room) => (
               <Link
@@ -272,14 +272,14 @@ export function InlineHeaderNav() {
             <div className="ca-nav-mega-promo">
               <p className="ca-nav-mega-promo-kicker">Maxsus</p>
               <p className="ca-nav-mega-promo-text">
-                Dam olish yoki tadbir — bronni bir marta bosishda boshlang.
+                Konsultatsiya yoki muolaja — yozilishni bir marta bosishda boshlang.
               </p>
               <Link
                 href="/contact"
                 className="ca-nav-mega-cta"
                 onClick={resetMenus}
               >
-                Bron qilish →
+                Qabulga yozilish →
               </Link>
             </div>
           </div>
@@ -302,7 +302,7 @@ export function InlineHeaderNav() {
           aria-controls={`${baseId}-blog`}
           onClick={() => onTriggerClick("blog")}
         >
-          Blog
+          Yangiliklar
           <Chevron />
         </button>
         <DropdownPanel>

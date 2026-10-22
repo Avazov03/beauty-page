@@ -5,7 +5,7 @@ import styles from "./Footer.module.css";
 const more = [
   { href: "/amenities", label: "Qulayliklar" },
   { href: "/spa", label: "SPA" },
-  { href: "/restaurant", label: "Restoran" },
+  { href: "/restaurant", label: "Uy parvarishi" },
   { href: "/contact", label: "Aloqa" },
 ];
 

@@ -35,7 +35,7 @@ export function HomeAbout() {
             <Image
               className={styles.mainImg}
               src={homeAbout.images[0]}
-              alt="Mehmonxona tashqi ko‘rinishi"
+              alt="Kabinet tashqi ko‘rinishi"
               width={720}
               height={900}
               sizes="(max-width: 900px) 100vw, 42vw"

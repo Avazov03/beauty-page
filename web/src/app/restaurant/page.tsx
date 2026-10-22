@@ -4,7 +4,7 @@ import { html } from "@/baseline/html/restaurant";
 import { pageIntros } from "@/data/pages";
 
 export const metadata: Metadata = {
-  title: "Restoran",
+  title: "Uy parvarishi",
   description: pageIntros.restaurant.metaDescription,
 };
 

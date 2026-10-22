@@ -2,24 +2,24 @@ const CDN =
   "https://cdn.prod.website-files.com/6927ddcc377dce6e20188e35";
 
 export const homeHero = {
-  title: "Hashamatli qulaylik va tinchlik uchun mukammal dam olish",
-  cta: "Dam olishni bron qiling",
+  title: "Sog‘lom teri va ishonchli parvarish — shaxsiy yondashuv bilan",
+  cta: "Qabulga yozilish",
   ctaHref: "/contact",
-  offer: "Chegirma — cheklangan muddat",
+  offer: "Birinchi konsultatsiya — cheklangan muddat",
   poster: `${CDN}/694e6076e77e5b3348ce2188_18705145-hd_1920_1080_30fps%20(1)_poster.0000000.jpg`,
   videoWebm: `${CDN}/694e6076e77e5b3348ce2188_18705145-hd_1920_1080_30fps%20(1)_webm.webm`,
   videoMp4: `${CDN}/694e6076e77e5b3348ce2188_18705145-hd_1920_1080_30fps%20(1)_mp4.mp4`,
 };
 
 export const homeAbout = {
-  eyebrow: "Biz haqimizda",
+  eyebrow: "Men haqimda",
   titles: [
-    "Dengizga qaragan shahar markazi",
-    "Okean manzarali shahar markazi",
-    "Sohilbo‘yi shahar markazi",
+    "Toshkentlik kosmetolog",
+    "Shaxsiy kosmetologik yondashuv",
+    "Natijaga yo‘naltirilgan seanslar",
   ],
-  body: "Har bir yashashda unutilmas lahzalar yaratish uchun qulaylik, nafislik va a’lo xizmat uyg‘unlashgan mehmondo‘stlikni his eting",
-  cta: "Xonalarni ko‘rish",
+  body: "Har bir seansda ishonch yaratish uchun bilím, nafislik va a’lo g‘amxo‘rlik uyg‘unlashgan shaxsiy parvarishni his eting",
+  cta: "Xizmatlarimni ko‘rish",
   ctaHref: "/rooms",
   images: [
     `${CDN}/6931319859f3f47cbae93570_image%209-Picsart-AiImageEnhancer%201.webp`,
@@ -30,59 +30,59 @@ export const homeAbout = {
 
 export const featuredRooms = [
   {
-    name: "Deluxe dengiz manzarali xona",
+    name: "Yuzni chuqur tozalash",
     blurb:
-      "Zamonaviy interyer, premium qulayliklar va hayratlanarli dengiz manzarasi bilan Deluxe xonamizda tengsiz qulaylikni his eting",
-    size: "350 kv.fut",
-    view: "Panoramik dengiz manzarasi",
-    features: "King karavot, balkon manzarasi, Smart TV",
-    perfectFor: "Juftliklar va dam oluvchilar",
+      "Poralarni tozalash, yallig‘lanishni yumshatish va terini yangilash — professional protokol bilan",
+    size: "45–60 daqiqa",
+    view: "Barcha teri tiplari",
+    features: "Diagnostika, tozalash, maska",
+    perfectFor: "Muntazam parvarish izlovchilar",
     image: `${CDN}/69316279603aa77764416443_image%2015-Picsart-AiImageEnhancer%201.webp`,
   },
   {
-    name: "Dengiz manzarali King xona",
+    name: "Premium teri parvarishi",
     blurb:
-      "Nafis interyer, zamonaviy qulayliklar va keng dengiz manzarasiga ega Premium xonada yuqori darajadagi qulaylikdan bahramand bo‘ling",
-    size: "380 kv.fut",
-    view: "Sohilbo‘yi dengiz manzarasi",
-    features: "Queen karavot, shahar manzarasi, Smart TV",
-    perfectFor: "Juftliklar va dam olish kunlari",
+      "Chuqur namlanish va porlash uchun premium formulalar — sezgir teriga ham mos",
+    size: "60–90 daqiqa",
+    view: "Premium protokol",
+    features: "Lifting, serum, himoya",
+    perfectFor: "Maxsus tadbir oldidan",
     image: `${CDN}/694a220502bfae7bbbd483da_image%2014-Picsart-AiImageEnhancer%201.webp`,
   },
   {
-    name: "Dengiz manzarali juft xona",
+    name: "Anti-age kompleks",
     blurb:
-      "Nafis bezak, yuqori sifatli jihozlar va sohil panoramasiga ega hashamatli xonada dam oling",
-    size: "450 kv.fut",
-    view: "Manzarali sohil panoramasi",
-    features: "King karavot, dengiz manzarasi, Smart TV",
-    perfectFor: "Dam oluvchilar va asal oyi juftliklari",
+      "Elastiklik va yuz ovalini qo‘llab-quvvatlovchi kompleks muolaja",
+    size: "75–90 daqiqa",
+    view: "Kurs tavsiya etiladi",
+    features: "Massaj, peching, maska",
+    perfectFor: "Qarish belgilariga e’tibor",
     image: `${CDN}/694a22058acf0ce292e687df_image%20432-Picsart-AiImageEnhancer%201.webp`,
   },
   {
-    name: "Dengiz manzarali klub xona",
+    name: "Kosmetolog konsultatsiyasi",
     blurb:
-      "Uslubli interyer, o‘ylab topilgan qulayliklar va tinchlantiruvchi dengiz manzarasiga ega Ijrochi xonada nafis yashashni his eting",
-    size: "420 kv.fut",
-    view: "Uzilmagan okean ufqi",
-    features: "King karavot, dengiz balconi, Smart TV",
-    perfectFor: "Juftliklar va sayyohlar",
+      "Teri holatini baholash, maqsadni aniqlash va shaxsiy parvarish rejasini tuzish",
+    size: "30–40 daqiqa",
+    view: "Shaxsiy reja",
+    features: "Diagnostika, tavsiya, savol-javob",
+    perfectFor: "Birinchi tashrif",
     image: `${CDN}/694a22051baed5b350dc6d7d_image%20430-Picsart-AiImageEnhancer%201.webp`,
   },
 ];
 
 export const homeStats = {
   intro:
-    "O‘nlab yillik ishonchli xizmat va minglab sodiq mehmonlar unutilmas dam olish yaratishga sodiqligimizni ko‘rsatadi",
+    "7+ yillik tajriba va mamnun mijozlarim — ishonchli parvarish va aniq natijaga sodiqligimni ko‘rsatadi",
   items: [
-    { value: "98%", label: "Mehmon ehtiyojlari oldindan hisobga olingan" },
-    { value: "85%", label: "Qaytib keluvchi mehmonlar ulushi" },
-    { value: "40%", label: "Shaxsiy butler xizmati" },
-    { value: "25", label: "Mehmondo‘stlik va ovqatlanish mukofotlari" },
-    { value: "90+", label: "Dengiz/shahar manzarali xonalar" },
+    { value: "98%", label: "Mijoz ehtiyojlari oldindan hisobga olingan" },
+    { value: "85%", label: "Qaytib keluvchi mijozlar ulushi" },
+    { value: "100%", label: "Shaxsiy konsultatsiya" },
+    { value: "12+", label: "Asosiy muolaja yo‘nalishlari" },
+    { value: "40+", label: "Teri parvarishi protokollari" },
     { value: "4.9", label: "O‘rtacha yulduz reytingi" },
-    { value: "200", label: "Tanlangan vino kolleksiyasi" },
-    { value: "5+", label: "Mukofotli restoranlar" },
+    { value: "500+", label: "Bajarilgan seanslar" },
+    { value: "7+", label: "Yillik amaliyot" },
   ],
   images: [
     `${CDN}/6932619969ad70245135cf5a_image%20391-Picsart-AiImageEnhancer%20(1)%201.webp`,
@@ -93,9 +93,9 @@ export const homeStats = {
 };
 
 export const homeBusiness = {
-  title: "Biznes va tadbir maydonlari",
-  body: "Uchrashuv, konferensiya, seminar va bayramlar uchun moslashuvchan biznes maydonlarimiz zamonaviy qulayliklar va professional muhit bilan jihozlangan",
-  cta: "Tadbir maydonini bron qilish",
+  title: "Maxsus paketlarim",
+  body: "Bir seansdan to‘liq parvarish kursigacha — maqsadingizga mos paketlar, aniq jadval va shaxsiy kuzatuv",
+  cta: "Paketni ko‘rish",
   ctaHref: "/banquet",
   images: [
     `${CDN}/693266cb0d38c5e5209caa4e_image%2016-Picsart-AiImageEnhancer%201.webp`,
@@ -104,20 +104,20 @@ export const homeBusiness = {
 };
 
 export const homeDining = {
-  eyebrow: "Ovqatlanish tajribasi",
+  eyebrow: "Parvarish tajribasi",
   title:
-    "Har bir taom hikoya aytadigan, har bir ta’m maftun etadigan va har bir lahza unutilmas bo‘lgan oshxona makonini kashf eting",
+    "Har bir muolaja tushunarli, har bir qadam ochiq va har bir natija sezilarli bo‘lishi uchun ishlayman",
   tags: [
-    "Tashqi/teras o‘rindiqlari",
-    "Moslashtirilgan menyu variantlari",
-    "Kundalik bepul nonushta",
-    "Bir nechta restoran",
-    "Keng vino ro‘yxati",
-    "Shaxsiy ovqatlanish",
-    "Imzoli fine dining",
-    "Mavzuli kokteyl bar/lounge",
-    "Mahalliy mahsulotlar",
-    "Jonli oshxona",
+    "Yuz diagnostikasi",
+    "Shaxsiy protokol",
+    "Steril muhit",
+    "Premium formulalar",
+    "Uy parvarishi rejasi",
+    "Konsultatsiya",
+    "Anti-age yondashuv",
+    "Sezgir teri uchun",
+    "Mavsumiy tavsiyalar",
+    "Kurs kuzatuvi",
   ],
   images: [
     `${CDN}/69327199f5558c90f6e5c83f_Mask%20group%20-%202025-12-05T110746.363%20(1).webp`,
@@ -129,17 +129,17 @@ export const homeDining = {
 
 export const homeExperience = {
   eyebrow: "Nimani his qilasiz",
-  title: "A’lo natijani kuting — biz tengsiz tajriba va’da qilamiz",
-  cta: "Galereyani ko‘rish",
+  title: "A’lo natijani kuting — ishonchli parvarish va’da qilaman",
+  cta: "Ishlarimni ko‘rish",
   ctaHref: "#gallery",
   items: [
     {
-      title: "Silliq va do‘stona kutib olish",
-      body: "Dam olishingizni oson boshlang — iliq kutib olish va samarali ro‘yxatdan o‘tish. Birinchi lahzadan qulayligingiz ustuvor.",
+      title: "Iliq va tushunarli kutib olish",
+      body: "Seansni oson boshlang — tinch muhit, aniq tushuntirish va ehtiyojlaringizni tinglash. Birinchi daqiqadan qulayligingiz ustuvor.",
     },
     {
-      title: "Tez va qulay ro‘yxatdan o‘tish",
-      body: "Tez va muammosiz kirish — eshikdan o‘tganingizdan boshlab dam olish boshlanadi.",
+      title: "Oddiy va tezkor yozilish",
+      body: "Qabulga yozilish silliq — telefon, Telegram yoki sayt orqali. Tasdiq va eslatma bilan.",
     },
   ],
   images: [
@@ -150,19 +150,19 @@ export const homeExperience = {
 
 export const homeGallery = [
   {
-    label: "basseyn",
+    label: "tozalash",
     src: `${CDN}/69438ddf3b026974c61e1d8e_image%20213-Picsart-AiImageEnhancer%201.webp`,
   },
   {
-    label: "banket",
+    label: "parvarish",
     src: `${CDN}/69438ddf641c80e912060899_5697%201.webp`,
   },
   {
-    label: "bufet",
+    label: "natija",
     src: `${CDN}/69438de04d6267d938a345cf_9391%201.webp`,
   },
   {
-    label: "mehmonxona",
+    label: "kabinet",
     src: `${CDN}/69438ddfe3ab23cceada7edf_90549%201%20(1).webp`,
   },
 ];
@@ -170,30 +170,30 @@ export const homeGallery = [
 export const homeTestimonials = [
   {
     name: "Emerson Geidt",
-    role: "Lifestyle bloger va sayohat muallifi",
+    role: "Mijoz · Toshkent",
     quote:
-      "Iliq kutib olishdan eng kichik e’tiborli detallargacha har bir lahza silliq va samimiy edi. Jamoa ehtiyojlarimizni oldindan bilib, a’lo xizmat ko‘rsatdi.",
+      "Konsultatsiyadan seans oxirigacha hamma narsa tushunarli va e’tiborli edi. Teri holatim yaxshilandi, uy parvarishi ham aniq berildi.",
     image: `${CDN}/6943a0c62611ec5f7d72661e_Mask%20group%20-%202025-12-18T120403.371.webp`,
   },
   {
     name: "Oliver Bennett",
-    role: "Sayohat kontent yaratuvchisi",
+    role: "Mijoz · Farg‘ona",
     quote:
-      "Boshidan oxirigacha a’lo — har bir muloqot chinakam, professional va e’tiborli edi. Muhit va xizmat kutganimizdan oshib ketdi.",
+      "Professional, tinch muhit va chinakam natija. Qaytib kelishim tabiiy — ishonch paydo bo‘ldi.",
     image: `${CDN}/6943a0c6cfc7fa4f759608c3_Mask%20group%20-%202025-12-18T120540.982.webp`,
   },
   {
-    name: "Avazov Og‘abek",
-    role: "Fullstack dasturchi va dizayner",
+    name: "Dilnoza R.",
+    role: "Mijoz · Toshkent",
     quote:
-      "Har bir detalga e’tibor va mehmon uchun qulay tajriba yaratish — Classic Apartment va Huquqiy texnologiyalar va sun’iy intellekt laboratoriyasi MChJ jamoasi uchun muhim qadriyat.",
+      "Malika bilan har bir detalga e’tibor seziladi — tushuntirish aniq, muhit tinch, natija ko‘rinadi.",
     image: `${CDN}/6943a0c6112009db1bcc3d53_Mask%20group%20-%202025-12-18T120456.254.webp`,
   },
 ];
 
 export const homeCta = {
-  title: "Oddiylikdan chiqing va premium mehmondo‘stlikdan bahramand bo‘ling",
-  cta: "Hozir bron qiling",
+  title: "Oddiy parvarishdan chiqing — professional natijani his eting",
+  cta: "Qabulga yozilish",
   ctaHref: "/contact",
   image: `${CDN}/693b8de4d00c720d07d2645c_image%2026-Picsart-AiImageEnhancer%201%20(1).webp`,
 };

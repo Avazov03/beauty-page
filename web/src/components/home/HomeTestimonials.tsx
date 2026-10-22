@@ -12,8 +12,8 @@ export function HomeTestimonials() {
             Farqni ularning ko‘zi bilan ko‘ring
           </h2>
           <p>
-            Har bir detalda g‘amxo‘rlikni his qilgan mehmonlardan chinakam
-            fikrlar — jahon darajasidagi mehmondo‘stlik haqida.
+            Har bir detalda g‘amxo‘rlikni his qilgan mijozlardan chinakam
+            fikrlar — ishonchli teri parvarishi haqida.
           </p>
         </div>
 

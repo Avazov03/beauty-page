@@ -4,7 +4,7 @@ import styles from "./HomeStats.module.css";
 
 export function HomeStats() {
   return (
-    <section className={styles.section} aria-label="Mehmonxona afzalliklari">
+    <section className={styles.section} aria-label="Mutaxassis afzalliklari">
       <div className="container">
         <p className={styles.intro}>{homeStats.intro}</p>
 

@@ -19,11 +19,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Classic Apartment",
-    template: "%s | Classic Apartment",
+    default: "Malika Karimova — kosmetolog",
+    template: "%s | Malika Karimova",
   },
   description:
-    "Classic Apartment — qulay xonalar, zamonaviy qulayliklar va iliq mehmondo‘stlik. Biznes va dam olish uchun.",
+    "Malika Karimova — kosmetolog. Yuz va teri parvarishi, shaxsiy konsultatsiya va qabulga yozilish.",
 };
 
 export default function RootLayout({

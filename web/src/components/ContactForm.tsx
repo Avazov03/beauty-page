@@ -60,7 +60,7 @@ export function ContactForm() {
       <div className={styles.field}>
         <label htmlFor="topic">Mavzu</label>
         <select id="topic" name="topic" defaultValue="reservation">
-          <option value="reservation">Bronlash</option>
+          <option value="reservation">Qabulga yozilish</option>
           <option value="event">Tadbir / banket</option>
           <option value="dining">Ovqatlanish</option>
           <option value="spa">SPA</option>

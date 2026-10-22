@@ -13,130 +13,130 @@ export type BlogPost = {
 };
 
 const sharedBodyBlocks = [
-  "Hashamatli xonalardan mahalliy javohirlargacha — blogimiz har bir dam olishni abadiy xotiraga aylantiradigan hikoya va ma’lumotlarni ulashadi",
-  "Strategiya, ilhom va hissiyotni bog‘laydigan hikoya, maslahat va ma’lumotlarga sho‘ng‘ing — unutilmas tajribalar uchun",
-  "Mehmondo‘stlik yuragini ochadigan va har bir mehmonxona dam olishini unutilmas qiladigan hikoya va maslahatlarni kashf eting",
+  "Yuz tozalashdan uy parvarishigacha — blogimiz teringiz uchun amaliy maslahat va ishonchli ma’lumotlarni ulashadi",
+  "Diagnostika, ilhom va kundalik odatlarni bog‘laydigan hikoya va maslahatlarga sho‘ng‘ing — sog‘lom teri uchun",
+  "Mutaxassis nigohini ochadigan va har bir seansni tushunarli qiladigan maslahatlarni kashf eting",
 ];
 
 export const blogPosts: BlogPost[] = [
   {
     slug: "creating-memorable-stays-through-genuine-hospitality",
-    title: "Chinakam mehmondo‘stlik orqali unutilmas dam olish",
+    title: "Chinakam g‘amxo‘rlik orqali unutilmas parvarish",
     excerpt:
-      "Tanlangan hikoyalar — o‘ylab ishlangan dizayn, iliq xizmat, nafis ovqatlanish va mahalliy tajribalar har bir dam olishni abadiy xotiraga aylantiradi.",
+      "O‘ylab ishlangan protokol, iliq konsultatsiya va aniq uy tavsiyalari — har bir seansni ishonchli tajribaga aylantiradi.",
     image: `${CDN_POST}/695b3bb9394b4ab580c6adae_image-Picsart-AiImageEnhancer%20(7)%201%20(2).webp`,
     date: "21-yanvar, 2026",
-    category: "Ovqat menyusi",
+    category: "Parvarish",
     author: "Avazov Og‘abek",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni kashf eting",
+      "Har bir muolaja ortidagi hikoya va tafsilotlarni kashf eting",
       ...sharedBodyBlocks,
     ],
   },
   {
     slug: "making-every-business-event-smooth-and-memorable",
-    title: "Har bir biznes tadbirini silliq va unutilmas qilish",
+    title: "Har bir seansni silliq va unutilmas qilish",
     excerpt:
-      "Nafis xonalar, e’tiborli xizmat va mahalliy kashfiyotlar — oddiy dam olishni unutilmas tajribaga aylantiruvchi ortidagi hikoyalar.",
+      "Aniq reja, e’tiborli xizmat va teri tipiga mos yondashuv — oddiy tashrifni natijali tajribaga aylantiradi.",
     image: `${CDN_POST}/695b3bc626bdde8ccb66ede0_image-Picsart-AiImageEnhancer%20(5)%201%20(2).webp`,
     date: "21-yanvar, 2026",
-    category: "Mehmonxona tadbiri",
+    category: "Konsultatsiya",
     author: "Avazov Og‘abek",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni oching",
+      "Har bir seansni unutilmas qiladigan maslahatlarni oching",
       ...sharedBodyBlocks,
     ],
   },
   {
     slug: "indulge-in-luxurious-rooms-with-panoramic-sea-views",
-    title: "Panoramik dengiz manzarali hashamatli xonalardan bahramand bo‘ling",
+    title: "Premium anti-age muolajalardan bahramand bo‘ling",
     excerpt:
-      "Nafis qulaylik, shaxsiy xizmat va mahalliy joziba haqidagi ilhomli hikoyalar — mehmonlar uzoq eslab qoladigan mazmunli dam olish.",
+      "Elastiklik, porlash va yuz ovalini qo‘llab-quvvatlash haqidagi ilhomli maslahatlar.",
     image: `${CDN_POST}/695b3bd55fed08c9b8eee002_image%20511%20(2).webp`,
     date: "21-yanvar, 2026",
-    category: "Sayohat",
+    category: "Anti-age",
     author: "Avazov Og‘abek",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni kashf eting",
+      "Har bir muolaja ortidagi tafsilotlarni kashf eting",
       ...sharedBodyBlocks,
     ],
   },
   {
     slug: "a-taste-journey-through-our-hotels-finest-culinary-creations",
-    title: "Mehmonxonamizning eng yaxshi oshxona ijodiyoti bo‘ylab ta’m sayohati",
+    title: "Uy parvarishi bo‘ylab amaliy qo‘llanma",
     excerpt:
-      "Uslubli xonalar, nafis ovqatlanish, e’tiborli xizmat va chinakam mahalliy lahzalar ortidagi tafsilotlar haqida foydali hikoyalar.",
+      "Muolajadan keyin nima qilish kerak: mahsulotlar, SPF va kundalik odatlar haqida foydali yo‘riqnoma.",
     image: `${CDN_POST}/695b3be980836a102f8ce989_image-Picsart-AiImageEnhancer%20(4)%201%20(2).webp`,
     date: "21-yanvar, 2026",
-    category: "Mazali taom",
+    category: "Uy parvarishi",
     author: "Avazov Og‘abek",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni kashf eting",
-      "Hashamatli xonalardan mahalliy javohirlargacha — blogimiz har bir dam olishni abadiy xotiraga aylantiradi",
+      "Har bir tavsiya ortidagi sabablarni kashf eting",
+      "Yuz tozalashdan mahsulot tanlovigacha — blogimiz teringizni qo‘llab-quvvatlaydi",
       sharedBodyBlocks[1],
       sharedBodyBlocks[2],
     ],
   },
   {
     slug: "open-the-door-to-roomy-living-made-for-whatever-you-want",
-    title: "Istalgan maqsadga mos keng yashash eshigini oching",
+    title: "Teringiz maqsadiga mos reja eshigini oching",
     excerpt:
-      "Qulaylik, ijod va g‘amxo‘rlikni nishonlaydigan tanlangan hikoyalar — o‘ylab topilgan detallar har bir dam olishni yuksaltiradi.",
+      "Qulaylik, bilím va g‘amxo‘rlikni nishonlaydigan maslahatlar — har bir detal natijani yuksaltiradi.",
     image: `${CDN_POST}/695b3c069765b079b0346bc5_pexels-ahmetcotur-31817153-Picsart-AiImageEnhancer%201%20(2).webp`,
     date: "21-yanvar, 2026",
-    category: "Dam olish",
+    category: "Reja",
     author: "Avazov Og‘abek",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni kashf eting",
+      "Har bir seansni unutilmas qiladigan maslahatlarni kashf eting",
       ...sharedBodyBlocks,
     ],
   },
   {
     slug: "enjoy-a-vacation-that-feels-like-a-touch-of-heaven",
-    title: "Jannatdek dam olishni his eting",
+    title: "Kabinetda tinchlik va ishonchni his eting",
     excerpt:
-      "Nafis dizayn, ilhomli ovqatlanish va shaxsiy xizmat haqidagi mehmondo‘stlik hikoyalari — oddiy tashrifni unutilmas dam olishga aylantiradi.",
+      "Nafis muhit, aniq protokol va shaxsiy yondashuv — oddiy tashrifni qulay tajribaga aylantiradi.",
     image: `${CDN_POST}/695b3c1cd763a2a11296bdef_image-Picsart-AiImageEnhancer%20(2)%201%20(2).webp`,
     date: "21-yanvar, 2026",
     author: "Avazov Og‘abek",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni kashf eting",
+      "Har bir muolaja ortidagi tafsilotlarni kashf eting",
       ...sharedBodyBlocks,
     ],
   },
   {
     slug: "crafting-special-events-that-turn-into-memories-youll-treasure",
-    title: "Qadrlaydigan xotiralarga aylanadigan maxsus tadbirlar",
+    title: "Maxsus paketlar: esda qoladigan natija",
     excerpt:
-      "Nafis maydonlar, iliq xizmat va mahalliy madaniyat uyg‘unligi — har bir dam olishni maxsus va uzoq esda qoladigan qiladi.",
+      "Kurslar, juftlik seanslari va mavsumiy dasturlar — maqsadingizga mos yo‘l.",
     image: `${CDN_POST}/695b3c31ae117b4f685d4e3d_image-Picsart-AiImageEnhancer%20(3)%201%20(2).webp`,
     date: "21-yanvar, 2026",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni oching",
+      "Har bir paket ortidagi mantiqni oching",
       ...sharedBodyBlocks,
     ],
   },
   {
     slug: "discover-the-latest-menu-updates-coming-this-march",
-    title: "Mart oyidagi eng so‘nggi menyu yangilanishlarini kashf eting",
+    title: "Bahorgi yangi muolajalarni kashf eting",
     excerpt:
-      "Mehmondo‘stlik san’atini aks ettiruvchi hikoyalar — chiroyli xonalardan har bir mehmonda iz qoldiradigan mahalliy tajribalargacha.",
+      "Mavsumiy protokol yangilanishlari — bahor terisi uchun yumshoq va samarali yondashuvlar.",
     image: `${CDN_POST}/695b3c409f475ee318c50c0d_image-Picsart-AiImageEnhancer%20(1)%201%20(2).webp`,
     date: "21-yanvar, 2026",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni kashf eting",
+      "Yangi muolajalar haqidagi maslahatlarni kashf eting",
       ...sharedBodyBlocks,
     ],
   },
   {
     slug: "the-april-issue-of-travel-magazine-featured-elbergo-hotel",
-    title: "Travel Magazine aprel sonida Classic Apartment haqida",
+    title: "Malika Karimova: ishonch va natija haqida",
     excerpt:
-      "Har bir dam olish ortida qulaylik, g‘amxo‘rlik va detal bor — mehmonxonalar qanday mazmunli tajriba yaratishini kashf eting.",
+      "Har bir seans ortida diagnostika, g‘amxo‘rlik va detal bor — shaxsiy parvarish qanday yaratilishini kashf eting.",
     image: `${CDN_POST}/695b3c537b6f44e4fa4251e6_image-Picsart-AiImageEnhancer%201%20(2).webp`,
     date: "21-yanvar, 2026",
     body: [
-      "Har bir mehmonxona dam olishini unutilmas qiladigan hikoya va ma’lumotlarni kashf eting",
+      "Har bir seans ortidagi tafsilotlarni kashf eting",
       ...sharedBodyBlocks,
     ],
   },

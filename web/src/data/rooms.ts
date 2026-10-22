@@ -27,17 +27,17 @@ export type RoomDetail = {
 };
 
 const sharedOverview =
-  "Zamonaviy xonalar, shaxsiy xizmat va premium qulayliklarga ega mehmonxonamizda qulaylik va nafislikni his eting. Har bir detal unutilmas dam olish uchun o‘ylab topilgan.";
+  "Har bir muolaja teringiz holatiga moslab tanlanadi: tushuntirish, steril muhit va e’tiborli mutaxassis yondashuvi. Natija — toza, sog‘lom va porloq teri.";
 
 const sharedQulayliklar = [
-  "24/7 xona xizmati",
-  "Bepul nonushta",
-  "Bepul Wi-Fi",
-  "Xonada seyf",
-  "1 hammom",
-  "Minibar",
-  "Qahva to‘plami",
-  "Xona tozalash",
+  "Oldindan konsultatsiya",
+  "Steril jihozlar",
+  "Shaxsiy yondashuv",
+  "Uy parvarishi tavsiyasi",
+  "1 seans / kurs",
+  "Testlash (zarur bo‘lsa)",
+  "Keyingi qadam rejasi",
+  "Qulay kabinet",
 ];
 
 const sharedSpecs = {
@@ -46,53 +46,54 @@ const sharedSpecs = {
   comfort: 4.7,
   facilities: 4.9,
   checkIn: "10:00",
-  checkOut: "12:00",
+  checkOut: "19:00",
 } satisfies Omit<RoomSpecs, "pricePerNight">;
 
-/** Cards on the /rooms listing page */
+/** Cards on the /rooms listing page (xizmatlar) */
 export const roomsListing = [
   {
     slug: "standard-room",
-    name: "Standart xona",
+    name: "Yuzni chuqur tozalash",
     blurb:
-      "Standart xonamiz zarur qulayliklar, yumshoq to‘shak va tinch muhitga ega — oddiy, dam olishga qulay va byudjetga mos joy izlovchilar uchun ideal",
+      "Teri tipingizga mos chuqur tozalash — poralar, yallig‘lanish va rang notekisligiga yumshoq, professional yondashuv",
     highlights: [
-      "Bolalar uchun qulay",
-      "Hayvonlar uchun qulay",
-      "Isitiladigan basseyn",
-      "Kundalik nonushta",
-      "Kundalik tozalash",
+      "Konsultatsiya kiritilgan",
+      "Barcha teri tiplari",
+      "45–60 daqiqa",
+      "Uy parvarishi rejasi",
+      "Steril muhit",
     ],
-    price: "$180",
+    price: "180 000 so‘m",
     image: `${CDN}/694e597d59f693d74fc55932_image%20434-Picsart-AiImageEnhancer%201.webp`,
   },
   {
     slug: "executive-suite",
-    name: "Ijrochi lyuks",
+    name: "Premium teri parvarishi",
     blurb:
-      "Keng interyer, premium qulayliklar va hashamatli dam olish uchun nafis muhitga ega Ijrochi lyuksimizda yuqori darajadagi qulaylikni his eting",
+      "Chuqur namlanish, lifting effekti va porlash uchun premium protokol — sezgir teriga ham moslashtiriladi",
     highlights: [
-      "Bolalar uchun qulay",
-      "Hayvonlar uchun qulay",
-      "Aeroport kutib olish va kuzatib qo‘yish",
-      "Kundalik nonushta",
-      "Kundalik tozalash",
+      "Diagnostika",
+      "Premium formulalar",
+      "60–90 daqiqa",
+      "Anti-stress ritual",
+      "Shaxsiy reja",
     ],
-    price: "$220",
+    price: "280 000 so‘m",
     image: `${CDN}/694e59b978f8bc2c0529036a_image%20435-Picsart-AiImageEnhancer%201.webp`,
   },
   {
     slug: "sea-view-room",
-    name: "Dengiz manzarali xona",
-    blurb: "Panoramik dengiz manzarali hashamatli xonalardan bahramand bo‘ling",
+    name: "Anti-age kompleks",
+    blurb:
+      "Qarish belgilari, elastiklik va yuz ovalini qo‘llab-quvvatlovchi kompleks muolaja",
     highlights: [
-      "Bolalar uchun qulay",
-      "Hayvonlar uchun qulay",
-      "Isitiladigan basseyn",
-      "Kundalik nonushta",
-      "Kundalik tozalash",
+      "Konsultatsiya",
+      "Kurs tavsiyasi",
+      "75–90 daqiqa",
+      "Uyda davom ettirish",
+      "Natijaga yo‘naltirilgan",
     ],
-    price: "$300",
+    price: "350 000 so‘m",
     image: `${CDN}/694e59b966e523eacd429043_image%20436-Picsart-AiImageEnhancer%201.webp`,
   },
 ] as const;
@@ -100,10 +101,10 @@ export const roomsListing = [
 export const roomDetails: RoomDetail[] = [
   {
     slug: "standard-room",
-    name: "Standart xona",
+    name: "Yuzni chuqur tozalash",
     blurb: roomsListing[0].blurb,
     highlights: [...roomsListing[0].highlights],
-    price: "$180",
+    price: roomsListing[0].price,
     image: `${CDN_ROOM}/6952639c8cc1cb88dbe36953_image%20430-Picsart-AiImageEnhancer%201%20(3).webp`,
     images: [
       `${CDN_ROOM}/6952639c8cc1cb88dbe36953_image%20430-Picsart-AiImageEnhancer%201%20(3).webp`,
@@ -120,15 +121,15 @@ export const roomDetails: RoomDetail[] = [
       `${CDN}/69561ff7970dc664aef5fcdc_1771%201.webp`,
     ],
     overview: sharedOverview,
-    specs: { ...sharedSpecs, pricePerNight: "$180" },
+    specs: { ...sharedSpecs, pricePerNight: roomsListing[0].price },
     amenities: sharedQulayliklar,
   },
   {
     slug: "sea-view-room",
-    name: "Dengiz manzarali xona",
+    name: "Anti-age kompleks",
     blurb: roomsListing[2].blurb,
     highlights: [...roomsListing[2].highlights],
-    price: "$300",
+    price: roomsListing[2].price,
     image: `${CDN_ROOM}/69526349fe6b037995df5068_image%20433-Picsart-AiImageEnhancer%201%20(1).webp`,
     images: [
       `${CDN_ROOM}/69526349fe6b037995df5068_image%20433-Picsart-AiImageEnhancer%201%20(1).webp`,
@@ -145,15 +146,15 @@ export const roomDetails: RoomDetail[] = [
       `${CDN}/69561ff7648e96670fe6964d_image%20433-Picsart-AiImageEnhancer%201%20(3).webp`,
     ],
     overview: sharedOverview,
-    specs: { ...sharedSpecs, pricePerNight: "$300" },
+    specs: { ...sharedSpecs, pricePerNight: roomsListing[2].price },
     amenities: sharedQulayliklar,
   },
   {
     slug: "executive-suite",
-    name: "Ijrochi lyuks",
+    name: "Premium teri parvarishi",
     blurb: roomsListing[1].blurb,
     highlights: [...roomsListing[1].highlights],
-    price: "$220",
+    price: roomsListing[1].price,
     image: `${CDN_ROOM}/6952637661ca8c9f992aea81_image%20432-Picsart-AiImageEnhancer%202.webp`,
     images: [
       `${CDN_ROOM}/6952637661ca8c9f992aea81_image%20432-Picsart-AiImageEnhancer%202.webp`,
@@ -170,7 +171,7 @@ export const roomDetails: RoomDetail[] = [
       `${CDN}/69561ff7648e96670fe6964d_image%20433-Picsart-AiImageEnhancer%201%20(3).webp`,
     ],
     overview: sharedOverview,
-    specs: { ...sharedSpecs, pricePerNight: "$220" },
+    specs: { ...sharedSpecs, pricePerNight: roomsListing[1].price },
     amenities: sharedQulayliklar,
   },
 ];

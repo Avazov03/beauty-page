@@ -5,5 +5,5 @@ import { html as s5 } from "./home-5";
 import { html as testimonials } from "./home-testimonials-v3";
 import { html as s9 } from "./home-9";
 
-/** Order: rooms → business → dining → Baxtli mijozlarimiz → CTA */
+/** Order: rooms → business → dining → Baxtli mijozlarim → CTA */
 export const html = [s2, s4, s5, testimonials, s9].join("\n");

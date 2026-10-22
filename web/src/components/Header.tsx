@@ -8,7 +8,7 @@ import styles from "./Header.module.css";
 const extraLinks = [
   { href: "/amenities", label: "Qulayliklar" },
   { href: "/spa", label: "SPA" },
-  { href: "/restaurant", label: "Restoran" },
+  { href: "/restaurant", label: "Uy parvarishi" },
   { href: "/contact", label: "Aloqa" },
 ];
 
@@ -48,7 +48,7 @@ export function Header() {
             {contact.phoneDisplay}
           </a>
           <Link className={styles.book} href="/contact">
-            Bron qilish
+            Qabulga yozilish
           </Link>
           <button
             className={`${styles.menuBtn} ${open ? styles.menuOpen : ""}`}
@@ -85,7 +85,7 @@ export function Header() {
             href="/contact"
             onClick={() => setOpen(false)}
           >
-            Bron qilish
+            Qabulga yozilish
           </Link>
         </div>
       ) : null}

@@ -4,7 +4,7 @@ import { html } from "@/baseline/html/rooms";
 import { pageIntros } from "@/data/pages";
 
 export const metadata: Metadata = {
-  title: "Xonalar",
+  title: "Xizmatlar",
   description: pageIntros.rooms.metaDescription,
 };
 

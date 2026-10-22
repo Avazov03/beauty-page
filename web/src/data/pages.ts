@@ -12,156 +12,156 @@ export type PageIntro = {
 
 export const pageIntros = {
   about: {
-    eyebrow: "Yillar tajribasi",
-    title: "Mukammal dam olishga xush kelibsiz",
+    eyebrow: "Tajriba va yondashuv",
+    title: "Men bilan tanishing",
     subtitle:
-      "Sizning qulayligingiz — bizning maqsadimiz; har bir lahza uydek his qilishingiz uchun yaratiladi",
+      "Sizning teringiz — mening e’tiborim; har bir muolajani ishonch va natija uchun o‘ylab tanlayman",
     intro:
-      "Classic Apartment qulaylik, g‘amxo‘rlik va ishonchga asoslangan — chinakam mehmondo‘stlik va mehmon mamnuniyati bilan o‘ylab ishlangan yashashlarni taklif etadi.",
+      "Men — Malika Karimova, kosmetolog. Yuz va teri parvarishida shaxsiy yondashuv, tushunarli tushuntirish va xavfsiz protokol bilan ishlayman.",
     image: `${CDN}/69452c5ad14c210fde417f7d_6e8b8f07617e02360fd36671319429eb_about-banner-image.webp`,
     metaDescription:
-      "Classic Apartment — qulaylik, g‘amxo‘rlik va chinakam mehmondo‘stlik bilan yaratilgan dam olish.",
+      "Malika Karimova — kosmetolog, yuz va teri parvarishi mutaxassisi.",
   },
   rooms: {
-    title: "Xonalarimiz",
-    subtitle: "Sof qulaylikda uxlang",
+    title: "Xizmatlarim",
+    subtitle: "Teringiz uchun aniq yechimlar",
     intro:
-      "Zamonaviy interyer, yumshoq to‘shak va dam olish uchun zarur qulayliklarga ega Classic Apartment xonalarini kashf eting.",
+      "Yuzni tozalashdan anti-age muolajalarigacha — xizmatlarimni ko‘ring: jarayon tushuntiriladi, narx aniq, yondashuv shaxsiy.",
     image: `${CDN}/694e312f0951a14b785ffd15_e568dbb1f01f309400cbfb4d237ffe6a_room-page-banner-image.webp`,
     metaDescription:
-      "Classic Apartment xonalari — qulaylik va uslub uchun zamonaviy interyerlar.",
+      "Malika Karimova xizmatlari — yuz parvarishi, konsultatsiya va premium muolajalar.",
   },
   amenities: {
-    eyebrow: "Qulayliklar haqida",
-    title: "Har bir mehmon uchun a’lo qulayliklar",
+    eyebrow: "Qulayliklar",
+    title: "Kabinetimda nima kutadi",
     intro:
-      "Hashamat cho‘qqisida — jahon darajasidagi SPA va ajoyib ovqatlanish. Zamonaviy imkoniyatlar va o‘ylab topilgan xizmatlar bilan tinch dam olish uchun qulayliklar.",
+      "Steril muhit, zamonaviy jihozlar va tinch kabinet — seanslarim qulay va xavfsiz o‘tadi.",
     image: `${CDN}/69527b3a5274ffb6de3d0349_image%20447-Picsart-AiImageEnhancer%201%20(1).webp`,
     metaDescription:
-      "Classic Apartment qulayliklari — SPA, ovqatlanish va zamonaviy xizmatlar.",
+      "Malika Karimova kabineti — zamonaviy jihozlar va e’tiborli xizmat.",
   },
   banquet: {
-    title: "Nafis banket maydonlari",
+    title: "Maxsus paketlarim",
     intro:
-      "To‘y, yig‘ilish va tadbirlar uchun nafis maydonlar, zamonaviy imkoniyatlar va e’tiborli xizmat — Classic Apartment banketida.",
+      "To‘liq parvarish kurslari, juftlik seanslari va mavsumiy paketlar — maqsadingizga mos dasturni birgalikda tanlaymiz.",
     image: `${CDN}/6954dfb0643940014e8d7c27_image%20453-Picsart-AiImageEnhancer%201%20(1).webp`,
     metaDescription:
-      "Classic Apartment banket maydonlari — to‘y va korporativ tadbirlar uchun.",
+      "Malika Karimova paketlar — kurslar, juftlik seanslari va maxsus dasturlar.",
   },
   spa: {
-    title: "Tana, ruh va ongni yangilang",
+    title: "Tana, ruh va terini yangilang",
     subtitle:
-      "Muvozanat va ichki osoyishtalikni tiklaydigan sog‘lomlashtirish tajribalari",
+      "Muvozanat va osoyishtalikni tiklaydigan sog‘lomlashtirish muolajalari",
     intro:
-      "Classic Apartment SPAda tinchlantiruvchi muolajalar, osoyishta muhit va mutaxassis g‘amxo‘rlik bilan dam oling.",
+      "Kabinetimda tinchlantiruvchi muolajalar, osoyishta muhit va shaxsiy g‘amxo‘rlik bilan dam oling.",
     image: `${CDN}/6953b6cbe9d3fb1df0e77f56_5a6f785dfa85045b71d807cfaff4a76a_spa-banner-image.webp`,
     metaDescription:
-      "Classic Apartment SPA — tinchlantiruvchi muolajalar va osuda muhit.",
+      "Malika Karimova — tinchlantiruvchi muolajalar va osuda muhit.",
   },
   restaurant: {
-    eyebrow: "Xizmat haqida",
-    title: "Uslub bilan taqdim etilgan mazali taomlar",
+    eyebrow: "Uyda davom",
+    title: "Uy parvarishi bo‘yicha maslahatlarim",
     intro:
-      "Ajoyib ta’m va nafislik uyg‘unlashgan ovqatlanish. Classic Apartment restoranida yangi mahsulotlar, mazali oshxona va iliq muhit.",
+      "Muolajadan keyin teringizni qo‘llab-quvvatlash: mahsulotlar, SPF va kundalik odatlar — shaxsiy tavsiyalarim.",
     image: `${CDN}/6954e9698b2e3670bc6d4911_image%20490-Picsart-AiImageEnhancer%20(1)%201%20(1).webp`,
     metaDescription:
-      "Classic Apartment restorani — mazali taomlar va iliq atmosfera.",
+      "Malika Karimova — uy parvarishi maslahatlari va mutaxassis tavsiyalari.",
   },
   blog: {
-    title: "Bloglarimizni o‘qing",
+    title: "Yangiliklar va maslahatlarim",
     intro:
-      "Sayohat maslahatlari, mehmonxona yangiliklari va mehmondo‘stlik hikoyalari — Classic Apartment blogida.",
+      "Teri parvarishi, yangi muolajalar va foydali maslahatlar — mening jurnalimda.",
     image: `${CDN}/695645e0708c845e290a1f9e_image%20508-Picsart-AiImageEnhancer%201%20(1).webp`,
     metaDescription:
-      "Classic Apartment blog — sayohat va mehmondo‘stlik haqida foydali maqolalar.",
+      "Malika Karimova blog — teri parvarishi va go‘zallik haqida foydali maqolalar.",
   },
   contact: {
     eyebrow: "Aloqa",
-    title: "Suhbatni boshlang",
-    subtitle: "Biz bilan bog‘laning",
+    title: "Menga yozing",
+    subtitle: "Qabulga yozilish yoki savol",
     intro:
-      "Savolingiz bormi? Bron, qulayliklar, ovqatlanish yoki maxsus so‘rovlar bo‘yicha jamoamiz tez yordam beradi.",
+      "Savolingiz bormi? Qabulga yozilish, konsultatsiya yoki maxsus so‘rov — tezkor javob beraman.",
     image: `${CDN}/6954b29b8505845a7463cc60_image%20506-Picsart-AiImageEnhancer%201%20(1).webp`,
     metaDescription:
-      "Classic Apartment bilan bog‘laning — bron va xizmatlar bo‘yicha savollaringiz uchun.",
+      "Malika Karimova bilan bog‘laning — qabul va xizmatlar bo‘yicha.",
   },
 } satisfies Record<string, PageIntro>;
 
 export const aboutFeatures = [
   {
-    title: "E’tiborli mehmondo‘stlik",
-    body: "Har bir yashash — e’tiborli xizmat, tinch muhit va mehmonni kelganidan ketgunicha chinakam kutib oladigan detallar bilan shakllanadi.",
+    title: "Shaxsiy konsultatsiya",
+    body: "Har bir seansni teringizni tinglash, aniq tushuntirish va natijaga yo‘naltirilgan reja bilan boshlayman.",
   },
   {
-    title: "Qulaylik uchun yaratilgan",
-    body: "Xonalar, lounge va umumiy joylar nafis dizayn bilan amaliy qulaylikni uyg‘unlashtiradi — biznes va dam olish mehmonlari uchun.",
+    title: "Xavfsizlik va steril muhit",
+    body: "Kabinetim, jihozlar va jarayonlar ishonch uchun o‘ylab topilgan — siz tinch, men esa e’tiborli.",
   },
   {
-    title: "Mahalliy ildizlar",
-    body: "Ovqatlanishdan tavsiyalargacha — shahar ruhini his qildiramiz, mehmonxona tajribasini esa oson saqlaymiz.",
+    title: "Faqat sizga mos yondashuv",
+    body: "Shablon emas: yosh, teri tipi va maqsadingizga mos muolaja va uy parvarishi tavsiyalari.",
   },
 ];
 
 export const amenityItems = [
   {
-    title: "Wellness va SPA",
-    body: "Sayohat yoki shahar kuni oxirida kuchni tiklash uchun tinchlantiruvchi muolajalar va osoyishta joylar.",
+    title: "Yuz diagnostikasi",
+    body: "Muolajadan oldin teri holatini baholayman — to‘g‘ri tanlov va kutilgan natija uchun.",
   },
   {
-    title: "Fitnes studio",
-    body: "Zamonaviy jihozlar va moslashuvchan soatlar — mehmonxonadan chiqmasdan mashq qiling.",
+    title: "Professional jihozlar",
+    body: "Zamonaviy apparatlar va sertifikatlangan vositalar — sifatli va xavfsiz seans.",
   },
   {
-    title: "Basseyn va teras",
-    body: "Ochiq havoda dam olish: basseyn yonidagi o‘rindiqlar va osuda o‘tish.",
+    title: "Tinch kabinet",
+    body: "Osuda muhit: shovqinsiz, toza va dam olishga qulay joy.",
   },
   {
-    title: "Konsyerj yordami",
-    body: "Bron, transfer, restoran band qilish va maxsus so‘rovlar — kerak bo‘lganda yordam.",
+    title: "Tezkor aloqa",
+    body: "Qabulga yozilish, muolaja tanlash va keyingi qadamlar — kerak bo‘lganda yordam beraman.",
   },
   {
-    title: "Biznes uchun tayyor",
-    body: "Tezkor Wi-Fi, uchrashuvga qulay burchaklar va samarali ish uchun tinch joylar.",
+    title: "Uy parvarishi rejasi",
+    body: "Seansdan keyin nima qilish kerakligini aniq aytaman — natijani uyda ham saqlaysiz.",
   },
   {
-    title: "Oilaviy qulay",
-    body: "Bolalar bilan sayohatni osonlashtiradigan moslashuvchan xona variantlari va qo‘shimchalar.",
+    title: "Barcha yoshlar uchun",
+    body: "Yosh yoki etuk teri — mos muolaja va yumshoq yondashuv.",
   },
 ];
 
 export const banquetHighlights = [
-  "To‘y va ziyofatlar",
-  "Korporativ uchrashuvlar",
-  "Shaxsiy bayramlar",
-  "Seminar va retreatlar",
-  "Zamonaviy AV qo‘llab-quvvatlash",
-  "Moslashtirilgan katering menyulari",
+  "Chuqur tozalash kursi",
+  "Anti-age dasturi",
+  "Juftlik seanslari",
+  "Mavsumiy aksiyalar",
+  "Uy parvarishi to‘plami",
+  "Moslashtirilgan paketlar",
 ];
 
 export const spaTreatments = [
   {
-    title: "Imzoli massaj",
-    body: "Zo‘riqishni kamaytirish va chuqur dam olishga qaratilgan to‘liq tana muolajasi.",
+    title: "Imzoli yuz massaji",
+    body: "Zo‘riqishni kamaytirish va chuqur dam olishga qaratilgan yumshoq yuz rituallari.",
   },
   {
     title: "Yuz rituallari",
-    body: "Sayohatdan keyin yangilanish, namlanish va porlash uchun yuz muolajalari.",
+    body: "Yangilanish, namlanish va porlash uchun mutaxassis yuz muolajalari.",
   },
   {
-    title: "Juftlik wellness",
-    body: "Birgalikda tinchlanish va bog‘lanish uchun yaratilgan SPA lahzalari.",
+    title: "Juftlik parvarishi",
+    body: "Birgalikda tinchlanish va g‘amxo‘rlik uchun yaratilgan seanslar.",
   },
   {
     title: "Tana terapiyalari",
-    body: "Charchagan mushaklarni jonlantiradigan skrab va o‘ramalar.",
+    body: "Charchagan teri va mushaklarni jonlantiradigan skrab va o‘ramalar.",
   },
 ];
 
 export const restaurantHighlights = [
-  "Mavsumiy menyular",
-  "Yangi mahalliy mahsulotlar",
-  "Imzoli fine dining",
-  "Nonushta kiritilgan variantlar",
-  "Shaxsiy ovqatlanish xonalari",
-  "Kokteyl lounge",
+  "Kundalik uy parvarishi",
+  "Teri tipiga mos mahsulotlar",
+  "SPF va himoya maslahatlari",
+  "Muolajadan keyingi rejim",
+  "Shaxsiy konsultatsiya",
+  "Mavsumiy tavsiyalar",
 ];

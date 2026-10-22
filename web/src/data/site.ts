@@ -1,6 +1,18 @@
-/** Classic Apartment — sayt brendi va kontaktlar (bitta manba). */
-export const brandName = "Classic Apartment";
+/**
+ * Demo: yakka kosmetolog shablonining bitta manbasi.
+ * Keyin mijozga moslab ism, kontakt va matnlarni almashtirasiz.
+ */
+export const brandName = "Malika Karimova";
 
+export const specialist = {
+  name: "Malika Karimova",
+  title: "Kosmetolog",
+  headline: "Yuz va teri parvarishi mutaxassisi",
+  experienceYears: "7+",
+  city: "Toshkent",
+};
+
+/** Sayt egasi / texnik aloqa (shablon muallifi) — mijoz kontakti emas. */
 export const owner = {
   name: "Avazov Og‘abek",
   role: "Fullstack dasturchi va dizayner",
@@ -10,10 +22,10 @@ export const owner = {
 
 export const navLinks = [
   { href: "/", label: "Bosh sahifa" },
-  { href: "/about", label: "Biz haqimizda" },
-  { href: "/rooms", label: "Xonalar" },
-  { href: "/banquet", label: "Banket" },
-  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "Men haqimda" },
+  { href: "/rooms", label: "Xizmatlar" },
+  { href: "/banquet", label: "Paketlar" },
+  { href: "/blog", label: "Yangiliklar" },
 ] as const;
 
 export const contact = {
@@ -44,4 +56,4 @@ export const logos = {
 };
 
 export const footerTagline =
-  "Biz qulaylik, e’tiborli xizmat va chinakam mehmondo‘stlikni uyg‘unlashtirib, har bir mehmon o‘zini qadrlangan his qiladigan unutilmas dam olish tajribasini yaratamiz.";
+  "Men teri salomatligi, e’tiborli konsultatsiya va chuqur mutaxassis g‘amxo‘rligini uyg‘unlashtirib, har bir mijozim o‘zini qadrlangan his qiladigan unutilmas parvarish tajribasini yarataman.";

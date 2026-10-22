@@ -13,7 +13,7 @@ Read this **before** applying taste, impeccable, or Emil skills in this repo.
 
 ## Product
 
-Reusable premium site template for cosmetologists / skin experts (evolving from a hotel Webflow → Next.js base). Not a generic SaaS landing.
+Reusable premium mini-site for one cosmetologist / skin expert (demo persona: Malika Karimova). Personal voice — not a multi-doctor clinic. Evolving from Webflow → Next.js.
 
 ## Visual DNA (do not replace)
 

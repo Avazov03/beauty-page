@@ -12,7 +12,7 @@ Bu repoda `design-taste-frontend`, `impeccable`, `emil-design-eng` va bog‘liq 
 1. `web/src/styles/tokens.css` — rang, shrift, radius, motion tokenlari
 2. `web/public/brand-trial.css` — joriy brend yashillari / porcelain
 3. Mavjud Webflow classlar (`rt-*`) va `web/src/styles/baseline-overrides.css`
-4. Brend: Classic Apartment → beauty / kosmetolog shablon yo‘nalishi
+4. Brend: yakka mutaxassis (demo: Malika Karimova) — shaxsiy kabinet, “men” ovozi; klinika/jamoa tilidan qoch
 
 ## Majburiy qoidalar
 
