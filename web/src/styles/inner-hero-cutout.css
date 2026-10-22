@@ -58,10 +58,11 @@
 }
 
 .rt-inner-hero.is-cutout-hero {
-  --cutout-band: min(70rem, calc(100vw - 2.5rem));
+  /* +100px from original 70rem — +200px squeezed the side gutters too hard */
+  --cutout-band: min(calc(70rem + 100px), calc(100vw - 2.5rem));
   --cutout-gutter: max(1rem, calc((100vw - var(--cutout-band)) / 2));
   --cutout-col: calc(var(--cutout-band) * 0.46);
-  --cutout-inset: clamp(1rem, 2.5vw, 2.25rem);
+  --cutout-inset: clamp(1.5rem, 3.5vw, 3rem);
   /* Comfortable air between copy and figure (~50px) */
   --cutout-gap: clamp(2.75rem, 3.5vw, 3.5rem);
   position: relative;
@@ -239,27 +240,25 @@
 }
 
 /*
- * Closeup: copy sits upper-left, face lower-right (magazine pair)
- * so a large figure can keep ~50px air without crushing the headline.
+ * Closeup: vertically centered again; extra left inset so copy
+ * doesn’t hug the viewport after a wider band.
  */
 .rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"]
   .rt-about-us-text-wrapper {
-  align-items: flex-start;
-  /* Sit under the pill — leave ~50px air above the closeup face */
-  padding-top: clamp(6.25rem, 11vh, 7.5rem) !important;
+  align-items: center;
 }
 
 .rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"]
   .rt-about-us-text-main-box {
   max-width: min(24rem, 100%);
-  margin-bottom: var(--cutout-gap);
 }
 
 .rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"][data-cutout-side="right"]
   .rt-about-us-text-wrapper > .rt-container,
 .rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"][data-cutout-side="right"]
   .rt-about-us-text-wrapper > .w-container {
-  padding-right: calc(50% + var(--cutout-gap)) !important;
+  padding-left: clamp(2.5rem, 5vw, 4.5rem) !important;
+  padding-right: calc(48% + var(--cutout-gap)) !important;
 }
 
 /* Figure left → copy right */
