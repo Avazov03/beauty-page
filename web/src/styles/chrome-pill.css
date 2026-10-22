@@ -1,19 +1,31 @@
 /*
- * Floating pill header — Pearl & Plum.
- * Flex row: brand | nav | CTA (no absolute-centered nav overlap).
+ * Global floating pill header — Pearl & Plum (home + all inner pages).
  */
 
-html.is-home .rt-top-bar-wrap {
+.rt-top-bar-wrap {
   display: none !important;
 }
 
-html.is-home .rt-top-main-box {
+.rt-top-main-box {
   background: transparent !important;
   box-shadow: none !important;
 }
 
-html.is-home .rt-navbar-v1,
-html.is-home .rt-navbar-v1[style] {
+html.is-inner.is-nav-solid .rt-top-main-box,
+html.is-home.is-nav-solid .rt-top-main-box {
+  box-shadow: none !important;
+}
+
+.rt-navbar-v1,
+.rt-navbar-v1[style],
+html.is-inner .rt-navbar-v1,
+html.is-inner .rt-navbar-v1[style],
+html.is-inner.is-hero-top .rt-navbar-v1,
+html.is-inner.is-nav-solid .rt-navbar-v1,
+html.is-inner:has(.rt-room-details-hero) .rt-navbar-v1,
+html.is-inner:has(.rt-inner-hero) .rt-navbar-v1,
+html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
+  .rt-navbar-v1 {
   position: relative !important;
   width: min(64rem, calc(100% - 1.25rem)) !important;
   max-width: calc(100% - 1.25rem) !important;
@@ -29,12 +41,17 @@ html.is-home .rt-navbar-v1[style] {
   backdrop-filter: blur(10px) saturate(1.05) !important;
 }
 
-html.is-home.is-nav-solid .rt-navbar-v1,
-html.is-home.is-nav-solid .rt-navbar-v1[style] {
+html.is-nav-solid .rt-navbar-v1,
+html.is-nav-solid .rt-navbar-v1[style] {
   background-color: #f8f4f6 !important;
 }
 
-html.is-home .rt-nav-inner-block {
+.rt-nav-inner-block,
+html.is-inner .rt-nav-inner-block,
+html.is-inner.is-hero-top .rt-nav-inner-block,
+html.is-inner.is-nav-solid .rt-nav-inner-block,
+html.is-inner:has(.rt-room-details-hero) .rt-nav-inner-block,
+html.is-inner:has(.rt-inner-hero) .rt-nav-inner-block {
   background: transparent !important;
   width: 100% !important;
   max-width: none !important;
@@ -42,54 +59,82 @@ html.is-home .rt-nav-inner-block {
   padding-right: 0 !important;
 }
 
-html.is-home .rt-navbar-shadow-v1 {
+.rt-navbar-shadow-v1,
+html.is-inner .rt-navbar-shadow-v1,
+html.is-inner.is-nav-solid .rt-navbar-shadow-v1,
+html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
+  .rt-navbar-shadow-v1 {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
-/* Pill: telefon yashirin — CTA yetarli */
-html.is-home .rt-navbar-v1-right-wrapper a[href^="tel:"] {
+/* Telefon yashirin — CTA yetarli */
+.rt-navbar-v1-right-wrapper a[href^="tel:"] {
   display: none !important;
 }
 
 /* Webflow dual-label — bitta matn */
-html.is-home .rt-navbar-v1-button-wrapper .rt-text-two,
-.rt-navbar-v1-button-wrapper .rt-button .rt-text-two {
-  display: none !important;
-}
-
-html.is-home .rt-navbar-v1-button-wrapper .rt-button-overlay,
+.rt-navbar-v1-button-wrapper .rt-text-two,
 .rt-navbar-v1-button-wrapper .rt-button-overlay {
   display: none !important;
 }
 
+/* Har doim plum matn (glass oq matn bekor) */
+.rt-navbar-v1-bar-line,
+.rt-navbar-v1-menu-bar-wrap .rt-navbar-v1-bar-line,
+html.is-inner.is-hero-top .rt-navbar-v1-bar-line,
+html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid)
+  .rt-navbar-v1-bar-line,
+html.is-inner:has(.rt-inner-hero):not(.is-nav-solid) .rt-navbar-v1-bar-line {
+  background-color: var(--color-brand, #72516f) !important;
+}
+
+.rt-navbar-v1-menu-wrapper .rt-button-text,
+.rt-navbar-v1-menu-wrapper .rt-hover-color-change,
+.rt-navbar-v1-button-wrapper .rt-text-white,
+.rt-navbar-v1 a.rt-text-white,
+html.is-inner.is-hero-top .rt-navbar-v1-menu-wrapper .rt-button-text,
+html.is-inner.is-hero-top .rt-navbar-v1-button-wrapper .rt-text-white,
+html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid)
+  .rt-navbar-v1-button-wrapper
+  .rt-text-white,
+html.is-inner:has(.rt-inner-hero):not(.is-nav-solid)
+  .rt-navbar-v1-button-wrapper
+  .rt-text-white {
+  color: var(--color-brand, #72516f) !important;
+}
+
 @media (min-width: 1100px) {
-  html.is-home .rt-navbar-v1-button-wrapper .rt-button {
+  .rt-navbar-v1-button-wrapper .rt-button,
+  html.is-inner.is-hero-top .rt-navbar-v1-button-wrapper .rt-button,
+  html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid)
+    .rt-navbar-v1-button-wrapper
+    .rt-button,
+  html.is-inner:has(.rt-inner-hero):not(.is-nav-solid)
+    .rt-navbar-v1-button-wrapper
+    .rt-button,
+  html.is-inner.is-nav-solid .rt-navbar-v1-button-wrapper .rt-button {
     border-radius: 999px !important;
     background-color: var(--color-mauve, #d3b9c9) !important;
     box-shadow: none !important;
     padding: 0.6rem 1.25rem !important;
   }
 
-  html.is-home .rt-navbar-v1-button-wrapper .rt-button:hover {
+  .rt-navbar-v1-button-wrapper .rt-button:hover,
+  html.is-inner.is-hero-top .rt-navbar-v1-button-wrapper .rt-button:hover {
     background-color: var(--color-plum, #72516f) !important;
     transform: translateY(-1px);
   }
 
-  html.is-home .rt-navbar-v1-button-wrapper .rt-button:hover .rt-button-text {
+  .rt-navbar-v1-button-wrapper .rt-button:hover .rt-button-text {
     color: #fff !important;
   }
 
-  html.is-home .rt-navbar-v1-button-wrapper .rt-button-text,
-  html.is-home .rt-navbar-v1-button-wrapper a.rt-text-white {
+  .rt-navbar-v1-button-wrapper .rt-button-text,
+  .rt-navbar-v1-button-wrapper a.rt-text-white {
     color: var(--color-plum, #72516f) !important;
   }
-}
-
-html.is-inner.is-nav-solid .rt-navbar-v1-button-wrapper .rt-button,
-html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
-  .rt-navbar-v1-button-wrapper
-  .rt-button {
-  background-color: var(--color-mauve, #d3b9c9) !important;
 }

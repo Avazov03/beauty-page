@@ -275,19 +275,14 @@
   padding-bottom: 0.15rem;
 }
 
-/* Nav link colors — home pearl pill uses plum; photo heroes stay white */
+/* Pill chrome: nav links always plum (all pages) */
+.ca-nav-link,
 html.is-home.is-hero-top .ca-nav-link,
-html.is-home.is-nav-solid .ca-nav-link {
-  color: var(--color-brand, #72516f);
-}
-
+html.is-home.is-nav-solid .ca-nav-link,
 html.is-inner.is-hero-top .ca-nav-link,
-html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid) .ca-nav-link,
-html.is-inner:has(.rt-inner-hero):not(.is-nav-solid) .ca-nav-link {
-  color: #ffffff;
-}
-
 html.is-inner.is-nav-solid .ca-nav-link,
+html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid) .ca-nav-link,
+html.is-inner:has(.rt-inner-hero):not(.is-nav-solid) .ca-nav-link,
 html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   .ca-nav-link {
   color: var(--color-brand, #72516f);
@@ -365,30 +360,11 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     letter-spacing: var(--tracking-body, -0.01875rem);
   }
 
-  /* Photo heroes: light CTA for contrast */
-  html.is-inner.is-hero-top .rt-navbar-v1-button-wrapper .rt-button,
-  html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid)
-    .rt-navbar-v1-button-wrapper
-    .rt-button,
-  html.is-inner:has(.rt-inner-hero):not(.is-nav-solid)
-    .rt-navbar-v1-button-wrapper
-    .rt-button {
-    background-color: rgba(255, 255, 255, 0.94) !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
-  }
-
-  html.is-inner.is-hero-top .rt-navbar-v1-button-wrapper .rt-button:hover {
-    background-color: #ffffff !important;
-    transform: translateY(-1px);
-  }
-
-  html.is-home .rt-navbar-v1-button-wrapper .rt-button,
-  html.is-inner.is-nav-solid .rt-navbar-v1-button-wrapper .rt-button,
-  html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
-    .rt-navbar-v1-button-wrapper
-    .rt-button {
+  /* Global mauve CTA — matches home pill */
+  .rt-navbar-v1-button-wrapper .rt-button {
     background-color: var(--color-mauve, #d3b9c9) !important;
     box-shadow: none;
+    border-radius: 999px !important;
   }
 }
 

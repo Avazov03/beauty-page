@@ -32,12 +32,10 @@
   overflow: visible !important;
 }
 
+/* Pill always plum — ignore old white-on-hero logo colors */
 html.is-inner.is-hero-top .ca-brand-mark,
 html.is-inner:has(.rt-room-details-hero):not(.is-nav-solid) .ca-brand-mark,
-html.is-inner:has(.rt-inner-hero):not(.is-nav-solid) .ca-brand-mark {
-  color: #ffffff;
-}
-
+html.is-inner:has(.rt-inner-hero):not(.is-nav-solid) .ca-brand-mark,
 html.is-home .ca-brand-mark,
 html.is-inner.is-nav-solid .ca-brand-mark,
 html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))

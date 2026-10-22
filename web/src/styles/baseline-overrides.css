@@ -267,12 +267,7 @@ html.is-home.is-nav-solid .rt-navbar-v1 a.rt-text-white {
   color: var(--color-brand, #72516f) !important;
 }
 
-/* Home chrome: floating pill (see chrome-pill.css) — hide full-bleed shadow */
-html.is-home .rt-navbar-shadow-v1 {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
+/* Floating pill chrome — shadow/full-bleed handled in chrome-pill.css */
 
 /*
  * Shared chrome: Navbar v1 + dark logo/menu on every inner page.
