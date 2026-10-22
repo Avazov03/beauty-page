@@ -195,35 +195,38 @@
     width: min(36vw, 460px);
   }
 
+  /* Upper-left: clear gap from figure + above the big name band */
   .inner {
     position: absolute;
     left: max(
-      1.25rem,
-      calc(50% - min(36vw, 460px) / 2 - min(23rem, 30vw) + 2.75rem)
+      1.5rem,
+      calc(50% - min(36vw, 460px) / 2 - min(21rem, 26vw) - 3.5rem)
     );
-    top: 36%;
-    transform: translateY(-30%);
+    top: 20%;
+    transform: none;
     z-index: 3;
-    width: min(23rem, 30vw);
+    width: min(21rem, 26vw);
     max-width: none;
     padding: 0;
   }
 
   .headline {
-    font-size: clamp(2.15rem, 3.4vw, 3.15rem);
+    font-size: clamp(2.05rem, 3.2vw, 2.95rem);
   }
 
+  .lede {
+    max-width: 20rem;
+  }
 }
 
 @media (min-width: 1200px) {
   .inner {
     left: max(
-      2rem,
-      calc(50% - min(34vw, 480px) / 2 - min(24rem, 28vw) + 3.25rem)
+      2.25rem,
+      calc(50% - min(34vw, 480px) / 2 - min(22rem, 24vw) - 4.25rem)
     );
-    width: min(24rem, 28vw);
-    top: 34%;
-    transform: translateY(-28%);
+    width: min(22rem, 24vw);
+    top: 18%;
   }
 
   .nameBehind {
@@ -235,6 +238,6 @@
   }
 
   .headline {
-    font-size: clamp(2.35rem, 3.2vw, 3.25rem);
+    font-size: clamp(2.2rem, 3vw, 3.05rem);
   }
 }
