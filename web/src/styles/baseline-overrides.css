@@ -926,3 +926,193 @@ html.is-home .rt-gallery-image-box img {
   object-position: center;
   display: block;
 }
+
+/*
+ * Xizmatlar pages — stock swapped hotel CDN; wrappers sized from intrinsic
+ * image ratio and cards/marquees jumped (amenities 293/438/657, menu 351/790).
+ * Lock Webflow HTML frame hints; cover-fill.
+ */
+
+/* Qulayliklar (/amenities) marquee — imgs tagged 436×436 */
+.rt-amenities-image {
+  overflow: hidden;
+}
+
+.rt-amenities-image img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Amenities restaurant-style cards — imgs tagged 805×654 */
+.rt-restaurant-image-wrapper {
+  overflow: hidden;
+}
+
+.rt-restaurant-image-wrapper img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 805 / 654;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Amenities value grid — Webflow .rt-value-image-ratio is 365/394 */
+.rt-value-image {
+  overflow: hidden;
+}
+
+.rt-value-image img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 365 / 394;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Uy parvarishi (/restaurant) menu strip — landscape frame */
+.rt-menu-image {
+  overflow: hidden;
+}
+
+.rt-menu-image img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Uy parvarishi service-v6 side photo — imgs tagged 805×750 */
+.rt-service-v6-left-wrapper {
+  overflow: hidden;
+}
+
+.rt-service-v6-left-wrapper img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 805 / 750;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Paketlar (/banquet) event tiles — v1 collapsed to 0 height with stock */
+.rt-event-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.rt-event-image.rt-v1,
+.rt-event-image.rt-v2 {
+  aspect-ratio: 504 / 469;
+}
+
+.rt-event-image.rt-v3 {
+  aspect-ratio: 504 / 648;
+}
+
+.rt-event-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.rt-banquet-form-image-wrapper {
+  overflow: hidden;
+}
+
+.rt-banquet-form-image-wrapper img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 695 / 780;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/*
+ * Yangiliklar (/blog + /blog/[slug]) — stock broke Webflow img frames.
+ * Listing cards tagged 795×451; related cards 520×463; post hero 1640×848;
+ * in-body extras 463×314; author avatars 54×54.
+ */
+.rt-blog-v1-card .rt-blog-image {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 795 / 451;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.rt-blog-v2-card .rt-blog-image {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 520 / 463;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.rt-blog-v1-card > .rt-overflow-hidden,
+.rt-blog-v2-card > .rt-overflow-hidden {
+  overflow: hidden;
+}
+
+.rt-blog-post-hero img.rt-image-appearance {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 1640 / 848;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.rt-blog-additional-image {
+  overflow: hidden;
+}
+
+.rt-blog-additional-image img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 463 / 314;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.rt-blog-author-image {
+  width: 3.375rem;
+  height: 3.375rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+.rt-blog-overview-left-wrapper > img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+}
