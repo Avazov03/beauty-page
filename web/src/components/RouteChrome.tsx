@@ -46,8 +46,7 @@ export function RouteChrome() {
       const chromeBottom =
         chrome?.getBoundingClientRect().bottom ?? HERO_TOP_PX;
 
-      // Home: hero sticky — element bottom ishonchsiz.
-      // Oq About paneli chrome ostiga yetganda hero “tugagan” deb hisoblaymiz.
+      // Home: transparent nav while hero fills the viewport under chrome.
       if (root.classList.contains("is-home")) {
         const about = document.querySelector(".rt-about-v1");
         const hero = document.querySelector(".rt-hero-v1");
@@ -57,7 +56,7 @@ export function RouteChrome() {
         }
         const overHero = about
           ? about.getBoundingClientRect().top > chromeBottom + 8
-          : window.scrollY < HERO_TOP_PX;
+          : hero.getBoundingClientRect().bottom > chromeBottom + 4;
         root.classList.toggle("is-hero-top", overHero);
         root.classList.toggle("is-nav-solid", !overHero);
         return;
