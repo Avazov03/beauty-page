@@ -709,6 +709,11 @@ main [style*="opacity:0"]:not([data-w-id]):not(.rt-about-v1 *):not(
   filter: none !important;
 }
 
+/* Room detail: tab thumbnails va overview kartasi yopishib qolmasin */
+.rt-room-overview-v3 {
+  padding-top: var(--_gaps---section-gap-v2, 8.1875rem) !important;
+}
+
 /* Wipe overlays: if IX2 stalls mid-animation, clear them off the hero image */
 .rt-blog-post-hero .rt-image-overlay-1,
 .rt-blog-post-hero .rt-image-overlay-2 {
