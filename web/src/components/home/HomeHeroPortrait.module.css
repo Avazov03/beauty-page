@@ -15,11 +15,36 @@
   z-index: 0;
   /* Iridescence window pointerlari bilan ishlaydi — tugma hoverini o‘g‘irlamasin */
   pointer-events: none;
+  /* Soft wash while WebGL boots — avoids empty flash on refresh */
+  background:
+    radial-gradient(
+      ellipse 75% 55% at 68% 40%,
+      rgba(211, 185, 201, 0.5) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 65% 50% at 20% 70%,
+      rgba(168, 198, 198, 0.28) 0%,
+      transparent 55%
+    ),
+    linear-gradient(145deg, #f8f4f6 0%, #efe6ec 42%, #e8dde6 100%);
 }
 
 .bg > * {
   width: 100%;
   height: 100%;
+}
+
+.bg canvas {
+  opacity: 0;
+  animation: ca-home-iridescence-fade 0.85s
+    var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)) 0.08s forwards;
+}
+
+@keyframes ca-home-iridescence-fade {
+  to {
+    opacity: 1;
+  }
 }
 
 .inner {

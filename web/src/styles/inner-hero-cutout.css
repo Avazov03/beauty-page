@@ -1,0 +1,369 @@
+/*
+ * Inner heroes: Pearl + iridescence + cutout.
+ * Centered band: text + figure (~50px air). Figures on bottom:0.
+ * Soft entrance — IX2 Ken Burns replaced (cutout transforms).
+ */
+
+@keyframes ca-cutout-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.1rem, 0) scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ca-cutout-enter-flip {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.1rem, 0) scaleX(-1) scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scaleX(-1) scale(1);
+  }
+}
+
+@keyframes ca-cutout-enter-closeup {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0) scale(1.18);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.15);
+  }
+}
+
+@keyframes ca-cutout-copy-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.55rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ca-iridescence-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rt-inner-hero.is-cutout-hero {
+  --cutout-band: min(70rem, calc(100vw - 2.5rem));
+  --cutout-gutter: max(1rem, calc((100vw - var(--cutout-band)) / 2));
+  --cutout-col: calc(var(--cutout-band) * 0.46);
+  --cutout-inset: clamp(1rem, 2.5vw, 2.25rem);
+  /* Comfortable air between copy and figure (~50px) */
+  --cutout-gap: clamp(2.75rem, 3.5vw, 3.5rem);
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  min-height: min(82vh, 52rem);
+  background: var(--color-pearl, #f8f4f6) !important;
+}
+
+/*
+ * Static mauve wash under WebGL — stops “BG vanished” flash on refresh
+ * while the canvas boots.
+ */
+.rt-inner-hero.is-cutout-hero .ca-inner-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 75% 55% at 72% 38%,
+      rgba(211, 185, 201, 0.55) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 65% 50% at 18% 72%,
+      rgba(168, 198, 198, 0.32) 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #f8f4f6 0%,
+      #efe6ec 42%,
+      #e8dde6 100%
+    );
+}
+
+.rt-inner-hero.is-cutout-hero .ca-inner-hero-bg > * {
+  width: 100%;
+  height: 100%;
+}
+
+.rt-inner-hero.is-cutout-hero .ca-inner-hero-bg canvas {
+  opacity: 0;
+  animation: ca-iridescence-fade 0.85s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1))
+    0.08s forwards;
+}
+
+.rt-inner-hero.is-cutout-hero .rt-inner-image-wrapper {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1;
+  overflow: visible !important;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.rt-inner-hero.is-cutout-hero .rt-hero-image {
+  position: absolute !important;
+  bottom: 0 !important;
+  top: auto !important;
+  width: auto !important;
+  height: min(92%, 46rem) !important;
+  max-width: min(var(--cutout-col), 480px) !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 16px 36px rgba(61, 47, 60, 0.12));
+  transform-origin: bottom center;
+  animation: ca-cutout-enter 1.05s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1))
+    both;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-side="right"] .rt-hero-image {
+  left: auto !important;
+  right: calc(var(--cutout-gutter) + var(--cutout-inset)) !important;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-side="left"] .rt-hero-image {
+  right: auto !important;
+  left: calc(var(--cutout-gutter) + var(--cutout-inset)) !important;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-flip="true"] .rt-hero-image {
+  animation-name: ca-cutout-enter-flip;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"] .rt-hero-image {
+  width: min(54vw, 710px) !important;
+  max-width: min(54vw, 710px) !important;
+  height: auto !important;
+  max-height: none !important;
+  bottom: 0 !important;
+  top: auto !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  transform-origin: bottom center !important;
+  animation-name: ca-cutout-enter-closeup;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"][data-cutout-side="right"]
+  .rt-hero-image {
+  right: var(--cutout-gutter) !important;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"][data-cutout-flip="true"]
+  .rt-hero-image {
+  animation-name: ca-cutout-enter-closeup;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="roomy"] .rt-hero-image {
+  height: min(100%, 52rem) !important;
+  width: auto !important;
+  max-width: min(48vw, 620px) !important;
+  bottom: 0 !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  transform-origin: bottom center !important;
+}
+
+.rt-inner-hero.is-cutout-hero .rt-about-us-text-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex !important;
+  align-items: center;
+  box-sizing: border-box;
+  width: var(--cutout-band);
+  max-width: var(--cutout-band);
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-height: min(78vh, 50rem);
+  padding: 6.25rem 0 2.5rem !important;
+  background: transparent !important;
+}
+
+.rt-inner-hero.is-cutout-hero .rt-about-us-text-wrapper > .rt-container,
+.rt-inner-hero.is-cutout-hero .rt-about-us-text-wrapper > .w-container {
+  display: flex !important;
+  align-items: center;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+
+.rt-inner-hero.is-cutout-hero .rt-about-us-text-main-box {
+  width: min(26rem, 100%);
+  max-width: min(26rem, 100%);
+  text-align: left !important;
+  animation: ca-cutout-copy-enter 0.85s
+    var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)) 0.18s both;
+}
+
+.rt-inner-hero.is-cutout-hero .rt-text-center {
+  text-align: left !important;
+}
+
+/* Figure right → copy left, reserve figure + ~50px gap */
+.rt-inner-hero.is-cutout-hero[data-cutout-side="right"]
+  .rt-about-us-text-wrapper > .rt-container,
+.rt-inner-hero.is-cutout-hero[data-cutout-side="right"]
+  .rt-about-us-text-wrapper > .w-container {
+  justify-content: flex-start;
+  padding-left: var(--cutout-inset) !important;
+  padding-right: calc(42% + var(--cutout-gap)) !important;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-side="right"]
+  .rt-about-us-text-main-box {
+  margin: 0;
+}
+
+/*
+ * Closeup: copy sits upper-left, face lower-right (magazine pair)
+ * so a large figure can keep ~50px air without crushing the headline.
+ */
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"]
+  .rt-about-us-text-wrapper {
+  align-items: flex-start;
+  /* Sit under the pill — leave ~50px air above the closeup face */
+  padding-top: clamp(6.25rem, 11vh, 7.5rem) !important;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"]
+  .rt-about-us-text-main-box {
+  max-width: min(24rem, 100%);
+  margin-bottom: var(--cutout-gap);
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"][data-cutout-side="right"]
+  .rt-about-us-text-wrapper > .rt-container,
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"][data-cutout-side="right"]
+  .rt-about-us-text-wrapper > .w-container {
+  padding-right: calc(50% + var(--cutout-gap)) !important;
+}
+
+/* Figure left → copy right */
+.rt-inner-hero.is-cutout-hero[data-cutout-side="left"]
+  .rt-about-us-text-wrapper > .rt-container,
+.rt-inner-hero.is-cutout-hero[data-cutout-side="left"]
+  .rt-about-us-text-wrapper > .w-container {
+  justify-content: flex-end;
+  padding-right: var(--cutout-inset) !important;
+  padding-left: calc(42% + var(--cutout-gap)) !important;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-side="left"]
+  .rt-about-us-text-main-box {
+  margin: 0;
+}
+
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="roomy"][data-cutout-side="left"]
+  .rt-about-us-text-wrapper > .rt-container,
+.rt-inner-hero.is-cutout-hero[data-cutout-scale="roomy"][data-cutout-side="left"]
+  .rt-about-us-text-wrapper > .w-container {
+  /* Reserve exact figure width + ~50px air */
+  padding-left: calc(
+    min(48vw, 620px) + var(--cutout-gap) + var(--cutout-inset)
+  ) !important;
+}
+
+.rt-inner-hero.is-cutout-hero .rt-text-white,
+.rt-inner-hero.is-cutout-hero .rt-subtext,
+.rt-inner-hero.is-cutout-hero h1,
+.rt-inner-hero.is-cutout-hero .rt-about-heading,
+.rt-inner-hero.is-cutout-hero .rt-text-style-h2 {
+  color: var(--color-plum, #72516f) !important;
+}
+
+.rt-inner-hero.is-cutout-hero .rt-subtext {
+  opacity: 0.78;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-size: clamp(0.8125rem, 1.05vw, 0.9375rem);
+  font-weight: 500;
+}
+
+/* Slightly larger + a touch firmer — not shouty */
+.rt-inner-hero.is-cutout-hero h1,
+.rt-inner-hero.is-cutout-hero .rt-about-heading {
+  font-size: clamp(1.95rem, 3.45vw, 2.7rem) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.028em;
+  font-weight: 500 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-inner-hero.is-cutout-hero .rt-hero-image,
+  .rt-inner-hero.is-cutout-hero .rt-about-us-text-main-box,
+  .rt-inner-hero.is-cutout-hero .ca-inner-hero-bg canvas {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 899px) {
+  .rt-inner-hero.is-cutout-hero {
+    min-height: auto;
+  }
+
+  .rt-inner-hero.is-cutout-hero .rt-about-us-text-wrapper {
+    display: block !important;
+    width: calc(100% - 2rem);
+    max-width: none;
+    min-height: auto;
+    padding: 5.75rem 1rem 0.75rem !important;
+  }
+
+  .rt-inner-hero.is-cutout-hero .rt-about-us-text-wrapper > .rt-container,
+  .rt-inner-hero.is-cutout-hero .rt-about-us-text-wrapper > .w-container {
+    display: block !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .rt-inner-hero.is-cutout-hero .rt-about-us-text-main-box {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .rt-inner-hero.is-cutout-hero .rt-inner-image-wrapper {
+    position: relative !important;
+    inset: auto !important;
+    min-height: 54vw;
+    margin-top: 0.35rem;
+  }
+
+  .rt-inner-hero.is-cutout-hero .rt-hero-image,
+  .rt-inner-hero.is-cutout-hero[data-cutout-scale="closeup"] .rt-hero-image,
+  .rt-inner-hero.is-cutout-hero[data-cutout-scale="roomy"] .rt-hero-image {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    display: block;
+    margin: 0 auto;
+    width: auto !important;
+    height: min(72vw, 30rem) !important;
+    max-width: 90vw !important;
+  }
+}

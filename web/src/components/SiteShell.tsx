@@ -1,6 +1,7 @@
 import { BaselineHtml } from "@/components/BaselineHtml";
 import { BaselineInteractions } from "@/components/BaselineInteractions";
 import { InlineHeaderNav } from "@/components/InlineHeaderNav";
+import { InnerHeroCutout } from "@/components/InnerHeroCutout";
 import { RouteChrome } from "@/components/RouteChrome";
 import { WebflowRuntime } from "@/components/WebflowRuntime";
 import { html as chromeHtml } from "@/baseline/html/chrome";
@@ -12,6 +13,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <RouteChrome />
       <BaselineInteractions />
       <WebflowRuntime />
+      <InnerHeroCutout />
       <BaselineHtml html={chromeHtml} />
       <InlineHeaderNav />
       <main>{children}</main>
