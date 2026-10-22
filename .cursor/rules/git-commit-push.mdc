@@ -9,7 +9,7 @@ Loyiha GitHub: `https://github.com/Avazov03/beauty-page.git` (branch: `main` yok
 
 ## Qoida
 
-1. Foydalanuvchi prompti kod/fayllarni o‘zgartirsa (style, content, config, yangi fayl) — ish tugagach **commit va push qilaymi?** deb so‘ra.
+1. Foydalanuvchi prompti kod/fayllarni o‘zgartirsa (style, content, config, yangi fayl) — ish tugagach **commit va push qilaymi?** deb so‘ra. Shu bilan (yoki keyin) **serverga deploy qilaymi?** ham so‘ra — batafsil: `server-deploy.mdc`.
 2. Foydalanuvchi ha deb yozsa (yoki "commit", "push", "ha") — faqat shunda:
    - `git status` / `git diff` / recent log
    - mantiqiy commit message (nima uchun)

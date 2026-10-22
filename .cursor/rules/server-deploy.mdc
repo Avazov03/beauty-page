@@ -1,0 +1,50 @@
+---
+description: Production server deploy odatı — commit/push dan keyin so‘rash
+alwaysApply: true
+---
+
+# Server deploy odatı
+
+Production server (AWS / beauty-page):
+
+| | |
+|---|---|
+| Public IPv4 | `3.65.92.39` |
+| Private IPv4 | `172.26.11.220` |
+| App path (server) | `/var/www/beauty-page` |
+| Stack | **PM2** (`beauty-page`, port `3102`) + nginx — bu serverda Docker yo‘q; boshqa Next app’lar ham PM2 |
+| Public URL (vaqtincha) | `http://beauty-3-65-92-39.sslip.io` yoki `http://3.65.92.39:3102` |
+| SSH | `ssh -i %USERPROFILE%\.ssh\beauty-page-server.pem ubuntu@3.65.92.39` |
+| SSH key | Lokal: `%USERPROFILE%\.ssh\beauty-page-server.pem` — **repoga hech qachon commit qilinmasin** |
+
+## Qoida
+
+1. Foydalanuvchi prompti kod/fayllarni o‘zgartirsa — ish tugagach GitHub so‘rovidan **keyin** (yoki birga) so‘ra:
+
+```
+Commit/push qilaymi? Serverga deploy qilaymi?
+```
+
+(Yoki alohida: avval commit/push, keyin deploy.)
+
+2. Foydalanuvchi deploy ha deb yozsa — faqat shunda:
+   - Kerak bo‘lsa avval commit + push (`main`)
+   - SSH: `ubuntu@3.65.92.39` + lokal pem key
+   - Serverda: `cd /var/www/beauty-page && git pull` → `cd web && npm ci && npm run build` → `pm2 restart beauty-page` (yoki `pm2 start ../ecosystem.config.cjs`)
+   - Health check: `http://3.65.92.39:3102` / nginx sslip URL
+
+3. Deploy muvaffaqiyatli bo‘lgach chatda:
+
+```
+✅ Serverga deploy qilindi
+```
+
+(IP / URL qo‘shish mumkin.)
+
+4. Hech qachon avtomatik deploy qilma — doim so‘rab ol.
+5. `.env`, private key, credentials — commit qilma, chatga qayta yozma.
+6. Private key faqat lokal `%USERPROFILE%\.ssh\` da; agent store / git ga nusxa olmasin.
+
+## Til
+
+Foydalanuvchi o‘zbekcha yozsa — so‘rov va tasdiqni o‘zbekcha qil.

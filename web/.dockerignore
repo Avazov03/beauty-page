@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.git
+.tmp-audit
+test-results
+e2e
+*.md
+.env*
+npm-debug.log*
+playwright.config.ts
+tsconfig.tsbuildinfo

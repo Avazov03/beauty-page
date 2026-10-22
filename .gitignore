@@ -27,5 +27,13 @@ web/out/
 web/.env*.local
 web/npm-debug.log*
 
+# Secrets / deploy keys — never commit
+*.pem
+*.ppk
+.id_rsa*
+.env
+.env.*
+!.env.example
+
 # Agent skill working files (taste inspect / draw output)
 .taste-skill/
