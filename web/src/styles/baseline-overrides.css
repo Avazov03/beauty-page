@@ -521,6 +521,11 @@ html:not(.w-mod-ix) .rt-image-overlay-2 {
   height: auto !important;
 }
 
+/* About: mission (25+) va Kabinetimni ko'ring orasidagi nafas */
+.rt-mission + .rt-feature-v7 {
+  padding-top: var(--_gaps---section-gap-v2, 8.1875rem);
+}
+
 .rt-accomodation-main-height,
 .rt-about-v3-main-height,
 .rt-feature-v4-main-height {
