@@ -311,6 +311,8 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     display: flex;
     flex: none;
     justify-content: center;
+    /* 10px between the wordmark and the menu, on every page. */
+    margin-left: 10px;
     margin-right: 0;
     grid-column: 2;
   }

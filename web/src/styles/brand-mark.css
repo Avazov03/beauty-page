@@ -19,7 +19,8 @@
 /* Header and footer wordmark — live text so the soft face actually loads. */
 .ca-brand-mark {
   font-family: var(--font-wordmark, "Fraunces", Georgia, serif);
-  font-size: clamp(1.15rem, 1.35vw, 1.45rem);
+  /* Cap the header mark so a wide screen does not eat the gap before the menu. */
+  font-size: clamp(1.05rem, 1.35vw, 1.125rem);
   font-weight: 640;
   font-variation-settings: "SOFT" 78, "opsz" 36, "WONK" 0;
   font-synthesis: none;

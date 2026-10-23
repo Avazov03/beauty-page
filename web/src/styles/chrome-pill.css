@@ -29,7 +29,7 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   .rt-navbar-v1 {
   position: relative !important;
   /* Compact at top of page */
-  width: min(64rem, calc(100% - 2.75rem)) !important;
+  width: min(calc(64rem + 10px), calc(100% - 2.75rem)) !important;
   max-width: calc(100% - 2.75rem) !important;
   margin: 0.75rem auto 0 !important;
   padding: 0.4rem 0.5rem 0.4rem 1.1rem !important;
@@ -67,7 +67,7 @@ html.is-inner.is-nav-scrolled:not(:has(.rt-room-details-hero)):not(
     :has(.rt-inner-hero)
   )
   .rt-navbar-v1 {
-  width: min(72rem, calc(100% - 1rem)) !important;
+  width: min(calc(72rem + 10px), calc(100% - 1rem)) !important;
   max-width: calc(100% - 1rem) !important;
 }
 
