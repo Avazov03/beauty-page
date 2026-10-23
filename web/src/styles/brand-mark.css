@@ -70,3 +70,10 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   display: none !important;
   content: none !important;
 }
+
+@media (max-width: 520px) {
+  .ca-brand-logo {
+    height: 1.35rem;
+    max-width: min(7.5rem, 34vw);
+  }
+}

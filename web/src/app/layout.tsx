@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { getWfPageBootstrapScript, WF_PAGE_HOME } from "@/data/wfPageId";
@@ -16,6 +16,13 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#F8F4F6",
+};
 
 export const metadata: Metadata = {
   title: {

@@ -55,40 +55,77 @@ export function BaselineInteractions() {
     let lbIndex = 0;
     let lbItems: LbItem[] = [];
 
+    const MENU_INLINE = [
+      "position",
+      "transform",
+      "display",
+      "top",
+      "left",
+      "right",
+      "bottom",
+      "inset",
+      "width",
+      "height",
+      "max-height",
+      "opacity",
+      "visibility",
+      "z-index",
+    ] as const;
+
+    /** Pill header uses backdrop-filter, which traps position:fixed inside the pill. */
+    function parkMenu(node: HTMLElement) {
+      if (node.parentElement !== document.body) {
+        document.body.appendChild(node);
+      }
+    }
+
+    function menuButtons() {
+      return document.querySelectorAll<HTMLElement>(
+        ".rt-navbar-v1-menu-wrapper",
+      );
+    }
+
+    function setMenuExpanded(open: boolean) {
+      menuButtons().forEach((btn) => {
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+
     function closeMenyu() {
       root.classList.remove("rt-menu-open");
+      setMenuExpanded(false);
       document.querySelectorAll(".rt-mega-menu-wrapper").forEach((el) => {
+        const node = el as HTMLElement;
         el.classList.remove("rt-is-open");
-        // IX2 may re-apply off-screen translate; keep closed state consistent
-        (el as HTMLElement).style.removeProperty("transform");
-        (el as HTMLElement).style.display = "none";
+        MENU_INLINE.forEach((prop) => node.style.removeProperty(prop));
       });
     }
 
     function toggleMenyu() {
-      const open = root.classList.toggle("rt-menu-open");
+      const open = !root.classList.contains("rt-menu-open");
+      root.classList.toggle("rt-menu-open", open);
+      setMenuExpanded(open);
       document.querySelectorAll(".rt-mega-menu-wrapper").forEach((el) => {
         const node = el as HTMLElement;
         el.classList.toggle("rt-is-open", open);
         if (open) {
-          // Clear IX2 off-screen translate/top so menu fills the viewport
+          parkMenu(node);
+          node.style.setProperty("position", "fixed", "important");
           node.style.setProperty("transform", "none", "important");
           node.style.setProperty("display", "block", "important");
+          node.style.setProperty("inset", "0", "important");
           node.style.setProperty("top", "0", "important");
           node.style.setProperty("left", "0", "important");
           node.style.setProperty("right", "0", "important");
-          node.style.setProperty("bottom", "auto", "important");
-          node.style.setProperty("inset", "0 0 auto 0", "important");
-          node.style.setProperty("height", "100vh", "important");
+          node.style.setProperty("bottom", "0", "important");
+          node.style.setProperty("width", "100%", "important");
+          node.style.setProperty("height", "100dvh", "important");
+          node.style.setProperty("max-height", "100dvh", "important");
+          node.style.setProperty("opacity", "1", "important");
+          node.style.setProperty("visibility", "visible", "important");
+          node.style.setProperty("z-index", "10000", "important");
         } else {
-          node.style.removeProperty("transform");
-          node.style.removeProperty("top");
-          node.style.removeProperty("left");
-          node.style.removeProperty("right");
-          node.style.removeProperty("bottom");
-          node.style.removeProperty("inset");
-          node.style.removeProperty("height");
-          node.style.display = "none";
+          MENU_INLINE.forEach((prop) => node.style.removeProperty(prop));
         }
       });
     }
@@ -233,8 +270,15 @@ export function BaselineInteractions() {
     }
 
     function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        if (lbRoot?.dataset.open) {
+          closeLightbox();
+          return;
+        }
+        if (root.classList.contains("rt-menu-open")) closeMenyu();
+        return;
+      }
       if (!lbRoot?.dataset.open) return;
-      if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowRight" && lbItems.length) {
         lbIndex = (lbIndex + 1) % lbItems.length;
         renderLightbox();
@@ -243,6 +287,36 @@ export function BaselineInteractions() {
         lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
         renderLightbox();
       }
+    }
+
+    menuButtons().forEach((btn) => {
+      if (!btn.hasAttribute("role")) btn.setAttribute("role", "button");
+      if (!btn.hasAttribute("tabindex")) btn.setAttribute("tabindex", "0");
+      btn.setAttribute(
+        "aria-label",
+        btn.getAttribute("aria-label") || "Menyu",
+      );
+      btn.setAttribute(
+        "aria-expanded",
+        root.classList.contains("rt-menu-open") ? "true" : "false",
+      );
+    });
+
+    const desktopNav = window.matchMedia("(min-width: 1100px)");
+    const closeMenuOnDesktop = () => {
+      if (desktopNav.matches) closeMenyu();
+    };
+    closeMenuOnDesktop();
+    desktopNav.addEventListener("change", closeMenuOnDesktop);
+
+    function onMenuKey(e: KeyboardEvent) {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const btn = (e.target as HTMLElement | null)?.closest(
+        ".rt-navbar-v1-menu-wrapper",
+      );
+      if (!btn) return;
+      e.preventDefault();
+      toggleMenyu();
     }
 
     document.querySelectorAll(".w-tabs").forEach((tabs) => {
@@ -292,11 +366,19 @@ export function BaselineInteractions() {
 
     document.addEventListener("click", onClick);
     document.addEventListener("keydown", onKey);
+    document.addEventListener("keydown", onMenuKey);
     document.addEventListener("submit", onFormSubmit, true);
     return () => {
       document.removeEventListener("click", onClick);
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("keydown", onMenuKey);
       document.removeEventListener("submit", onFormSubmit, true);
+      desktopNav.removeEventListener("change", closeMenuOnDesktop);
+      closeMenyu();
+      document.querySelectorAll(".rt-mega-menu-wrapper").forEach((el) => {
+        const nav = document.querySelector(".rt-navbar-v1");
+        if (nav && el.parentElement === document.body) nav.appendChild(el);
+      });
       closeLightbox();
       lbRoot?.remove();
       lbRoot = null;

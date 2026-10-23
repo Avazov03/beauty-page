@@ -44,7 +44,7 @@ a.w-webflow-badge {
 }
 
 .rt-footer-wrapper {
-  padding-bottom: 2.25rem !important;
+  padding-bottom: calc(2.25rem + env(safe-area-inset-bottom, 0px)) !important;
   padding-top: 0.5rem !important;
 }
 
@@ -76,7 +76,8 @@ a.w-webflow-badge {
   ) !important;
 }
 
-html.rt-menu-open {
+html.rt-menu-open,
+html.rt-menu-open body {
   overflow: hidden;
 }
 
@@ -89,12 +90,9 @@ html.rt-menu-open .rt-mega-menu-wrapper {
   display: block !important;
   transform: none !important;
   /* IX2 scroll’da top: -Npx qilib menyuni ekrandan tashqariga suradi */
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: auto !important;
-  inset: 0 0 auto 0 !important;
-  height: 100vh !important;
+  inset: 0 !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
   width: 100% !important;
   opacity: 1 !important;
   visibility: visible !important;

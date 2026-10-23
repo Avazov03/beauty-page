@@ -363,3 +363,148 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     display: none !important;
   }
 }
+
+/*
+ * Phone / tablet menu.
+ * Open state is parked on document.body so the pill's backdrop-filter
+ * cannot trap it. Desktop (1100+) must hide it even if the class lingers.
+ */
+@media (min-width: 1100px) {
+  html.rt-menu-open,
+  html.rt-menu-open body {
+    overflow: visible !important;
+  }
+
+  html.rt-menu-open .rt-mega-menu-wrapper.rt-mega-menu-wrapper,
+  html.rt-menu-open .rt-mega-menu-wrapper.rt-is-open {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    height: 0 !important;
+  }
+}
+
+@media (max-width: 1099px) {
+  html.rt-menu-open .rt-mega-menu-wrapper {
+    padding: 0 !important;
+    overflow: hidden !important;
+    background-color: var(--color-brand, #72516f) !important;
+    overscroll-behavior: contain;
+  }
+
+  html.rt-menu-open .rt-mega-menu-main-wrap {
+    display: flex !important;
+    flex-flow: column nowrap !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box !important;
+    padding: calc(5.75rem + env(safe-area-inset-top, 0px)) 0
+      calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  html.rt-menu-open .rt-mega-menu-left-wrapper-main {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    flex: none !important;
+    border-right: 0 !important;
+  }
+
+  html.rt-menu-open .rt-mega-menu-left-wrapper {
+    display: flex !important;
+    flex-flow: column nowrap !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 1.15rem !important;
+    gap: 0.1rem !important;
+  }
+
+  html.rt-menu-open .rt-mega-menu-left-wrapper > .rt-dropdown-wrapper:not(:has(a)) {
+    display: none !important;
+  }
+
+  html.rt-menu-open .rt-dropdown-v1,
+  html.rt-menu-open .rt-dropdown-wrapper,
+  html.rt-menu-open .rt-dropdown-v1-toggle-content {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 2.75rem;
+  }
+
+  html.rt-menu-open .rt-dropdown-v1-toggle-content,
+  html.rt-menu-open .rt-dropdown-wrapper {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  html.rt-menu-open .rt-text-style-h3.rt-menu-v1 {
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+  }
+
+  html.rt-menu-open .w-dropdown-list {
+    position: static !important;
+    display: none;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 0 0.25rem 1.6rem !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  html.rt-menu-open .w-dropdown.w--open > .w-dropdown-list {
+    display: flex !important;
+    flex-direction: column;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  html.rt-menu-open .rt-dropdown-submenu {
+    display: flex !important;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.35rem 0.2rem !important;
+    color: #f8f4f6 !important;
+  }
+
+  html.rt-menu-open .rt-mega-menu-right-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    grid-template-columns: 1fr !important;
+    padding: 0.75rem 1.15rem 0 !important;
+    gap: 0.75rem !important;
+  }
+
+  html.rt-menu-open .rt-mega-menu-right-wrapper .rt-text-white,
+  html.rt-menu-open .rt-mega-menu-right-wrapper .rt-text-style-h5 {
+    overflow-wrap: break-word;
+  }
+
+  .rt-navbar-v1-menu-wrapper,
+  .rt-navbar-v1-menu-bar-wrap {
+    min-height: 2.75rem;
+    touch-action: manipulation;
+  }
+
+  .rt-navbar-v1-menu-bar-wrap {
+    min-width: 2.75rem;
+    justify-content: center;
+  }
+}
