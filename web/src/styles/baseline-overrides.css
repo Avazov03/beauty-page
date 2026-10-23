@@ -1127,6 +1127,65 @@ html.is-home .rt-gallery-image-box img {
   inset: 0 !important;
 }
 
+/* Phone: the press-to-swap thumbs sat at ~14rem and overflowed the screen.
+   Keep them a short strip under the hero. */
+@media (max-width: 767px) {
+  .rt-room-details-banner .rt-room-details-tab-menu {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    justify-content: flex-start !important;
+    column-gap: 0.6rem !important;
+    row-gap: 0.6rem !important;
+    padding-bottom: 1.15rem !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rt-room-details-banner .rt-room-details-tab-link {
+    flex: 0 0 7.25rem !important;
+    width: 7.25rem !important;
+    max-width: 7.25rem !important;
+  }
+
+  .rt-room-details-banner .rt-room-tab-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 308 / 258;
+    object-fit: cover;
+  }
+}
+
+/* Two-row photo strips: drag is handled in JS. Clip the track and start at the left edge. */
+.rt-gallery-v5,
+.rt-gallery-v5-main,
+.rt-gallery-v5-marquee-wrapper,
+.rt-gallery-marquee-wrapper {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.rt-gallery-v5-marquee-wrapper,
+.rt-gallery-marquee-wrapper {
+  overflow: hidden;
+  justify-content: flex-start !important;
+  width: 100%;
+}
+
+.rt-gallery-top-marquee-train,
+.rt-gallery-bottom-marquee {
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+}
+
+.rt-gallery-top-marquee-train.is-dragging,
+.rt-gallery-bottom-marquee.is-dragging {
+  cursor: grabbing;
+}
+
 /*
  * Room-detail gallery-v5 marquee — Webflow only sets max-width on
  * .rt-gallery-image; height followed each stock file's intrinsic ratio

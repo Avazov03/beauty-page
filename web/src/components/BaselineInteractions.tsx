@@ -1,6 +1,236 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+
+/**
+ * One photo row. Webflow paints several copies side by side; we keep the
+ * first, duplicate its photos once, and drive that single loop. Drag is free
+ * in both directions. On release, leftover speed eases back into the row's
+ * own direction.
+ */
+function bindMarqueeRow(wrapper: HTMLElement, direction: -1 | 1) {
+  if (wrapper.dataset.caDrag === "1") return () => {};
+  const trains = [...wrapper.children].filter(
+    (node): node is HTMLElement =>
+      node instanceof HTMLElement &&
+      (node.classList.contains("rt-gallery-top-marquee-train") ||
+        node.classList.contains("rt-gallery-bottom-marquee")),
+  );
+  if (!trains.length) return () => {};
+
+  wrapper.dataset.caDrag = "1";
+  const train = trains[0];
+  const extras = trains.slice(1);
+  extras.forEach((node) => {
+    node.dataset.caHiddenCopy = "1";
+    node.style.setProperty("display", "none", "important");
+  });
+
+  train.querySelectorAll("[data-ca-clone]").forEach((node) => node.remove());
+  const unitKey = (el: Element) =>
+    el.querySelector("img")?.getAttribute("src") || el.textContent || "";
+  const originals = [...train.children] as HTMLElement[];
+  const keys = originals.map(unitKey);
+  let repeated = false;
+  for (let n = 1; n <= originals.length / 2; n += 1) {
+    if (originals.length % n !== 0) continue;
+    const unit = keys.slice(0, n).join("|");
+    let same = true;
+    for (let i = n; i < keys.length; i += n) {
+      if (keys.slice(i, i + n).join("|") !== unit) {
+        same = false;
+        break;
+      }
+    }
+    if (same) {
+      repeated = true;
+      break;
+    }
+  }
+  if (!repeated) {
+    originals.forEach((kid) => {
+      const clone = kid.cloneNode(true) as HTMLElement;
+      clone.dataset.caClone = "1";
+      clone.setAttribute("aria-hidden", "true");
+      train.appendChild(clone);
+    });
+  }
+
+  train.style.animation = "none";
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const duration = 40;
+  let offset = 0;
+  let dragging = false;
+  let axis: "x" | "y" | null = null;
+  let pointerId = -1;
+  let lastX = 0;
+  let lastY = 0;
+  let lastT = 0;
+  let velocity = 0;
+  let extra = 0;
+  let moved = 0;
+
+  const loopWidth = () => {
+    const kids = [...train.children] as HTMLElement[];
+    const base = kids.filter((kid) => kid.dataset.caClone !== "1");
+    if (base.length && base.length < kids.length) {
+      return base.reduce((sum, kid) => sum + kid.offsetWidth, 0);
+    }
+    if (kids.length < 2) return train.scrollWidth / 2 || 1;
+    const rowKeys = kids.map(unitKey);
+    for (let n = 1; n <= kids.length / 2; n += 1) {
+      if (kids.length % n !== 0) continue;
+      const unit = rowKeys.slice(0, n).join("|");
+      let same = true;
+      for (let i = n; i < rowKeys.length; i += n) {
+        if (rowKeys.slice(i, i + n).join("|") !== unit) {
+          same = false;
+          break;
+        }
+      }
+      if (!same) continue;
+      const width = kids.slice(0, n).reduce((sum, kid) => sum + kid.offsetWidth, 0);
+      if (width > 0) return width;
+    }
+    return train.scrollWidth / 2 || 1;
+  };
+
+  const wrap = (value: number) => {
+    const width = loopWidth();
+    if (!width) return value;
+    let next = value % width;
+    if (next > 0) next -= width;
+    if (next <= -width) next += width;
+    return next;
+  };
+
+  const apply = () => {
+    train.style.setProperty(
+      "transform",
+      `translate3d(${offset}px,0,0)`,
+      "important",
+    );
+  };
+
+  let prev = 0;
+  let frame = 0;
+  const tick = (now: number) => {
+    const dt = prev ? Math.min(0.05, (now - prev) / 1000) : 0;
+    prev = now;
+    if (!dragging && dt && !reduce.matches) {
+      const speed = loopWidth() / duration;
+      extra *= Math.exp(-dt * 2.4);
+      if (Math.abs(extra) < 12) extra = 0;
+      offset = wrap(offset + (direction * speed + extra) * dt);
+      apply();
+    }
+    frame = window.requestAnimationFrame(tick);
+  };
+  frame = window.requestAnimationFrame(tick);
+  apply();
+
+  const onDown = (event: PointerEvent) => {
+    if (event.button !== 0) return;
+    dragging = true;
+    axis = null;
+    pointerId = event.pointerId;
+    lastX = event.clientX;
+    lastY = event.clientY;
+    lastT = performance.now();
+    velocity = 0;
+    extra = 0;
+    moved = 0;
+  };
+
+  const onMove = (event: PointerEvent) => {
+    if (!dragging || event.pointerId !== pointerId) return;
+    const dx = event.clientX - lastX;
+    const dy = event.clientY - lastY;
+    if (!axis) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      if (axis === "y") {
+        dragging = false;
+        return;
+      }
+      train.classList.add("is-dragging");
+      try {
+        wrapper.setPointerCapture(event.pointerId);
+      } catch {
+        /* Pointer capture needs a real pointer. Drag still follows the events. */
+      }
+    }
+    if (axis !== "x") return;
+    event.preventDefault();
+    const now = performance.now();
+    velocity = dx / (now - lastT || 16);
+    lastX = event.clientX;
+    lastY = event.clientY;
+    lastT = now;
+    moved += Math.abs(dx);
+    offset = wrap(offset + dx);
+    apply();
+  };
+
+  const onUp = (event: PointerEvent) => {
+    if (!dragging || event.pointerId !== pointerId) return;
+    dragging = false;
+    train.classList.remove("is-dragging");
+    if (axis !== "x") {
+      axis = null;
+      return;
+    }
+    const speed = loopWidth() / duration;
+    const finger = velocity * 1000;
+    extra = Math.max(-1600, Math.min(1600, finger - direction * speed));
+    axis = null;
+  };
+
+  const onClick = (event: Event) => {
+    if (moved < 8) return;
+    event.preventDefault();
+    event.stopPropagation();
+    moved = 0;
+  };
+
+  train.querySelectorAll("img").forEach((img) => {
+    img.draggable = false;
+  });
+  wrapper.addEventListener("pointerdown", onDown);
+  wrapper.addEventListener("pointermove", onMove);
+  wrapper.addEventListener("pointerup", onUp);
+  wrapper.addEventListener("pointercancel", onUp);
+  wrapper.addEventListener("click", onClick, true);
+
+  return () => {
+    window.cancelAnimationFrame(frame);
+    wrapper.removeEventListener("pointerdown", onDown);
+    wrapper.removeEventListener("pointermove", onMove);
+    wrapper.removeEventListener("pointerup", onUp);
+    wrapper.removeEventListener("pointercancel", onUp);
+    wrapper.removeEventListener("click", onClick, true);
+    train.classList.remove("is-dragging");
+    train.querySelectorAll("[data-ca-clone]").forEach((node) => node.remove());
+    train.style.removeProperty("transform");
+    train.style.removeProperty("animation");
+    extras.forEach((node) => {
+      node.style.removeProperty("display");
+      delete node.dataset.caHiddenCopy;
+    });
+    delete wrapper.dataset.caDrag;
+  };
+}
+
+function bindPageMarquees() {
+  const cleanups: Array<() => void> = [];
+  document.querySelectorAll(".rt-gallery-marquee-wrapper").forEach((node) => {
+    const wrapper = node as HTMLElement;
+    const direction = wrapper.classList.contains("rt-bottom") ? 1 : -1;
+    cleanups.push(bindMarqueeRow(wrapper, direction));
+  });
+  return () => cleanups.forEach((fn) => fn());
+}
 
 type LbItem = { url: string; caption?: string };
 
@@ -49,6 +279,10 @@ function collectGroupItems(anchor: HTMLElement): { items: LbItem[]; index: numbe
  * Webflow stand-ins: mega menu, dropdowns, tabs, lightbox, contact submit.
  */
 export function BaselineInteractions() {
+  const pathname = usePathname();
+
+  useEffect(() => bindPageMarquees(), [pathname]);
+
   useEffect(() => {
     const root = document.documentElement;
     let lbRoot: HTMLDivElement | null = null;
