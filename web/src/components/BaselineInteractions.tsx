@@ -241,6 +241,7 @@ export function BaselineInteractions() {
 
       const dropToggle = target.closest(".rt-dropdown-toggle");
       if (dropToggle) {
+        if (window.matchMedia("(max-width: 1099px)").matches) return;
         const dropdown = dropToggle.closest(".w-dropdown");
         if (dropdown) {
           e.preventDefault();
@@ -319,6 +320,177 @@ export function BaselineInteractions() {
       toggleMenyu();
     }
 
+    document.querySelectorAll(".rt-button .rt-text-two").forEach((el) => {
+      el.setAttribute("aria-hidden", "true");
+    });
+
+    document.querySelectorAll(".rt-mega-menu-wrapper .w-dropdown").forEach((drop) => {
+      drop.setAttribute("data-hover", "false");
+      const links = [
+        ...drop.querySelectorAll(":scope > .w-dropdown-list a"),
+      ];
+      if (links.length === 1) drop.classList.add("ca-menu-direct");
+    });
+
+    function onDropdownCapture(e: MouseEvent) {
+      if (!window.matchMedia("(max-width: 1099px)").matches) return;
+      const target = e.target as HTMLElement | null;
+      const dropToggle = target?.closest(".rt-dropdown-toggle");
+      if (!dropToggle?.closest(".rt-mega-menu-wrapper")) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const dropdown = dropToggle.closest(".w-dropdown");
+      if (!dropdown) return;
+      if (dropdown.classList.contains("ca-menu-direct")) {
+        const href = dropdown
+          .querySelector(":scope > .w-dropdown-list a")
+          ?.getAttribute("href");
+        if (href) window.location.assign(href);
+        return;
+      }
+      const willOpen = !dropdown.classList.contains("w--open");
+      dropdown.parentElement
+        ?.querySelectorAll(":scope > .w-dropdown.w--open")
+        .forEach((other) => {
+          if (other !== dropdown) other.classList.remove("w--open");
+        });
+      dropdown.classList.toggle("w--open", willOpen);
+    }
+
+    const phoneCleanups: Array<() => void> = [];
+
+    function setupReviews() {
+      if (!document.documentElement.classList.contains("is-home")) return;
+      const section = document.querySelector(".rt-testimonial-v3");
+      const holder = section?.querySelector(".rt-testimonial-card-holder");
+      if (!section || !holder) return;
+      const cards = [
+        ...holder.querySelectorAll(":scope > .rt-testimonial-card-v1"),
+      ] as HTMLElement[];
+      if (!cards.length) return;
+      const mq = window.matchMedia("(max-width: 767px)");
+      const step = 4;
+      let shown = step;
+      let btn: HTMLButtonElement | null = null;
+
+      const apply = () => {
+        const phone = mq.matches;
+        cards.forEach((card, i) => {
+          card.classList.toggle("ca-review-pending", phone && i >= shown);
+        });
+        if (!phone || shown >= cards.length) {
+          btn?.remove();
+          btn = null;
+          return;
+        }
+        if (!btn) {
+          btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "ca-reviews-more";
+          btn.textContent = "Hammasi";
+          btn.addEventListener("click", () => {
+            shown += step;
+            apply();
+          });
+          section.appendChild(btn);
+        }
+      };
+
+      const onChange = () => {
+        if (mq.matches) shown = step;
+        apply();
+      };
+      apply();
+      mq.addEventListener("change", onChange);
+      phoneCleanups.push(() => {
+        mq.removeEventListener("change", onChange);
+        btn?.remove();
+        cards.forEach((card) => card.classList.remove("ca-review-pending"));
+      });
+    }
+
+    function setupSliders() {
+      const phone = window.matchMedia("(max-width: 991px)");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      document
+        .querySelectorAll(
+          ".rt-feature .rt-tab-slider.w-slider, .rt-gallery .rt-tab-slider.w-slider",
+        )
+        .forEach((node) => {
+          const slider = node as HTMLElement;
+          if (slider.dataset.caSwipe === "1") return;
+          const mask = slider.querySelector(
+            ":scope > .w-slider-mask",
+          ) as HTMLElement | null;
+          if (!mask) return;
+          const slides = [
+            ...mask.querySelectorAll(":scope > .w-slide"),
+          ] as HTMLElement[];
+          if (slides.length < 2) return;
+          slider.dataset.caSwipe = "1";
+
+          const dots = document.createElement("div");
+          dots.className = "ca-swipe-dots";
+          dots.setAttribute("role", "tablist");
+          slides.forEach((_, i) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "ca-swipe-dot" + (i === 0 ? " is-on" : "");
+            dot.setAttribute("aria-label", `${i + 1}-slayd`);
+            dot.addEventListener("click", () => {
+              mask.scrollTo({
+                left: i * mask.clientWidth,
+                behavior: reduce.matches ? "auto" : "smooth",
+              });
+            });
+            dots.appendChild(dot);
+          });
+          slider.appendChild(dots);
+
+          const sync = () => {
+            const width = mask.clientWidth || 1;
+            const index = Math.round(mask.scrollLeft / width);
+            [...dots.children].forEach((dot, n) => {
+              dot.classList.toggle("is-on", n === index);
+            });
+          };
+          mask.addEventListener("scroll", sync, { passive: true });
+
+          let paused = false;
+          const pause = () => {
+            paused = true;
+          };
+          const resume = () => {
+            paused = false;
+          };
+          mask.addEventListener("pointerdown", pause);
+          mask.addEventListener("pointerup", resume);
+          mask.addEventListener("pointercancel", resume);
+
+          const timer = window.setInterval(() => {
+            if (!phone.matches || reduce.matches || paused) return;
+            const width = mask.clientWidth;
+            if (!width) return;
+            const index = Math.round(mask.scrollLeft / width);
+            const next = (index + 1) % slides.length;
+            mask.scrollTo({ left: next * width, behavior: "smooth" });
+          }, 4500);
+
+          phoneCleanups.push(() => {
+            window.clearInterval(timer);
+            mask.removeEventListener("scroll", sync);
+            mask.removeEventListener("pointerdown", pause);
+            mask.removeEventListener("pointerup", resume);
+            mask.removeEventListener("pointercancel", resume);
+            dots.remove();
+            delete slider.dataset.caSwipe;
+          });
+        });
+    }
+
+    setupReviews();
+    setupSliders();
+
     document.querySelectorAll(".w-tabs").forEach((tabs) => {
       const current =
         tabs.getAttribute("data-current") ||
@@ -364,11 +536,14 @@ export function BaselineInteractions() {
       }
     }
 
+    document.addEventListener("click", onDropdownCapture, true);
     document.addEventListener("click", onClick);
     document.addEventListener("keydown", onKey);
     document.addEventListener("keydown", onMenuKey);
     document.addEventListener("submit", onFormSubmit, true);
     return () => {
+      phoneCleanups.forEach((fn) => fn());
+      document.removeEventListener("click", onDropdownCapture, true);
       document.removeEventListener("click", onClick);
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("keydown", onMenuKey);

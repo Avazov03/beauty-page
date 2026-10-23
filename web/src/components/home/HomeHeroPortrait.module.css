@@ -241,3 +241,44 @@
     font-size: clamp(2.2rem, 3vw, 3.05rem);
   }
 }
+
+/* Phone: no portrait. Name sits up top, copy follows, then a gap
+   before the next section. Desktop composition stays at 900+. */
+@media (max-width: 899px) {
+  .hero {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5.15rem 1.15rem 3.25rem;
+  }
+
+  .stage {
+    min-height: 0;
+    place-items: center;
+  }
+
+  .nameBehind {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.35rem, 11.2vw, 3.45rem);
+    line-height: 0.9;
+  }
+
+  .figure {
+    display: none;
+  }
+
+  .inner {
+    max-width: 22rem;
+    padding: 1.45rem 0 0;
+  }
+
+  .headline {
+    font-size: clamp(1.7rem, 7.2vw, 2.15rem);
+  }
+}

@@ -118,6 +118,26 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
  * Keep a compact CTA beside the menu so the phone header still has a next step.
  */
 @media (max-width: 1099px) {
+  .rt-nav-inner-block,
+  html.is-inner .rt-nav-inner-block,
+  html.is-inner.is-hero-top .rt-nav-inner-block,
+  html.is-inner.is-nav-solid .rt-nav-inner-block,
+  html.is-inner:has(.rt-room-details-hero) .rt-nav-inner-block,
+  html.is-inner:has(.rt-inner-hero) .rt-nav-inner-block {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .rt-navbar-v1-wrapper,
+  .rt-nav-inner-block,
+  .rt-navbar-v1-right-wrapper,
+  .rt-navbar-v1-button-wrapper {
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
   .rt-navbar-v1-wrapper {
     gap: 0.45rem;
     min-width: 0;
@@ -125,8 +145,11 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
 
   .rt-navbar-v1-right-wrapper {
     flex-shrink: 0;
+    flex-direction: row !important;
     column-gap: 0.35rem !important;
+    row-gap: 0 !important;
     grid-column-gap: 0.35rem !important;
+    grid-row-gap: 0 !important;
     margin-left: 0 !important;
   }
 
@@ -138,7 +161,17 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   }
 
   .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button {
-    padding: 0.45rem 0.7rem !important;
+    flex-shrink: 0;
+    align-items: center !important;
+    min-height: 2.25rem !important;
+    height: auto !important;
+    padding: 0.42rem 0.9rem !important;
+  }
+
+  .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button .rt-position-relative {
+    display: flex;
+    align-items: center;
+    min-height: 1.15rem;
   }
 
   .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button .rt-text-one,
@@ -175,15 +208,24 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     position: relative;
   }
 
+  .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button {
+    min-height: 2.25rem !important;
+    padding: 0.4rem 0.85rem !important;
+  }
+
   .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button .rt-text-one {
     font-size: 0 !important;
+    line-height: 1 !important;
     letter-spacing: 0 !important;
   }
 
   .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button .rt-text-one::after {
     content: "Yozilish";
-    font-size: 0.72rem;
+    display: inline-block;
+    font-size: 0.78rem;
+    line-height: 1.15;
     letter-spacing: 0.04em;
+    color: var(--color-plum, #72516f);
   }
 
   .rt-navbar-v1-menu-wrapper > .rt-button-text {

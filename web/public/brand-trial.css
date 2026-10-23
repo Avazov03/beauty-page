@@ -44,6 +44,23 @@ body {
   background-color: #d3b9c9 !important;
 }
 
+/* Hover wipe: rest label is plum, the slide-in label is white on plum.
+   Sandstone overlay was remapped to the same mauve as the button, so the
+   label vanished on hover. text-two is display:none in the Webflow sheet. */
+.rt-button .rt-button-text.rt-text-one {
+  color: #72516f !important;
+}
+
+.rt-button .rt-button-text.rt-text-two {
+  display: block !important;
+  color: #ffffff !important;
+}
+
+.rt-button .rt-button-overlay,
+.rt-button-overlay.rt-chage-overlay {
+  background-color: #72516f !important;
+}
+
 .rt-button-overlay.rt-dark-overlay {
   background-color: #72516f !important;
 }
@@ -90,6 +107,45 @@ a.w-webflow-badge {
 .rt-footer .rt-footer-link-block .rt-text-style-h3 {
   font-size: 1.35rem !important;
   line-height: 1.35 !important;
+}
+
+@media (max-width: 767px) {
+  .rt-footer {
+    border-top-left-radius: 1.75rem !important;
+    border-top-right-radius: 1.75rem !important;
+  }
+
+  .rt-footer-col-v1,
+  .rt-footer-col-v2,
+  .rt-footer-col-v3,
+  .rt-footer-section-gap {
+    padding-top: 1.15rem !important;
+  }
+
+  .rt-footer-wrapper {
+    flex-direction: column !important;
+    row-gap: 0.35rem !important;
+    padding-bottom: calc(1.15rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .rt-footer .rt-footer-link-block {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .rt-footer .rt-footer-link-block .rt-text-style-h3 {
+    font-size: 1.05rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .rt-footer-text {
+    font-size: 0.9rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .rt-footer-logo-gap {
+    margin-bottom: 0.75rem !important;
+  }
 }
 
 .rt-mega-menu-wrapper.rt-is-open,

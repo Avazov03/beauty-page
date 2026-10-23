@@ -21,6 +21,22 @@ body,
   background-color: #f8f4f6d9;
 }
 
+/* Same hover pair on every rt-button (home and inner pages).
+   Rest: plum on mauve. Hover slide: white on plum. */
+.rt-button .rt-button-text.rt-text-one {
+  color: #72516f !important;
+}
+
+.rt-button .rt-button-text.rt-text-two {
+  display: block !important;
+  color: #ffffff !important;
+}
+
+.rt-button .rt-button-overlay,
+.rt-button-overlay.rt-chage-overlay {
+  background-color: #72516f !important;
+}
+
 /* Play chiziq — overflow:hidden ISHLATILMAYDI (tugmani yashiradi) */
 .rt-hero-v1-play-button-line {
   position: absolute !important;
@@ -529,6 +545,33 @@ html.is-home .rt-testimonial-v3 {
     flex: none !important;
     box-sizing: border-box;
   }
+
+  html.is-home .rt-testimonial-card-v1.ca-review-pending {
+    display: none !important;
+  }
+
+  html.is-home .ca-reviews-more {
+    display: block;
+    margin: 0.35rem auto 0.25rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-mauve, #d3b9c9);
+    color: var(--color-plum, #72516f);
+    font-family: var(--font-body, "Instrument Sans", system-ui, sans-serif);
+    font-size: 0.78rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0.75rem 1.3rem;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 768px) {
+  .ca-reviews-more {
+    display: none !important;
+  }
 }
 
 /*
@@ -575,6 +618,17 @@ html.is-home .rt-gallery {
   html.is-home .rt-gallery {
     height: auto !important;
     min-height: 0 !important;
+    padding-top: 2.5rem;
+    padding-bottom: 1.75rem !important;
+  }
+
+  html.is-home .rt-gallery-heading {
+    font-size: 1.35rem !important;
+    line-height: 1.28 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   html.is-home .rt-gallery-sticky,
@@ -583,6 +637,90 @@ html.is-home .rt-gallery {
     top: auto !important;
     height: auto !important;
     min-height: 0 !important;
+  }
+
+  html.is-home .rt-gallery-slider {
+    display: none !important;
+  }
+
+  html.is-home .rt-feature {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+  }
+}
+
+/* Phone carousels: one card, finger swipe, dots. Autoplay is JS. */
+@media (max-width: 991px) {
+  html.is-home .rt-tab-slider.w-slider {
+    height: auto !important;
+    overflow: hidden;
+    background: transparent !important;
+  }
+
+  html.is-home .rt-tab-slider > .w-slider-mask {
+    display: flex !important;
+    height: auto !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    transform: none !important;
+    white-space: normal !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  html.is-home .rt-tab-slider > .w-slider-mask::-webkit-scrollbar {
+    display: none;
+  }
+
+  html.is-home .rt-tab-slider > .w-slider-mask > .w-slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    white-space: normal !important;
+  }
+
+  html.is-home .rt-gallery .rt-tab-slider > .w-slider-mask > .w-slide .rt-gallery-image-wrapper {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 0.9375rem;
+  }
+
+  html.is-home .rt-gallery .rt-tab-slider > .w-slider-mask > .w-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  html.is-home .ca-swipe-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: 0.85rem 0 0.15rem;
+  }
+
+  html.is-home .ca-swipe-dot {
+    width: 0.42rem;
+    height: 0.42rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(114, 81, 111, 0.28);
+    cursor: pointer;
+  }
+
+  html.is-home .ca-swipe-dot.is-on {
+    background: var(--color-plum, #72516f);
   }
 }
 

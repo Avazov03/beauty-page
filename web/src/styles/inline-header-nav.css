@@ -405,8 +405,8 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box !important;
-    padding: calc(5.75rem + env(safe-area-inset-top, 0px)) 0
-      calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+    padding: calc(4.6rem + env(safe-area-inset-top, 0px)) 0
+      calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
   }
 
   html.rt-menu-open .rt-mega-menu-left-wrapper-main {
@@ -434,11 +434,61 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     display: none !important;
   }
 
+  html.rt-menu-open .rt-mega-menu-left-wrapper > .w-dropdown,
+  html.rt-menu-open .rt-mega-menu-left-wrapper > .rt-dropdown-wrapper {
+    border-bottom: 1px solid rgba(248, 244, 246, 0.16);
+  }
+
+  /* Broken CDN icons — text rows only. Chevron is CSS, not an image. */
+  html.rt-menu-open .rt-mega-menu-wrapper img,
+  html.rt-menu-open .rt-dropdown-icon {
+    display: none !important;
+  }
+
+  html.rt-menu-open .rt-mega-menu-right-wrapper {
+    display: none !important;
+  }
+
+  html.rt-menu-open .w-dropdown > .rt-dropdown-toggle .rt-dropdown-v1-toggle-content {
+    position: relative;
+    padding-right: 1.35rem;
+    box-sizing: border-box;
+  }
+
+  html.rt-menu-open .w-dropdown > .rt-dropdown-toggle .rt-dropdown-v1-toggle-content::after {
+    content: "";
+    position: absolute;
+    right: 0.15rem;
+    top: 50%;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-right: 1.5px solid #f8f4f6;
+    border-bottom: 1.5px solid #f8f4f6;
+    transform: translateY(-70%) rotate(45deg);
+    transition: transform 0.38s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1));
+  }
+
+  html.rt-menu-open .w-dropdown.w--open > .rt-dropdown-toggle .rt-dropdown-v1-toggle-content::after {
+    transform: translateY(-30%) rotate(225deg);
+  }
+
   html.rt-menu-open .rt-dropdown-v1,
   html.rt-menu-open .rt-dropdown-wrapper,
   html.rt-menu-open .rt-dropdown-v1-toggle-content {
     width: 100% !important;
     max-width: none !important;
+    min-height: 0;
+  }
+
+  html.rt-menu-open .rt-dropdown-v1 {
+    gap: 0 !important;
+    row-gap: 0 !important;
+    column-gap: 0 !important;
+  }
+
+  html.rt-menu-open .rt-dropdown-toggle,
+  html.rt-menu-open .rt-dropdown-wrapper > a,
+  html.rt-menu-open .rt-mega-menu-left-wrapper > .rt-dropdown-wrapper {
     min-height: 2.75rem;
   }
 
@@ -455,23 +505,55 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
 
   html.rt-menu-open .w-dropdown-list {
     position: static !important;
-    display: none;
+    display: grid !important;
+    grid-template-rows: 0fr;
     width: 100% !important;
     min-width: 0 !important;
     height: auto !important;
     margin: 0 !important;
-    padding: 0 0 0.25rem 1.6rem !important;
+    padding: 0 0 0 0.85rem !important;
     background: transparent !important;
     border: 0 !important;
     box-shadow: none !important;
     transform: none !important;
+    opacity: 0;
+    overflow: hidden !important;
+    transition:
+      grid-template-rows 0.42s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)),
+      opacity 0.28s ease,
+      padding 0.42s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1));
+  }
+
+  html.rt-menu-open .w-dropdown-list > .rt-dropdown-list-wrapper {
+    min-height: 0;
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    max-width: none !important;
+    width: 100% !important;
+    height: auto !important;
+    grid-template-columns: 1fr !important;
+    padding: 0 0 0 0.35rem !important;
+    gap: 0 !important;
+    row-gap: 0 !important;
+  }
+
+  html.rt-menu-open .ca-menu-direct > .w-dropdown-list {
+    display: none !important;
+  }
+
+  html.rt-menu-open .ca-menu-direct .rt-dropdown-v1-toggle-content::after {
+    display: none !important;
   }
 
   html.rt-menu-open .w-dropdown.w--open > .w-dropdown-list {
-    display: flex !important;
-    flex-direction: column;
+    grid-template-rows: 1fr;
+    max-height: none !important;
     opacity: 1 !important;
     visibility: visible !important;
+    padding-bottom: 0.45rem !important;
   }
 
   html.rt-menu-open .rt-dropdown-submenu {
@@ -482,29 +564,59 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     color: #f8f4f6 !important;
   }
 
-  html.rt-menu-open .rt-mega-menu-right-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    height: auto !important;
-    grid-template-columns: 1fr !important;
-    padding: 0.75rem 1.15rem 0 !important;
-    gap: 0.75rem !important;
-  }
-
-  html.rt-menu-open .rt-mega-menu-right-wrapper .rt-text-white,
-  html.rt-menu-open .rt-mega-menu-right-wrapper .rt-text-style-h5 {
-    overflow-wrap: break-word;
+  html.rt-menu-open .rt-text-style-h3.rt-menu-v1 {
+    color: #f8f4f6 !important;
   }
 
   .rt-navbar-v1-menu-wrapper,
   .rt-navbar-v1-menu-bar-wrap {
-    min-height: 2.75rem;
+    min-height: 2.5rem;
+    height: 2.5rem;
     touch-action: manipulation;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .rt-navbar-v1-menu-wrapper:focus {
+    outline: none;
+  }
+
+  .rt-navbar-v1-menu-wrapper:focus-visible {
+    outline: 2px solid rgba(114, 81, 111, 0.45);
+    outline-offset: 3px;
   }
 
   .rt-navbar-v1-menu-bar-wrap {
-    min-width: 2.75rem;
+    position: relative;
+    min-width: 2.5rem;
+    width: 2.5rem;
     justify-content: center;
+  }
+
+  .rt-navbar-v1-bar-line {
+    width: 1.15rem !important;
+    height: 2px !important;
+    transition: transform 0.32s var(--ease-hotel, cubic-bezier(0.22, 1, 0.36, 1)),
+      opacity 0.2s ease;
+  }
+
+  html.rt-menu-open .rt-navbar-v1-bar-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 !important;
+  }
+
+  html.rt-menu-open .rt-navbar-v1-bar-line.rt-one {
+    transform: translate(-50%, -50%) rotate(45deg) !important;
+  }
+
+  html.rt-menu-open .rt-navbar-v1-bar-line.rt-two {
+    opacity: 0 !important;
+  }
+
+  html.rt-menu-open .rt-navbar-v1-bar-line.rt-three {
+    transform: translate(-50%, -50%) rotate(-45deg) !important;
   }
 }
