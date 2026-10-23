@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Fraunces, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { getWfPageBootstrapScript, WF_PAGE_HOME } from "@/data/wfPageId";
 import "./globals.css";
@@ -15,6 +15,14 @@ const instrumentSerif = Instrument_Serif({
   weight: ["400"],
   variable: "--font-instrument-serif",
   display: "swap",
+});
+
+/** Wordmark only: a little heavier than Instrument Serif, with softened corners. */
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  axes: ["SOFT", "WONK", "opsz"],
+  variable: "--font-fraunces",
 });
 
 export const viewport: Viewport = {
@@ -57,7 +65,9 @@ export default function RootLayout({
         {/* After Webflow CSS so trial brand vars actually apply */}
         <link rel="stylesheet" href="/brand-trial.css" />
       </head>
-      <body className={`${instrumentSans.variable} ${instrumentSerif.variable}`}>
+      <body
+        className={`${instrumentSans.variable} ${instrumentSerif.variable} ${fraunces.variable}`}
+      >
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

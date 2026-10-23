@@ -24,6 +24,8 @@
   /* Typography */
   --font-body: var(--font-instrument-sans), "Instrument Sans", system-ui, sans-serif;
   --font-heading: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+  /* Logo and the large hero name — softer corners, a step heavier. */
+  --font-wordmark: var(--font-fraunces), "Fraunces", Georgia, serif;
 
   --text-h1: 2.5rem;
   --text-h2: 1.875rem;

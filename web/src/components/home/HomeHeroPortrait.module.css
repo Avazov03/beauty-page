@@ -66,11 +66,14 @@
   align-items: center;
   width: max-content;
   max-width: 98vw;
-  font-family: var(--font-heading);
+  font-family: var(--font-wordmark, "Fraunces", Georgia, serif);
   font-size: clamp(3.75rem, 17vw, 6.25rem);
-  font-weight: 400;
+  font-weight: 640;
+  font-variation-settings: "SOFT" 78, "opsz" 144, "WONK" 0;
+  font-synthesis: none;
   line-height: 0.86;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.045em;
+  -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   text-align: center;
   user-select: none;
@@ -84,12 +87,14 @@
 
 .nameFirst {
   color: var(--color-plum, #72516f);
+  font-weight: 290;
   opacity: 0.88;
   text-shadow: 0 1px 0 rgba(248, 244, 246, 0.35);
 }
 
 .nameLast {
   color: var(--color-dark-blue, #3d2f3c);
+  font-weight: 360;
   opacity: 1;
   text-shadow: 0 1px 0 rgba(248, 244, 246, 0.4);
 }

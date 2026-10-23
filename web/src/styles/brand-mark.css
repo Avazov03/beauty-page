@@ -16,15 +16,22 @@
   object-position: left center;
 }
 
-/* Legacy text mark (keep for any leftover markup) */
+/* Header and footer wordmark — live text so the soft face actually loads. */
 .ca-brand-mark {
-  font-family: var(--font-heading, "Instrument Serif", Georgia, serif);
-  font-size: clamp(1.05rem, 1.15vw, 1.28rem);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-family: var(--font-wordmark, "Fraunces", Georgia, serif);
+  font-size: clamp(1.15rem, 1.35vw, 1.45rem);
+  font-weight: 640;
+  font-variation-settings: "SOFT" 78, "opsz" 36, "WONK" 0;
+  font-synthesis: none;
+  letter-spacing: -0.02em;
+  line-height: 1;
   color: var(--color-plum, #72516f);
   white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ca-brand-mark-light {
+  color: #f8f4f6;
 }
 
 /* No more dual light/dark Classic Apartment SVG logos */
@@ -57,13 +64,9 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
 }
 
 /* Footer wordmark — light SVG on plum footer */
-.rt-footer-logo-gap img {
-  display: block !important;
-  width: auto;
-  height: 1.65rem;
-  max-width: 12rem;
-  object-fit: contain;
-  object-position: left center;
+.rt-footer-logo-gap .ca-brand-mark {
+  font-size: 1.5rem;
+  color: #f8f4f6;
 }
 
 .rt-footer-logo-gap::after {
@@ -72,8 +75,8 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
 }
 
 @media (max-width: 520px) {
-  .ca-brand-logo {
-    height: 1.35rem;
-    max-width: min(7.5rem, 34vw);
+  .ca-brand-mark {
+    font-size: 1.02rem;
+    letter-spacing: -0.03em;
   }
 }
