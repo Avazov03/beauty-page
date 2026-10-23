@@ -680,7 +680,13 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   .ca-phone-link.is-active,
   .ca-phone-row.is-active,
   .ca-phone-sub.is-active {
-    opacity: 1;
+    color: #d3b9c9;
+    font-weight: 600;
+  }
+
+  .ca-phone-row.is-active::after {
+    border-right-color: #d3b9c9;
+    border-bottom-color: #d3b9c9;
   }
 
   .ca-phone-panel {

@@ -379,4 +379,20 @@
   .rt-inner-hero.is-cutout-hero .rt-about-heading {
     text-align: center !important;
   }
+
+  /* Closeup/roomy desktop padding is more specific than the resets above.
+     On a phone that leftover gutter pins the title to one side. */
+  .rt-inner-hero.is-cutout-hero[data-cutout-scale][data-cutout-side]
+    .rt-about-us-text-wrapper
+    > .rt-container,
+  .rt-inner-hero.is-cutout-hero[data-cutout-scale][data-cutout-side]
+    .rt-about-us-text-wrapper
+    > .w-container {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }

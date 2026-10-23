@@ -1191,6 +1191,206 @@ html.is-home .rt-gallery-image-box img {
   cursor: grabbing;
 }
 
+/* Qulayliklar phone: one readable card with a peek of the next, photo and
+   text the same size. The row keeps moving like the photo gallery, and a
+   finger drag eases back into that motion. */
+@media (max-width: 767px) {
+  .rt-amenities-v2-top-marquee-wrapper {
+    display: block !important;
+    overflow: hidden !important;
+    width: 100%;
+    max-width: 100%;
+    touch-action: pan-y;
+  }
+
+  .rt-amenities-v2-top-train:not(:first-child),
+  .rt-amenities-v2-bottom-train:not(:first-child) {
+    display: none !important;
+  }
+
+  .rt-amenities-v2-top-train,
+  .rt-amenities-v2-bottom-train {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: stretch !important;
+    width: max-content !important;
+    max-width: none !important;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .rt-amenities-v2-top-train.is-dragging,
+  .rt-amenities-v2-bottom-train.is-dragging {
+    cursor: grabbing;
+  }
+
+  .rt-amenities-v2-marquee-train {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: stretch !important;
+    width: max-content !important;
+    column-gap: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .rt-amenities-v2 .rt-text-card,
+  .rt-amenities-v2 .rt-amenities-image {
+    flex: 0 0 calc(100vw - 5.5rem) !important;
+    width: calc(100vw - 5.5rem) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: calc(100vw - 5.5rem) !important;
+    box-sizing: border-box;
+  }
+
+  .rt-amenities-v2 .rt-text-card {
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  .rt-amenities-v2 .rt-text-content {
+    height: 100% !important;
+    padding: 1.35rem 1.25rem !important;
+    box-sizing: border-box;
+    grid-row-gap: 0.7rem;
+  }
+
+  .rt-amenities-v2 .rt-text-style-h3 {
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  .rt-amenities-v2 .rt-amenities-image {
+    overflow: hidden;
+    border-radius: 0.625rem;
+  }
+
+  .rt-amenities-v2 .rt-amenities-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Same page: stock frames were ~429px inside a 330px column. */
+  .rt-experience-v3 .rt-overflow-hidden:has(> img.rt-image-appearance),
+  .rt-banquet-v2 .rt-overflow-hidden:has(> img.rt-image-appearance),
+  .rt-spa-v2 .rt-overflow-hidden:has(> img.rt-image-appearance),
+  .rt-feature-v6 .rt-overflow-hidden:has(> img.rt-image-appearance) {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+    overflow: hidden !important;
+  }
+
+  .rt-experience-v3 img.rt-image-appearance,
+  .rt-banquet-v2 img.rt-image-appearance,
+  .rt-spa-v2 img.rt-image-appearance,
+  .rt-feature-v6 img.rt-image-appearance {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+  }
+
+  /* Uy parvarishi cards used to swap in place. On a phone they stacked
+     and the next photo was cut off. One card, swipe or a slow cycle. */
+  .rt-restaurant-sticky,
+  .rt-restaurant-main {
+    height: auto !important;
+  }
+
+  .rt-restaurant-main {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: stretch !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .rt-restaurant-main::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rt-restaurant-main > .rt-restaurant-card {
+    display: contents !important;
+    flex: none !important;
+    width: auto !important;
+  }
+
+  .rt-restaurant-card-col-wrap,
+  .rt-restaurant-card-col-wrap.rt-tab-display-off {
+    display: block !important;
+    flex: 0 0 100%;
+    width: 100% !important;
+    min-width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .rt-restaurant-card-col-wrap > .rt-restaurant-card-wrap,
+  .rt-restaurant-card-col-wrap > .rt-position-relative {
+    position: relative !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5;
+    max-height: 26rem;
+    overflow: hidden;
+    border-radius: 0.9375rem;
+  }
+
+  .rt-restaurant-image-wrapper {
+    position: absolute !important;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .rt-restaurant-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .rt-restaurant-card-text-wrapper {
+    position: absolute !important;
+    inset: auto 0 0 0 !important;
+    height: auto !important;
+    width: 100% !important;
+    padding: 1.15rem 1rem 1.2rem;
+  }
+
+  .rt-restaurant .ca-swipe-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: 0.85rem 0 0.15rem;
+  }
+
+  .rt-restaurant .ca-swipe-dot {
+    width: 0.42rem;
+    height: 0.42rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(114, 81, 111, 0.28);
+    cursor: pointer;
+  }
+
+  .rt-restaurant .ca-swipe-dot.is-on {
+    background: var(--color-plum, #72516f);
+  }
+}
+
 /*
  * Room-detail gallery-v5 marquee — Webflow only sets max-width on
  * .rt-gallery-image; height followed each stock file's intrinsic ratio

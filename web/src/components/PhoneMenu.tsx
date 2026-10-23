@@ -26,6 +26,23 @@ export function PhoneMenu() {
   }, [pathname]);
 
   useEffect(() => {
+    if (pathname === "/rooms" || pathname.startsWith("/rooms/")) {
+      setOpen("rooms");
+      return;
+    }
+    if (pathname === "/blog" || pathname.startsWith("/blog/")) {
+      setOpen("blog");
+      return;
+    }
+    if (
+      serviceNav.some(
+        (item) =>
+          pathname === item.href || pathname.startsWith(`${item.href}/`),
+      )
+    ) {
+      setOpen("services");
+      return;
+    }
     setOpen(null);
   }, [pathname]);
 

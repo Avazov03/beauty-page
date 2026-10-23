@@ -9,13 +9,16 @@ import { usePathname } from "next/navigation";
  * in both directions. On release, leftover speed eases back into the row's
  * own direction.
  */
-function bindMarqueeRow(wrapper: HTMLElement, direction: -1 | 1) {
+function bindMarqueeRow(
+  wrapper: HTMLElement,
+  direction: -1 | 1,
+  trainClasses = ["rt-gallery-top-marquee-train", "rt-gallery-bottom-marquee"],
+) {
   if (wrapper.dataset.caDrag === "1") return () => {};
   const trains = [...wrapper.children].filter(
     (node): node is HTMLElement =>
       node instanceof HTMLElement &&
-      (node.classList.contains("rt-gallery-top-marquee-train") ||
-        node.classList.contains("rt-gallery-bottom-marquee")),
+      trainClasses.some((name) => node.classList.contains(name)),
   );
   if (!trains.length) return () => {};
 
@@ -59,7 +62,10 @@ function bindMarqueeRow(wrapper: HTMLElement, direction: -1 | 1) {
 
   train.style.animation = "none";
   train.style.justifyContent = "flex-start";
+  const savedIds = new Map<HTMLElement, string>();
   [wrapper, train, ...extras].forEach((node) => {
+    const id = node.getAttribute("data-w-id");
+    if (id) savedIds.set(node, id);
     node.removeAttribute("data-w-id");
     node.getAnimations?.().forEach((anim) => anim.cancel());
   });
@@ -234,7 +240,45 @@ function bindMarqueeRow(wrapper: HTMLElement, direction: -1 | 1) {
       node.style.removeProperty("display");
       delete node.dataset.caHiddenCopy;
     });
+    savedIds.forEach((id, node) => node.setAttribute("data-w-id", id));
     delete wrapper.dataset.caDrag;
+  };
+}
+
+/** Qulayliklar rows: same loop as the photo gallery, phone only. */
+function bindAmenityMarquees() {
+  const phone = window.matchMedia("(max-width: 767px)");
+  let stop = () => {};
+  const start = () => {
+    stop();
+    if (!phone.matches) {
+      stop = () => {};
+      return;
+    }
+    const jobs: Array<() => void> = [];
+    document
+      .querySelectorAll(".rt-amenities-v2-top-marquee-wrapper")
+      .forEach((node) => {
+        const wrapper = node as HTMLElement;
+        const direction = wrapper.querySelector(
+          ":scope > .rt-amenities-v2-bottom-train",
+        )
+          ? 1
+          : -1;
+        jobs.push(
+          bindMarqueeRow(wrapper, direction, [
+            "rt-amenities-v2-top-train",
+            "rt-amenities-v2-bottom-train",
+          ]),
+        );
+      });
+    stop = () => jobs.forEach((fn) => fn());
+  };
+  start();
+  phone.addEventListener("change", start);
+  return () => {
+    phone.removeEventListener("change", start);
+    stop();
   };
 }
 
@@ -245,6 +289,85 @@ function bindPageMarquees() {
     const direction = wrapper.classList.contains("rt-bottom") ? 1 : -1;
     cleanups.push(bindMarqueeRow(wrapper, direction));
   });
+  cleanups.push(bindRestaurantSwipe());
+  cleanups.push(bindAmenityMarquees());
+  return () => cleanups.forEach((fn) => fn());
+}
+
+/** One Uy parvarishi card at a time. Finger swipe, dots, and a slow cycle. */
+function bindRestaurantSwipe() {
+  const phone = window.matchMedia("(max-width: 767px)");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const cleanups: Array<() => void> = [];
+
+  document.querySelectorAll(".rt-restaurant-main").forEach((node) => {
+    const main = node as HTMLElement;
+    if (main.dataset.caSwipe === "1") return;
+    const slides = [
+      ...main.querySelectorAll(":scope .rt-restaurant-card-col-wrap"),
+    ] as HTMLElement[];
+    if (slides.length < 2) return;
+    main.dataset.caSwipe = "1";
+
+    const host = main.closest(".rt-restaurant") || main.parentElement || main;
+    const dots = document.createElement("div");
+    dots.className = "ca-swipe-dots";
+    dots.setAttribute("role", "tablist");
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "ca-swipe-dot" + (i === 0 ? " is-on" : "");
+      dot.setAttribute("aria-label", `${i + 1}-karta`);
+      dot.addEventListener("click", () => {
+        main.scrollTo({
+          left: i * main.clientWidth,
+          behavior: reduce.matches ? "auto" : "smooth",
+        });
+      });
+      dots.appendChild(dot);
+    });
+    host.appendChild(dots);
+
+    const sync = () => {
+      const width = main.clientWidth || 1;
+      const index = Math.round(main.scrollLeft / width);
+      [...dots.children].forEach((dot, n) => {
+        dot.classList.toggle("is-on", n === index);
+      });
+    };
+    main.addEventListener("scroll", sync, { passive: true });
+
+    let paused = false;
+    const pause = () => {
+      paused = true;
+    };
+    const resume = () => {
+      paused = false;
+    };
+    main.addEventListener("pointerdown", pause);
+    main.addEventListener("pointerup", resume);
+    main.addEventListener("pointercancel", resume);
+
+    const timer = window.setInterval(() => {
+      if (!phone.matches || reduce.matches || paused) return;
+      const width = main.clientWidth;
+      if (!width) return;
+      const index = Math.round(main.scrollLeft / width);
+      const next = (index + 1) % slides.length;
+      main.scrollTo({ left: next * width, behavior: "smooth" });
+    }, 4500);
+
+    cleanups.push(() => {
+      window.clearInterval(timer);
+      main.removeEventListener("scroll", sync);
+      main.removeEventListener("pointerdown", pause);
+      main.removeEventListener("pointerup", resume);
+      main.removeEventListener("pointercancel", resume);
+      dots.remove();
+      delete main.dataset.caSwipe;
+    });
+  });
+
   return () => cleanups.forEach((fn) => fn());
 }
 
