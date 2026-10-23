@@ -115,17 +115,26 @@ a.w-webflow-badge {
     border-top-right-radius: 1.75rem !important;
   }
 
+  .rt-footer {
+    margin-top: 0 !important;
+  }
+
   .rt-footer-col-v1,
   .rt-footer-col-v2,
   .rt-footer-col-v3,
   .rt-footer-section-gap {
-    padding-top: 1.15rem !important;
+    padding-top: 0.7rem !important;
   }
 
   .rt-footer-wrapper {
     flex-direction: column !important;
-    row-gap: 0.35rem !important;
-    padding-bottom: calc(1.15rem + env(safe-area-inset-bottom, 0px)) !important;
+    row-gap: 0 !important;
+    padding-bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .rt-footer .rt-footer-link-block,
+  .rt-footer .rt-footer-link-block.rt-bottom-border-remove {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.28) !important;
   }
 
   .rt-footer .rt-footer-link-block {

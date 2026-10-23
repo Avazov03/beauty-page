@@ -1497,13 +1497,23 @@ html.is-home .rt-gallery-image-box img {
   overflow: hidden;
 }
 
+.rt-event-image-wrapper {
+  overflow: hidden;
+}
+
 .rt-event-image.rt-v1,
 .rt-event-image.rt-v2 {
   aspect-ratio: 504 / 469;
 }
 
+/* v2/v3 sit on top of v1. A taller ratio was spilling out of the
+   column, under the header and into the footer. */
+.rt-event-image.rt-v2,
 .rt-event-image.rt-v3 {
-  aspect-ratio: 504 / 648;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
 }
 
 .rt-event-image img {
@@ -1515,6 +1525,96 @@ html.is-home .rt-gallery-image-box img {
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+/* Paketlar phone: the active portrait was taller than its frame and
+   painted over the footer. One frame, and the type names stay one line. */
+@media (max-width: 767px) {
+  .rt-event-image-wrapper {
+    position: relative !important;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .rt-event-image.rt-v1,
+  .rt-event-image.rt-v2,
+  .rt-event-image.rt-v3 {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+  }
+
+  .rt-event-image img,
+  .rt-event-image .rt-image-appearance {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+  }
+
+  .rt-event .rt-image-overlay-1,
+  .rt-event .rt-image-overlay-2 {
+    height: 100% !important;
+    max-height: 100%;
+  }
+
+  .rt-event-menu {
+    flex-flow: column nowrap !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    row-gap: 0 !important;
+    overflow: visible !important;
+  }
+
+  .rt-event-menu-box {
+    flex: none !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: none !important;
+    column-gap: 0.55rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(114, 81, 111, 0.16);
+  }
+
+  .rt-event-menu-box:last-child {
+    border-bottom: 0;
+  }
+
+  .rt-event-menu-box > div:last-child {
+    white-space: nowrap;
+  }
+}
+
+/* Desktop: keep the title in the middle of the photos, and keep the
+   row short enough that it sits under the header instead of through it. */
+@media (min-width: 768px) {
+  .rt-event-wrapper {
+    align-items: center !important;
+  }
+
+  .rt-event-image-wrapper,
+  .rt-event-text-main-wrapper {
+    max-height: calc(100svh - 9.5rem);
+  }
+
+  .rt-event-text-main-wrapper {
+    justify-content: center !important;
+    row-gap: 1.25rem !important;
+  }
+
+  .rt-event .rt-image-overlay-1,
+  .rt-event .rt-image-overlay-2 {
+    height: 100% !important;
+    max-height: 100%;
+  }
 }
 
 .rt-banquet-form-image-wrapper {

@@ -177,6 +177,10 @@
   font-weight: 500;
 }
 
+.ca-nav-panel-list .ca-nav-drop-link + .ca-nav-drop-link {
+  box-shadow: inset 0 1px 0 rgba(114, 81, 111, 0.14);
+}
+
 .ca-nav-mega {
   display: grid;
   grid-template-columns: minmax(11.5rem, 0.85fr) minmax(0, 1.25fr);
@@ -633,6 +637,12 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
   }
 
   .ca-phone-link,
+  .ca-phone-row,
+  .ca-phone-sub {
+    border-bottom: 1px solid rgba(248, 244, 246, 0.28) !important;
+  }
+
+  .ca-phone-link,
   .ca-phone-row {
     display: flex;
     align-items: center;
@@ -641,7 +651,7 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     margin: 0;
     padding: 0.4rem 0;
     border: 0;
-    border-bottom: 1px solid rgba(248, 244, 246, 0.16);
+    border-bottom: 1px solid rgba(248, 244, 246, 0.28);
     background: transparent;
     color: #f8f4f6;
     font-family: var(--font-body, "Instrument Sans", system-ui, sans-serif);
@@ -705,14 +715,14 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding-bottom: 0.35rem;
+    padding-bottom: 0;
   }
 
   .ca-phone-sub {
     display: flex;
     align-items: center;
-    min-height: 2.75rem;
-    padding: 0.45rem 0.2rem 0.45rem 0.85rem;
+    min-height: 2.6rem;
+    padding: 0.4rem 0.2rem 0.4rem 0.85rem;
     color: #f8f4f6;
     font-family: var(--font-body, "Instrument Sans", system-ui, sans-serif);
     font-size: 0.92rem;
