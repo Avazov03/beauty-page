@@ -165,13 +165,19 @@
 }
 
 .rt-inner-hero.is-cutout-hero[data-cutout-scale="roomy"] .rt-hero-image {
-  height: min(100%, 52rem) !important;
+  height: min(calc(100% + 70px), calc(52rem + 70px)) !important;
   width: auto !important;
-  max-width: min(48vw, 620px) !important;
+  max-width: min(calc(48vw + 70px), 690px) !important;
   bottom: 0 !important;
   object-fit: contain !important;
   object-position: bottom center !important;
   transform-origin: bottom center !important;
+}
+
+/* Aloqa hero only — the tall scale is shared, so match this PNG. */
+.rt-inner-hero.is-cutout-hero .rt-hero-image[src="/brand/heroes/contact.png"] {
+  height: min(calc(92% + 50px), calc(46rem + 50px)) !important;
+  max-width: min(var(--cutout-col), 530px) !important;
 }
 
 .rt-inner-hero.is-cutout-hero .rt-about-us-text-wrapper {
@@ -271,7 +277,7 @@
   .rt-about-us-text-wrapper > .w-container {
   /* Reserve exact figure width + ~50px air */
   padding-left: calc(
-    min(48vw, 620px) + var(--cutout-gap) + var(--cutout-inset)
+    min(calc(48vw + 70px), 690px) + var(--cutout-gap) + var(--cutout-inset)
   ) !important;
 }
 
