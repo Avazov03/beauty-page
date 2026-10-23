@@ -827,6 +827,51 @@ html.is-home .rt-experience-text-three {
 }
 
 /*
+ * Stat figures (300+, years, returning clients). On a phone the figure was
+ * ~2.3rem inside a 3rem clip, so it read like body text. One step larger,
+ * still one digit row — the train below must stay clipped.
+ * Desktop sizes stay on the Webflow scale.
+ */
+@media (max-width: 899px) {
+  .rt-counter-v2:not(.rt-change-height) {
+    height: 3.35rem !important;
+    align-items: flex-start !important;
+  }
+
+  .rt-counter-v2 .rt-big-text-two {
+    font-size: 3.2rem !important;
+    line-height: 1 !important;
+  }
+
+  .rt-counter-v2.rt-change-height {
+    height: 4.35rem !important;
+  }
+
+  .rt-counter-v2 .rt-big-text-one {
+    font-size: 4.15rem !important;
+    line-height: 0.95 !important;
+  }
+
+  .rt-counter-v1 {
+    height: 2.35rem !important;
+  }
+
+  .rt-counter-v1 .rt-text-style-h3,
+  .rt-counter-v1 .rt-big-text-one,
+  .rt-counter-v1 .rt-big-text-two {
+    font-size: 2.2rem !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Written reviews live on the home page. Inner pages were repeating the
+   same four quotes (and an old video slider) from the hotel template. */
+html.is-inner .rt-testimonial-v3,
+html.is-inner section.rt-client {
+  display: none !important;
+}
+
+/*
  * Without IX2, some sections stay opacity:0 forever.
  * Scope to non-About / non-data-w-id leaves so IX2 start states still work.
  */
