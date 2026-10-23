@@ -498,6 +498,39 @@ html.is-home .rt-testimonial-v3 {
   padding-top: 50px;
 }
 
+/* Phone: the marquee is three copies of a wide row, clipped mid-word.
+   Show one full card stack instead. */
+@media (max-width: 767px) {
+  html.is-home .rt-testimonial-marquee-holder {
+    display: block !important;
+    overflow: visible !important;
+    width: 100% !important;
+    padding: 1.25rem 1rem 2.5rem !important;
+    transform: none !important;
+  }
+
+  html.is-home .rt-testimonial-card-holder {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 0.9rem;
+    transform: none !important;
+  }
+
+  html.is-home .rt-testimonial-card-holder ~ .rt-testimonial-card-holder {
+    display: none !important;
+  }
+
+  html.is-home .rt-testimonial-card-v1 {
+    width: 100% !important;
+    max-width: none !important;
+    margin-right: 0 !important;
+    flex: none !important;
+    box-sizing: border-box;
+  }
+}
+
 /*
  * Dining gallery (home-5 / Parvarish tajribasi): sticky 300vh chapter.
  * Space from Maxsus paketlar above (was glued) — same idea as Experience.
@@ -509,7 +542,7 @@ html.is-home .rt-business {
 }
 
 html.is-home .rt-gallery {
-  height: 300vh;
+  height: auto;
   position: relative;
   z-index: 2;
   isolation: isolate;
@@ -519,15 +552,38 @@ html.is-home .rt-gallery {
   box-sizing: border-box;
 }
 
-html.is-home .rt-gallery-sticky {
-  position: sticky;
-  top: 0;
-  height: auto;
-  min-height: 0;
+/* Desktop scroll chapter. On a phone this 300vh track is an empty white void
+   because the sticky grid is hidden (rt-tab-display-off). */
+@media (min-width: 992px) {
+  html.is-home .rt-gallery {
+    height: 300vh;
+  }
+
+  html.is-home .rt-gallery-sticky {
+    position: sticky;
+    top: 0;
+    height: auto;
+    min-height: 0;
+  }
+
+  html.is-home .rt-gallery-wrapper {
+    height: 100vh;
+  }
 }
 
-html.is-home .rt-gallery-wrapper {
-  height: 100vh;
+@media (max-width: 991px) {
+  html.is-home .rt-gallery {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  html.is-home .rt-gallery-sticky,
+  html.is-home .rt-gallery-wrapper {
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
 }
 
 /* Live Kitchen card is a background video — fill the tile (Webflow z-index:-100 hides it). */
