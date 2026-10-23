@@ -1,6 +1,7 @@
 import { BaselineHtml } from "@/components/BaselineHtml";
 import { BaselineInteractions } from "@/components/BaselineInteractions";
 import { InlineHeaderNav } from "@/components/InlineHeaderNav";
+import { PhoneMenu } from "@/components/PhoneMenu";
 import { InnerHeroCutout } from "@/components/InnerHeroCutout";
 import { RouteChrome } from "@/components/RouteChrome";
 import { WebflowRuntime } from "@/components/WebflowRuntime";
@@ -30,6 +31,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <InnerHeroCutout />
       <BaselineHtml html={chromeHtml} />
       <InlineHeaderNav />
+      <PhoneMenu />
       <main>{children}</main>
       <script dangerouslySetInnerHTML={{ __html: earlyCutoutBoot }} />
       <BaselineHtml html={footerHtml} />

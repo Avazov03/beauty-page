@@ -208,24 +208,49 @@ html.is-inner:not(:has(.rt-room-details-hero)):not(:has(.rt-inner-hero))
     position: relative;
   }
 
+  .ca-brand-link {
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .rt-navbar-v1-button-wrapper,
+  .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button,
+  .rt-navbar-v1-menu-wrapper {
+    flex-shrink: 0 !important;
+  }
+
   .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button {
+    width: auto !important;
+    max-width: none !important;
     min-height: 2.25rem !important;
-    padding: 0.4rem 0.85rem !important;
+    padding: 0.45rem 0.85rem !important;
+    overflow: hidden !important;
+  }
+
+  /* The slide-in label sits on top and was still the long “Qabulga yozilish”,
+     so the pill clipped it to “Qabulga”. Phone shows one short label. */
+  .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button .rt-text-two,
+  .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button .rt-button-overlay {
+    display: none !important;
   }
 
   .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button .rt-text-one {
+    position: static !important;
     font-size: 0 !important;
     line-height: 1 !important;
     letter-spacing: 0 !important;
+    color: transparent !important;
   }
 
   .rt-navbar-v1 .rt-navbar-v1-button-wrapper .rt-button .rt-text-one::after {
     content: "Yozilish";
     display: inline-block;
-    font-size: 0.78rem;
-    line-height: 1.15;
-    letter-spacing: 0.04em;
-    color: var(--color-plum, #72516f);
+    font-size: 0.75rem !important;
+    font-weight: 600;
+    line-height: 1.15 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: none !important;
+    color: var(--color-plum, #72516f) !important;
   }
 
   .rt-navbar-v1-menu-wrapper > .rt-button-text {

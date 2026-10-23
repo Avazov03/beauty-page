@@ -12,18 +12,14 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { blogPosts } from "@/data/blog";
+import { serviceNav } from "@/data/header-nav";
 import { roomsListing } from "@/data/rooms";
 
 type DropKey = "rooms" | "services" | "blog" | null;
 
 const LEAVE_MS = 180;
 
-const services = [
-  { href: "/amenities", label: "Qulayliklar" },
-  { href: "/banquet", label: "Paketlar" },
-  { href: "/spa", label: "Rituallar" },
-  { href: "/restaurant", label: "Uy parvarishi" },
-] as const;
+const services = serviceNav;
 
 function Chevron() {
   return (
