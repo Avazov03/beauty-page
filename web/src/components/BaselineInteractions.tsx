@@ -414,6 +414,91 @@ function collectGroupItems(anchor: HTMLElement): { items: LbItem[]; index: numbe
   return { items, index };
 }
 
+/** Phone stacks the two FAQ columns, so taps have to open the answer. */
+function bindFaq() {
+  const cleanups: Array<() => void> = [];
+  const cols = [...document.querySelectorAll(".rt-faq-col")];
+  const original = cols.map((col) => [...col.children]);
+  const phoneFaq = window.matchMedia("(max-width: 767px)");
+
+  const placeFaq = () => {
+    if (!phoneFaq.matches || cols.length < 2) {
+      original.forEach((children, index) => {
+        children.forEach((node) => cols[index]?.appendChild(node));
+      });
+      return;
+    }
+    const items = original.flat();
+    items.sort((a, b) => {
+      const left = Number.parseInt(a.textContent || "", 10);
+      const right = Number.parseInt(b.textContent || "", 10);
+      return left - right;
+    });
+    items.forEach((node) => cols[0]?.appendChild(node));
+  };
+
+  placeFaq();
+  phoneFaq.addEventListener("change", placeFaq);
+  cleanups.push(() => {
+    phoneFaq.removeEventListener("change", placeFaq);
+    original.forEach((children, index) => {
+      children.forEach((node) => cols[index]?.appendChild(node));
+    });
+  });
+
+  document.querySelectorAll(".rt-faq-v1-block").forEach((block) => {
+    const toggle = block.querySelector<HTMLElement>(".rt-faq-v1-toggle");
+    const panel = block.querySelector<HTMLElement>(".rt-faq-v1-text-wrapper");
+    const icon = block.querySelector<HTMLElement>(".rt-faq-icon");
+    if (!toggle || !panel) return;
+
+    panel.style.removeProperty("height");
+    panel.classList.remove("rt-active");
+    toggle.setAttribute("role", "button");
+    toggle.setAttribute("tabindex", "0");
+    toggle.setAttribute("aria-expanded", "false");
+
+    const setOpen = (open: boolean) => {
+      panel.classList.toggle("rt-active", open);
+      panel.style.removeProperty("height");
+      if (icon) icon.style.transform = open ? "rotate(45deg)" : "";
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+
+    const onToggle = () => {
+      const willOpen = !panel.classList.contains("rt-active");
+      document.querySelectorAll(".rt-faq-v1-block").forEach((other) => {
+        if (other === block) return;
+        const otherPanel = other.querySelector<HTMLElement>(
+          ".rt-faq-v1-text-wrapper",
+        );
+        const otherIcon = other.querySelector<HTMLElement>(".rt-faq-icon");
+        const otherToggle = other.querySelector(".rt-faq-v1-toggle");
+        if (!otherPanel) return;
+        otherPanel.classList.remove("rt-active");
+        otherPanel.style.removeProperty("height");
+        if (otherIcon) otherIcon.style.transform = "";
+        otherToggle?.setAttribute("aria-expanded", "false");
+      });
+      setOpen(willOpen);
+    };
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      onToggle();
+    };
+
+    toggle.addEventListener("click", onToggle);
+    toggle.addEventListener("keydown", onKey);
+    cleanups.push(() => {
+      toggle.removeEventListener("click", onToggle);
+      toggle.removeEventListener("keydown", onKey);
+    });
+  });
+  return () => cleanups.forEach((fn) => fn());
+}
+
 /**
  * Webflow stand-ins: mega menu, dropdowns, tabs, lightbox, contact submit.
  */
@@ -863,6 +948,7 @@ export function BaselineInteractions() {
 
     setupReviews();
     setupSliders();
+    const unbindFaq = bindFaq();
 
     document.querySelectorAll(".w-tabs").forEach((tabs) => {
       const current =
@@ -886,12 +972,23 @@ export function BaselineInteractions() {
       if (!hasContactFields) return;
 
       e.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
+      const data = Object.fromEntries(new FormData(form).entries()) as Record<
+        string,
+        string
+      >;
+      const family = data["Aloqa-V1-Family"]?.trim();
+      if (family && data["Aloqa-V1-Name"]) {
+        data["Aloqa-V1-Name"] = `${data["Aloqa-V1-Name"]} ${family}`.trim();
+      }
+      const block = form.closest(".w-form");
+      const done = block?.querySelector<HTMLElement>(".w-form-done");
+      const fail = block?.querySelector<HTMLElement>(".w-form-fail");
       const submitBtn = form.querySelector(
         'input[type="submit"], button[type="submit"]',
       ) as HTMLInputElement | HTMLButtonElement | null;
       const prev = submitBtn && "value" in submitBtn ? submitBtn.value : null;
       if (submitBtn && "value" in submitBtn) submitBtn.value = "Kuting...";
+      if (fail) fail.style.display = "none";
       try {
         const res = await fetch("/api/contact", {
           method: "POST",
@@ -901,9 +998,22 @@ export function BaselineInteractions() {
         const json = (await res.json()) as { ok?: boolean; error?: string };
         if (!res.ok || !json.ok) throw new Error(json.error || "Xato");
         form.reset();
-        alert("Rahmat — xabaringiz qabul qilindi.");
+        if (done) {
+          form.style.display = "none";
+          done.style.display = "block";
+        } else {
+          alert("Rahmat — xabaringiz qabul qilindi.");
+        }
       } catch (err) {
-        alert(err instanceof Error ? err.message : "Xatolik yuz berdi.");
+        const message =
+          err instanceof Error ? err.message : "Xatolik yuz berdi.";
+        if (fail) {
+          fail.style.display = "block";
+          const text = fail.querySelector("div");
+          if (text) text.textContent = message;
+        } else {
+          alert(message);
+        }
       } finally {
         if (submitBtn && "value" in submitBtn && prev) submitBtn.value = prev;
       }
@@ -916,6 +1026,7 @@ export function BaselineInteractions() {
     document.addEventListener("submit", onFormSubmit, true);
     return () => {
       phoneCleanups.forEach((fn) => fn());
+      unbindFaq();
       document.removeEventListener("click", onDropdownCapture, true);
       document.removeEventListener("click", onClick);
       document.removeEventListener("keydown", onKey);

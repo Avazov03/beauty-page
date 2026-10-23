@@ -1699,3 +1699,128 @@ html.is-home .rt-gallery-image-box img {
   object-fit: cover;
   object-position: center;
 }
+
+/* Aloqa: answers open on tap. Webflow IX2 for this block is not running. */
+.rt-faq-v1-toggle {
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rt-faq-icon {
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease-hotel);
+}
+
+.rt-faq-v1-text-wrapper {
+  display: grid !important;
+  grid-template-rows: 0fr;
+  height: auto !important;
+  transition: grid-template-rows 0.35s var(--ease-hotel);
+}
+
+.rt-faq-v1-text-wrapper.rt-active {
+  grid-template-rows: 1fr;
+}
+
+.rt-faq-v1-text-wrapper > .rt-faq-answer-block {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.rt-contact-form-copy .w-input,
+.rt-contact-form-copy textarea {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (max-width: 767px) {
+  .rt-contact-details-wrapper {
+    grid-template-columns: 1fr !important;
+    row-gap: 0 !important;
+  }
+
+  .rt-contact-v2-card {
+    display: grid !important;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    column-gap: 0.85rem;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    padding: 0.85rem 0 0.95rem !important;
+  }
+
+  .rt-contact-v2-card > .rt-contact-icon-box {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 3.25rem;
+    height: 3.25rem;
+    margin: 0;
+  }
+
+  .rt-contact-v2-card > .rt-text-style-h3,
+  .rt-contact-v2-card > a,
+  .rt-contact-v2-card > div:not(.rt-contact-icon-box) {
+    grid-column: 2;
+    margin: 0 !important;
+    min-width: 0;
+  }
+
+  .rt-contact-v2-card .rt-text-style-h3 {
+    font-size: 1rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .rt-contact-v2-card > a[href^="tel:"] {
+    white-space: nowrap;
+  }
+
+  .rt-contact-v2-card > a[href^="mailto:"] {
+    overflow-wrap: anywhere;
+  }
+
+  .rt-contact-v2-form-text {
+    max-width: 28rem;
+  }
+
+  .rt-contact-v2-top-form-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    row-gap: 0.65rem;
+  }
+
+  .rt-contact-form-top-left-wrapper {
+    display: contents !important;
+  }
+
+  .rt-contact-form-top-left-wrapper:first-child .rt-input-box:first-child {
+    order: 1;
+  }
+
+  .rt-contact-form-top-left-wrapper:last-child .rt-input-box:first-child {
+    order: 2;
+  }
+
+  .rt-contact-form-top-left-wrapper:first-child .rt-input-box:last-child {
+    order: 3;
+  }
+
+  .rt-contact-form-top-left-wrapper:last-child .rt-input-box:last-child {
+    order: 4;
+  }
+
+  .rt-contact-form-copy .w-input,
+  .rt-contact-form-copy textarea {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+  }
+
+  .rt-faq-heading {
+    font-size: 1.7rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .rt-faq-v1-toggle .rt-text-style-h4 {
+    font-size: 1.02rem !important;
+    line-height: 1.35 !important;
+  }
+}
