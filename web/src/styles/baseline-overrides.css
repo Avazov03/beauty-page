@@ -1176,6 +1176,11 @@ html.is-home .rt-gallery-image-box img {
 
 .rt-gallery-top-marquee-train,
 .rt-gallery-bottom-marquee {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: max-content !important;
   touch-action: pan-y;
   cursor: grab;
   user-select: none;

@@ -58,6 +58,11 @@ function bindMarqueeRow(wrapper: HTMLElement, direction: -1 | 1) {
   }
 
   train.style.animation = "none";
+  train.style.justifyContent = "flex-start";
+  [wrapper, train, ...extras].forEach((node) => {
+    node.removeAttribute("data-w-id");
+    node.getAnimations?.().forEach((anim) => anim.cancel());
+  });
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   const duration = 40;
   let offset = 0;
@@ -105,13 +110,23 @@ function bindMarqueeRow(wrapper: HTMLElement, direction: -1 | 1) {
     return next;
   };
 
+  let writing = false;
   const apply = () => {
+    writing = true;
     train.style.setProperty(
       "transform",
       `translate3d(${offset}px,0,0)`,
       "important",
     );
+    writing = false;
   };
+  const guard = new MutationObserver(() => {
+    if (writing) return;
+    const current = new DOMMatrix(getComputedStyle(train).transform).m41;
+    if (Math.abs(current - offset) < 0.5) return;
+    apply();
+  });
+  guard.observe(train, { attributes: true, attributeFilter: ["style"] });
 
   let prev = 0;
   let frame = 0;
@@ -204,6 +219,7 @@ function bindMarqueeRow(wrapper: HTMLElement, direction: -1 | 1) {
   wrapper.addEventListener("click", onClick, true);
 
   return () => {
+    guard.disconnect();
     window.cancelAnimationFrame(frame);
     wrapper.removeEventListener("pointerdown", onDown);
     wrapper.removeEventListener("pointermove", onMove);
